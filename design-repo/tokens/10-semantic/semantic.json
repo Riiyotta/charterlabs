@@ -1,0 +1,108 @@
+{
+  "$description": "Tone roles. Sections set data-tone; light and inverse swap these roles (CLONE_SPEC §0.6). A 'subtle' tone exists in src/index.css but is unused on the homepage and is not part of this repo's PageSpec tone enum.",
+  "tone": {
+    "text.primary": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "text.secondary": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "text.tertiary": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "text.disabled": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "surface.base": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "surface.raised": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "border.subtle": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    },
+    "border.strong": {
+      "$type": "role",
+      "$value": "{theme}",
+      "evidence": [
+        "spec.0.6-colors",
+        "src.css.tones"
+      ],
+      "resolvesIn": [
+        "themes/light.json",
+        "themes/inverse.json"
+      ]
+    }
+  },
+  "status.error": {
+    "$type": "role",
+    "$value": "{color.status.error}",
+    "evidence": [
+      "spec.0.6-colors"
+    ]
+  }
+}

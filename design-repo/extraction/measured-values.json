@@ -1,0 +1,1343 @@
+{
+  "version": "1.0.0",
+  "$description": "External citation ledger. Paths are relative to the SOURCE PROJECT ROOT (the folder containing design-repo/). verify_all.py resolves each {path, lines, anchor} against that tree when present and WARNS (does not fail) when it is absent. 'anchor' must appear inside the cited line range, which catches in-range-but-wrong citations.",
+  "sourceProject": {
+    "name": "charterlabs homepage clone",
+    "original": "https://www.charterlabs.io/ (homepage only)",
+    "measuredOn": "2026-10-20 (Playwright, 1440/1280/390)"
+  },
+  "qaCorrections": [
+    "qa.01-ticker-no-hover-slowdown",
+    "qa.02-nav-glide-snaps",
+    "qa.03-hero-reveal-in-view",
+    "qa.04-nav-drop-1.77s",
+    "qa.05-handoff-reduced-motion",
+    "qa.06-text-wrap-style",
+    "qa.07-footer-rest-layout",
+    "qa.08-intro-phone-appear-section",
+    "qa.09-partner-logo-ratios",
+    "qa.10-reveal-one-frame"
+  ],
+  "citations": {
+    "spec.0.1-breakpoints": {
+      "path": "CLONE_SPEC.md",
+      "lines": "17-26",
+      "anchor": "### 0.1 Breakpoints",
+      "claim": "4 breakpoints (phone <810, tablet >=810, desktop >=1200, wide >=1920) with columns/gutter/gap/section-y"
+    },
+    "src.tailwind.screens": {
+      "path": "tailwind.config.js",
+      "lines": "26-30",
+      "anchor": "screens: {",
+      "claim": "Tailwind screens tablet 810 / desktop 1200 / wide 1920"
+    },
+    "spec.0.2-page-grid": {
+      "path": "CLONE_SPEC.md",
+      "lines": "28-43",
+      "anchor": "### 0.2 Page grid",
+      "claim": ".page-grid, 1700 max width, named spans and their 1440 results"
+    },
+    "src.css.page-grid": {
+      "path": "src/index.css",
+      "lines": "299-357",
+      "anchor": ".page-grid {",
+      "claim": ".page-grid/.page-frame/.px-page-col/.span-* implementation"
+    },
+    "spec.0.3-spacing": {
+      "path": "CLONE_SPEC.md",
+      "lines": "44-46",
+      "anchor": "### 0.3 Spacing scale",
+      "claim": "1px spacing unit; named 4..256"
+    },
+    "spec.0.4-fonts": {
+      "path": "CLONE_SPEC.md",
+      "lines": "48-55",
+      "anchor": "### 0.4 Fonts",
+      "claim": "Inter Variable, fallback face, features, weights 400/420/440/450/485/500/550"
+    },
+    "src.css.font-face": {
+      "path": "src/index.css",
+      "lines": "4-18",
+      "anchor": "@font-face {",
+      "claim": "Inter + fallback @font-face"
+    },
+    "spec.0.5-type-scale": {
+      "path": "CLONE_SPEC.md",
+      "lines": "56-74",
+      "anchor": "### 0.5 Type scale",
+      "claim": "14-style type scale with D/T/P sizes"
+    },
+    "src.css.type-classes": {
+      "path": "src/index.css",
+      "lines": "362-445",
+      "anchor": ".type-display {",
+      "claim": ".type-* classes (size var, weight, line-height, letter-spacing)"
+    },
+    "src.css.type-size-vars": {
+      "path": "src/index.css",
+      "lines": "126-140",
+      "anchor": "/* type sizes: phone (<810) */",
+      "claim": "phone type sizes (tablet/desktop overrides follow)"
+    },
+    "spec.0.6-colors": {
+      "path": "CLONE_SPEC.md",
+      "lines": "76-93",
+      "anchor": "### 0.6 Color tokens",
+      "claim": "gray ramp, alphas, status error, data-tone light/inverse table"
+    },
+    "src.css.palette": {
+      "path": "src/index.css",
+      "lines": "57-101",
+      "anchor": "/* palette */",
+      "claim": "palette CSS vars"
+    },
+    "src.css.tones": {
+      "path": "src/index.css",
+      "lines": "216-248",
+      "anchor": "[data-tone='light'] {",
+      "claim": "data-tone light/subtle/inverse var swaps"
+    },
+    "spec.0.7-radii-shadows": {
+      "path": "CLONE_SPEC.md",
+      "lines": "95-106",
+      "anchor": "### 0.7 Radii, shadows",
+      "claim": "radii, blur tokens, shadows, section/payroll gradients"
+    },
+    "src.css.radius-blur": {
+      "path": "src/index.css",
+      "lines": "103-114",
+      "anchor": "--radius-xs: 4px;",
+      "claim": "radius + blur vars"
+    },
+    "spec.0.8-structure": {
+      "path": "CLONE_SPEC.md",
+      "lines": "107-144",
+      "anchor": "### 0.8 Page-level structure",
+      "claim": "DOM order, Handoff wrappers, section boxes, z-index"
+    },
+    "src.app.composition": {
+      "path": "src/App.jsx",
+      "lines": "17-52",
+      "anchor": "export default function App()",
+      "claim": "page composition: Header, main(Handoff hero, intro, Handoff logo, send, dark, overview, earn, payroll, Handoff(inverse) security, faq), Footer"
+    },
+    "spec.1.1-nav-desktop": {
+      "path": "CLONE_SPEC.md",
+      "lines": "150-187",
+      "anchor": "### 1.1 Desktop and tablet",
+      "claim": "header, glide highlight, nav-drop, mega menu"
+    },
+    "spec.1.2-nav-phone": {
+      "path": "CLONE_SPEC.md",
+      "lines": "187-199",
+      "anchor": "### 1.2 Phone (<810)",
+      "claim": "phone bar, burger, sheet, tabs"
+    },
+    "spec.2.0-mirror": {
+      "path": "CLONE_SPEC.md",
+      "lines": "205-231",
+      "anchor": "### 2.0 Shared component: Mirror",
+      "claim": "Mirror structure, heights, floors, masks"
+    },
+    "src.motion.mirror": {
+      "path": "src/components/motion/Mirror.jsx",
+      "lines": "25-66",
+      "anchor": "export default function Mirror({",
+      "claim": "Mirror implementation"
+    },
+    "spec.2.1-hero": {
+      "path": "CLONE_SPEC.md",
+      "lines": "236-246",
+      "anchor": "### 2.1 Hero",
+      "claim": "hero layout"
+    },
+    "spec.2.1.1-waitlist": {
+      "path": "CLONE_SPEC.md",
+      "lines": "248-270",
+      "anchor": "#### 2.1.1 Waitlist pill",
+      "claim": "waitlist pill states, spring, phone always-open"
+    },
+    "src.waitlist.fake-submit": {
+      "path": "src/components/Waitlist.jsx",
+      "lines": "13-17",
+      "anchor": "// Local clone: no real endpoint.",
+      "claim": "clone ships a no-op: fakeSubmit() resolves {ok:true} after 600ms; no network request"
+    },
+    "spec.2.1.1-waitlist-live-post": {
+      "path": "CLONE_SPEC.md",
+      "lines": "270-270",
+      "anchor": "Posts JSON `{email}` to",
+      "claim": "the ORIGINAL site posts {email} to the company's own hosted form service (URL intentionally not reproduced in this repo; fingerprint only)"
+    },
+    "spec.2.2-intro": {
+      "path": "CLONE_SPEC.md",
+      "lines": "274-287",
+      "anchor": "### 2.2 Intro",
+      "claim": "intro layout"
+    },
+    "spec.2.3-logo": {
+      "path": "CLONE_SPEC.md",
+      "lines": "291-305",
+      "anchor": "### 2.3 Logo",
+      "claim": "logo section + ticker layout"
+    },
+    "spec.2.4-send": {
+      "path": "CLONE_SPEC.md",
+      "lines": "308-339",
+      "anchor": "### 2.4 Send",
+      "claim": "send phones + carousel"
+    },
+    "spec.2.5-dark": {
+      "path": "CLONE_SPEC.md",
+      "lines": "343-350",
+      "anchor": "### 2.5 Dark transition",
+      "claim": "dark transition section"
+    },
+    "spec.2.6-overview": {
+      "path": "CLONE_SPEC.md",
+      "lines": "354-366",
+      "anchor": "### 2.6 Overview",
+      "claim": "overview section"
+    },
+    "spec.2.7-earn": {
+      "path": "CLONE_SPEC.md",
+      "lines": "369-388",
+      "anchor": "### 2.7 Earn",
+      "claim": "earn stage"
+    },
+    "spec.2.8-payroll": {
+      "path": "CLONE_SPEC.md",
+      "lines": "391-423",
+      "anchor": "### 2.8 Payroll",
+      "claim": "payroll stage"
+    },
+    "spec.2.9-security": {
+      "path": "CLONE_SPEC.md",
+      "lines": "426-448",
+      "anchor": "### 2.9 Security",
+      "claim": "security card + dl"
+    },
+    "spec.2.10-faq": {
+      "path": "CLONE_SPEC.md",
+      "lines": "451-468",
+      "anchor": "### 2.10 FAQ",
+      "claim": "faq accordion"
+    },
+    "spec.2.11-footer": {
+      "path": "CLONE_SPEC.md",
+      "lines": "471-490",
+      "anchor": "### 2.11 Footer",
+      "claim": "footer (column x positions measured mid-animation, see qa.07)"
+    },
+    "spec.3.1-motion-tokens": {
+      "path": "CLONE_SPEC.md",
+      "lines": "503-527",
+      "anchor": "### 3.1 Motion tokens",
+      "claim": "verbatim source motion-token file"
+    },
+    "spec.3.2-reveal": {
+      "path": "CLONE_SPEC.md",
+      "lines": "529-545",
+      "anchor": "### 3.2 Text reveal",
+      "claim": "Reveal: line split, 110% -> 0, 1s expo-out, +0.06s/line, IO threshold"
+    },
+    "spec.3.3-appear": {
+      "path": "CLONE_SPEC.md",
+      "lines": "547-557",
+      "anchor": "### 3.3 `[data-appear]`",
+      "claim": "Appear defaults and instances"
+    },
+    "spec.3.4-load": {
+      "path": "CLONE_SPEC.md",
+      "lines": "558-573",
+      "anchor": "### 3.4 Load and appear sequences",
+      "claim": "hero entrance timeline + phone one-shot appears"
+    },
+    "spec.3.5-scroll-linked": {
+      "path": "CLONE_SPEC.md",
+      "lines": "574-598",
+      "anchor": "### 3.5 Scroll-linked effects",
+      "claim": "scroll-linked effect table + sticky elements"
+    },
+    "spec.3.6-toggles": {
+      "path": "CLONE_SPEC.md",
+      "lines": "599-610",
+      "anchor": "### 3.6 Scroll-triggered toggles",
+      "claim": "earn/security/faq toggles"
+    },
+    "spec.3.7-ticker": {
+      "path": "CLONE_SPEC.md",
+      "lines": "611-617",
+      "anchor": "### 3.7 Logo ticker",
+      "claim": "ticker 6 copies, 50px/s (hover line superseded by qa.01)"
+    },
+    "spec.3.8-slideshow": {
+      "path": "CLONE_SPEC.md",
+      "lines": "618-623",
+      "anchor": "### 3.8 Send slideshow",
+      "claim": "Embla options, autoplay 8s, 25% visibility gate, dimming"
+    },
+    "spec.3.9-lenis": {
+      "path": "CLONE_SPEC.md",
+      "lines": "624-635",
+      "anchor": "### 3.9 Smooth scroll (Lenis)",
+      "claim": "Lenis lerp .06 tablet+ only"
+    },
+    "spec.3.10-hover": {
+      "path": "CLONE_SPEC.md",
+      "lines": "637-650",
+      "anchor": "### 3.10 Hover",
+      "claim": "complete hover/interaction list"
+    },
+    "spec.3.11-reduced-motion": {
+      "path": "CLONE_SPEC.md",
+      "lines": "651-658",
+      "anchor": "### 3.11 Reduced motion",
+      "claim": "reduced-motion behaviour (overlay line superseded by qa.05)"
+    },
+    "spec.4-responsive": {
+      "path": "CLONE_SPEC.md",
+      "lines": "661-692",
+      "anchor": "## 4. Responsive notes",
+      "claim": "1280 / 390 responsive notes"
+    },
+    "spec.5-caveats": {
+      "path": "CLONE_SPEC.md",
+      "lines": "694-699",
+      "anchor": "## 5. What could not be measured",
+      "claim": "unmeasured: tablet range, load-dependent hero timing"
+    },
+    "assets.1-public-images": {
+      "path": "ASSETS.md",
+      "lines": "14-46",
+      "anchor": "## 1. Already in `public/images/`",
+      "claim": "image inventory with px sizes and usage"
+    },
+    "assets.2-nav-images": {
+      "path": "ASSETS.md",
+      "lines": "46-58",
+      "anchor": "## 2. NOT in `public/images/`",
+      "claim": "nav images (now present in public/images/nav/)"
+    },
+    "assets.head-metadata": {
+      "path": "ASSETS.md",
+      "lines": "75-79",
+      "anchor": "### Head metadata (live)",
+      "claim": "title/description/og image alt"
+    },
+    "assets.4-inline-svgs": {
+      "path": "ASSETS.md",
+      "lines": "84-88",
+      "anchor": "## 4. Inline SVGs",
+      "claim": "brand mark + wordmark SVGs (brand assets, never reproduce)"
+    },
+    "assets.font-identity": {
+      "path": "ASSETS.md",
+      "lines": "11-12",
+      "anchor": "Font: `public/fonts/InterVariable.woff2`",
+      "claim": "Inter Variable font file (OFL-1.1)"
+    },
+    "ia.template-home": {
+      "path": "ia.json",
+      "lines": "96-117",
+      "anchor": "\"id\": \"template.home\"",
+      "claim": "concurrent ia-builder output: template.home, 12 sections in this order (adopted ids)"
+    },
+    "src.motion.handoff": {
+      "path": "src/components/motion/Handoff.jsx",
+      "lines": "21-37",
+      "anchor": "export default function Handoff(",
+      "claim": "Handoff: useScroll offset ['end end','end start'], drift 240, overlay light .12 / inverse .6"
+    },
+    "src.motion.reveal": {
+      "path": "src/components/motion/Reveal.jsx",
+      "lines": "5-7",
+      "anchor": "const DURATION = 1000",
+      "claim": "Reveal duration/ease/stagger constants"
+    },
+    "src.motion.appear": {
+      "path": "src/components/motion/Appear.jsx",
+      "lines": "18-36",
+      "anchor": "const Appear = forwardRef(",
+      "claim": "Appear defaults"
+    },
+    "src.motion.smooth-scroll": {
+      "path": "src/components/motion/SmoothScroll.jsx",
+      "lines": "14-42",
+      "anchor": "export default function SmoothScroll()",
+      "claim": "Lenis only (min-width:810px) and no reduced motion"
+    },
+    "src.motion.target-progress": {
+      "path": "src/components/motion/hooks.js",
+      "lines": "44-75",
+      "anchor": "export function useTargetProgress(",
+      "claim": "useTargetProgress line start/middle/end"
+    },
+    "src.send.slideshow-autoplay": {
+      "path": "src/components/send/Slideshow.jsx",
+      "lines": "64-66",
+      "anchor": "Autoplay({ delay: 8000",
+      "claim": "Autoplay delay 8000, Embla loop/align/duration 35"
+    },
+    "src.send.slideshow-visibility": {
+      "path": "src/components/send/Slideshow.jsx",
+      "lines": "115-115",
+      "anchor": "{ threshold: 0.25 }",
+      "claim": "autoplay visibility gate 0.25"
+    },
+    "src.earn.toggle": {
+      "path": "src/components/Earn.jsx",
+      "lines": "8-10",
+      "anchor": "const SWITCH_AT = 96",
+      "claim": "earn switchAt 96, parallax .02, spring 1/0"
+    },
+    "src.security.toggle": {
+      "path": "src/components/Security.jsx",
+      "lines": "26-26",
+      "anchor": "const SWITCH_AT = 0",
+      "claim": "security switchAt 0"
+    },
+    "src.faq.spring": {
+      "path": "src/components/Faq.jsx",
+      "lines": "51-51",
+      "anchor": "const SPRING = { type: 'spring', duration: 0.5, bounce: 0 }",
+      "claim": "accordion spring .5/0"
+    },
+    "src.footer.reveal": {
+      "path": "src/components/Footer.jsx",
+      "lines": "46-47",
+      "anchor": "const START_AT = 1.35",
+      "claim": "footer reveal startAt 1.35 endAt .1"
+    },
+    "src.payroll.rise": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "58-59",
+      "anchor": "useTargetProgress('payroll-section', 'end')",
+      "claim": "payroll photo rise 500->0 line end"
+    },
+    "src.overview.drop": {
+      "path": "src/components/Overview.jsx",
+      "lines": "20-23",
+      "anchor": "useTargetProgress('overview-screen-trigger', 'start')",
+      "claim": "overview drop y -550->0"
+    },
+    "src.dark.overlay": {
+      "path": "src/components/DarkTransition.jsx",
+      "lines": "8-9",
+      "anchor": "useTargetProgress('overview-dark-trigger', 'middle')",
+      "claim": "dark overlay 0->1 line middle (applied at every width in the clone)"
+    },
+    "src.send.phones": {
+      "path": "src/components/Send.jsx",
+      "lines": "31-37",
+      "anchor": "useTargetProgress('send-scroll-trigger', 'start')",
+      "claim": "send phones scroll transform"
+    },
+    "src.logo.send-trigger": {
+      "path": "src/components/Logo.jsx",
+      "lines": "47-47",
+      "anchor": "id=\"send-scroll-trigger\"",
+      "claim": "#send-scroll-trigger lives inside the Logo section"
+    },
+    "src.intro.tilt": {
+      "path": "src/components/Intro.jsx",
+      "lines": "44-49",
+      "anchor": "useTargetProgress('hero-section', 'start')",
+      "claim": "intro phone tilt over #hero-section"
+    },
+    "src.hero.text-fade": {
+      "path": "src/components/Hero.jsx",
+      "lines": "24-25",
+      "anchor": "offset: ['start start', 'end start']",
+      "claim": "hero text fade"
+    },
+    "src.header.tokens": {
+      "path": "src/components/Header.jsx",
+      "lines": "8-12",
+      "anchor": "const GLIDE = { type: 'spring', stiffness: 400, damping: 36, mass: 1 }",
+      "claim": "nav glide spring + panel/overlay/open/close timings"
+    },
+    "src.header.menus": {
+      "path": "src/components/Header.jsx",
+      "lines": "18-56",
+      "anchor": "const MENUS = [",
+      "claim": "3 menus: 4/3/3 links; 2/2 image cards + ring card; Company holds 2 external social links"
+    },
+    "src.footer.columns": {
+      "path": "src/components/Footer.jsx",
+      "lines": "7-40",
+      "anchor": "const COLUMNS = [",
+      "claim": "4 footer columns with 4/3/3/2 links incl. /contact, /legal/privacy-policy and 2 social links"
+    },
+    "src.logo.ticker": {
+      "path": "src/components/Logo.jsx",
+      "lines": "5-6",
+      "anchor": "const COPIES = 6",
+      "claim": "ticker 6 copies, 12.82s per copy"
+    },
+    "src.css.text-wrap": {
+      "path": "src/index.css",
+      "lines": "279-291",
+      "anchor": "text-wrap-style: pretty;",
+      "claim": "text-wrap-style pretty (p/li/dt/dd) and balance (headings)"
+    },
+    "src.css.reduced-motion": {
+      "path": "src/index.css",
+      "lines": "556-572",
+      "anchor": "@media (prefers-reduced-motion: reduce) {",
+      "claim": "reduced motion CSS"
+    },
+    "src.css.nav-drop": {
+      "path": "src/index.css",
+      "lines": "492-500",
+      "anchor": ".nav-drop {",
+      "claim": "nav-drop 1s expo-out 1.77s from -100px"
+    },
+    "src.css.mirror-vars": {
+      "path": "src/index.css",
+      "lines": "148-172",
+      "anchor": "/* mirror (§2.0) */",
+      "claim": "mirror floor/mask/height vars, ticker mask, section gradient"
+    },
+    "src.css.payroll-masks": {
+      "path": "src/styles/payroll.css",
+      "lines": "2-22",
+      "anchor": ".payroll-center-blur {",
+      "claim": "payroll centre blur masks + stage gradient"
+    },
+    "src.css.waitlist": {
+      "path": "src/index.css",
+      "lines": "505-539",
+      "anchor": ".waitlist {",
+      "claim": "waitlist pill CSS (open var, gradient, hairline shadow)"
+    },
+    "qa.01-ticker-no-hover-slowdown": {
+      "path": "src/components/Logo.jsx",
+      "lines": "4-4",
+      "anchor": "No hover slowdown: live has none",
+      "claim": "The logo ticker has NO hover slowdown on live (playback rate stays 1).",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.3.7-ticker",
+      "srcStatus": "implemented (Logo.jsx Ticker has no pointer handlers; playback rate stays 1)"
+    },
+    "qa.02-nav-glide-snaps": {
+      "path": "src/components/Header.jsx",
+      "lines": "304-308",
+      "anchor": "useGlide(rowRef, itemRefs, hover ?? menu ?? 'home', { snap: true })",
+      "claim": "Desktop nav highlight (and phone sheet tab highlight) renders one spring frame then snaps to the target; not a 300ms glide.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.1.1-nav-desktop",
+      "srcStatus": "implemented (useGlide snap: true for both glides)"
+    },
+    "qa.03-hero-reveal-in-view": {
+      "path": "src/components/Hero.jsx",
+      "lines": "54-60",
+      "anchor": "<Reveal as=\"h1\" amount={0.5}",
+      "claim": "Hero h1 and paragraph Reveal fire in view at amount 0.5 (not on mount); hero image and CTA run on mount.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.3.4-load",
+      "srcStatus": "implemented (Hero.jsx Reveal amount={0.5}, Appear onMount for image/CTA)"
+    },
+    "qa.04-nav-drop-1.77s": {
+      "path": "src/index.css",
+      "lines": "494-494",
+      "anchor": "animation: 1s cubic-bezier(0.16, 1, 0.3, 1) 1.77s backwards nav-drop;",
+      "claim": "Header nav-drop begins ~1.77s after navigation start: 1s cubic-bezier(.16,1,.3,1) from -100px.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.1.1-nav-desktop",
+      "srcStatus": "implemented (index.css .nav-drop; Header.jsx anchors startTime to navigation start)"
+    },
+    "qa.05-handoff-reduced-motion": {
+      "path": "src/components/motion/Handoff.jsx",
+      "lines": "29-29",
+      "anchor": "reduced ? 0 : endOpacity ?? OVERLAY[tone]",
+      "claim": "Under prefers-reduced-motion the Handoff dark overlay stays at opacity 0 and drift is 0.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.3.11-reduced-motion",
+      "srcStatus": "implemented in Handoff.jsx (clone motion README corrected to match)"
+    },
+    "qa.06-text-wrap-style": {
+      "path": "src/index.css",
+      "lines": "279-291",
+      "anchor": "text-wrap-style: pretty;",
+      "claim": "Headings use text-wrap-style: balance; p/li/dt/dd use text-wrap-style: pretty (not the text-wrap shorthand).",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.0.4-fonts",
+      "srcStatus": "implemented (index.css base layer)"
+    },
+    "qa.07-footer-rest-layout": {
+      "path": "src/components/Footer.jsx",
+      "lines": "109-109",
+      "anchor": "desktop:col-span-8 desktop:col-start-5",
+      "claim": "Footer §2.11 positions were measured mid scale-0.9 animation; resting layout at scale 1: columns at x 496/728/960/1192, logo x 32 at 1440.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.2.11-footer",
+      "srcStatus": "implemented (grid cols 5/7/9/11 = 32+(n-1)*116)"
+    },
+    "qa.08-intro-phone-appear-section": {
+      "path": "src/components/Intro.jsx",
+      "lines": "41-41",
+      "anchor": "useInView(sectionRef, { once: true, amount: 0.5 })",
+      "claim": "On phone the intro phone Appear observes #intro-section at amount 0.5.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.3.4-load",
+      "srcStatus": "implemented"
+    },
+    "qa.09-partner-logo-ratios": {
+      "path": "src/components/Logo.jsx",
+      "lines": "12-15",
+      "anchor": "ratio: '160 / 41'",
+      "claim": "Partner logo aspect ratios come from the 160px-wide source files (160x41, 160x56, 160x43, 160x36).",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.2.3-logo",
+      "srcStatus": "implemented (Logo.jsx LOGOS ratio)"
+    },
+    "qa.10-reveal-one-frame": {
+      "path": "src/components/motion/Reveal.jsx",
+      "lines": "177-177",
+      "anchor": "raf = requestAnimationFrame(() => start(document.timeline.currentTime ?? undefined))",
+      "claim": "Reveal starts ~1 frame (~16ms) after the IntersectionObserver threshold is crossed.",
+      "provenance": "qa-live-measurement-after-spec (overrides CLONE_SPEC)",
+      "overrides": "spec.3.2-reveal",
+      "srcStatus": "implemented"
+    },
+    "copy.chrome.header.menuLinkLabel": {
+      "path": "src/components/Header.jsx",
+      "lines": "18-52",
+      "anchor": "const MENUS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 10,
+        "maxChars": 11,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.chrome.header.menuMediaAlt": {
+      "path": "src/components/Header.jsx",
+      "lines": "29-29",
+      "anchor": "home-live-activity.webp",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 52,
+        "maxWords": 9,
+        "linesAt1440": null
+      }
+    },
+    "copy.chrome.header.homeLabel": {
+      "path": "src/components/Header.jsx",
+      "lines": "365-365",
+      "anchor": "aria-label=\"Charter home\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 12,
+        "maxWords": 2,
+        "linesAt1440": null
+      }
+    },
+    "copy.chrome.header.menuLabel": {
+      "path": "src/components/Header.jsx",
+      "lines": "18-48",
+      "anchor": "const MENUS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 3,
+        "maxChars": 8,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.chrome.header.contactLabel": {
+      "path": "src/components/Header.jsx",
+      "lines": "376-376",
+      "anchor": "{navItem('contact', 'Contact', 'a')}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 7,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.hero.waitlist-hero.heading": {
+      "path": "src/components/Hero.jsx",
+      "lines": "54-55",
+      "anchor": "as=\"h1\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 36,
+        "maxWords": 7,
+        "linesAt1440": 2
+      }
+    },
+    "copy.hero.waitlist-hero.body": {
+      "path": "src/components/Hero.jsx",
+      "lines": "57-58",
+      "anchor": "as=\"p\" amount={0.5}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 72,
+        "maxWords": 10,
+        "linesAt1440": 2
+      }
+    },
+    "copy.hero.waitlist-hero.deviceAlt": {
+      "path": "src/components/Hero.jsx",
+      "lines": "39-39",
+      "anchor": "alt=",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 39,
+        "maxWords": 6,
+        "linesAt1440": null
+      }
+    },
+    "copy.hero.waitlist-hero.ctaLabel": {
+      "path": "src/components/Waitlist.jsx",
+      "lines": "115-115",
+      "anchor": "{message ? message.text : 'Join Waitlist'}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 13,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.hero.waitlist-hero.inputPlaceholder": {
+      "path": "src/components/Waitlist.jsx",
+      "lines": "125-125",
+      "anchor": "placeholder=\"Email\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 5,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.hero.waitlist-hero.successMessage": {
+      "path": "src/components/Waitlist.jsx",
+      "lines": "69-69",
+      "anchor": "showMessage('Thank you', false)",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 9,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.hero.waitlist-hero.errorMessage": {
+      "path": "src/components/Waitlist.jsx",
+      "lines": "72-72",
+      "anchor": "showMessage('Something went wrong', true)",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 20,
+        "maxWords": 3,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.wallet-intro.eyebrow": {
+      "path": "src/components/Intro.jsx",
+      "lines": "21-22",
+      "anchor": "className=\"type-tag text-secondary\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 26,
+        "maxWords": 3,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.wallet-intro.heading": {
+      "path": "src/components/Intro.jsx",
+      "lines": "24-25",
+      "anchor": "as=\"h2\" amount={0} delay={0.2}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 22,
+        "maxWords": 4,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.wallet-intro.body": {
+      "path": "src/components/Intro.jsx",
+      "lines": "28-29",
+      "anchor": "as=\"p\" amount={0} delay={0.1}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 96,
+        "maxWords": 16,
+        "linesAt1440": 3
+      }
+    },
+    "copy.features.wallet-intro.deviceAlt": {
+      "path": "src/components/Intro.jsx",
+      "lines": "98-98",
+      "anchor": "alt=\"Charter App Home UI\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 19,
+        "maxWords": 4,
+        "linesAt1440": null
+      }
+    },
+    "copy.proof.logo-ticker.statement": {
+      "path": "src/components/Logo.jsx",
+      "lines": "53-53",
+      "anchor": "as=\"h3\" delay={0.1}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 96,
+        "maxWords": 17,
+        "linesAt1440": 3
+      }
+    },
+    "copy.proof.logo-ticker.supportLine": {
+      "path": "src/components/Logo.jsx",
+      "lines": "58-58",
+      "anchor": "className=\"type-body2 text-secondary\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 43,
+        "maxWords": 5,
+        "linesAt1440": 1
+      }
+    },
+    "copy.proof.logo-ticker.partnerName": {
+      "path": "src/components/Logo.jsx",
+      "lines": "11-15",
+      "anchor": "const LOGOS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 4,
+        "maxChars": 10,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.send-slideshow.eyebrow": {
+      "path": "src/components/Send.jsx",
+      "lines": "107-108",
+      "anchor": "as=\"p\" amount={0} className=\"type-tag",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 15,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.send-slideshow.heading": {
+      "path": "src/components/Send.jsx",
+      "lines": "112-117",
+      "anchor": "id=\"send-heading\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 36,
+        "maxWords": 6,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.send-slideshow.deviceAlt": {
+      "path": "src/components/Send.jsx",
+      "lines": "91-92",
+      "anchor": "leftAlt=\"Charter app currency selection\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 2,
+        "maxChars": 30,
+        "maxWords": 4,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.send-slideshow.slideAlt": {
+      "path": "src/components/send/Slideshow.jsx",
+      "lines": "8-50",
+      "anchor": "const SLIDES = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 5,
+        "maxChars": 43,
+        "maxWords": 7,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.send-slideshow.slideTitle": {
+      "path": "src/components/send/Slideshow.jsx",
+      "lines": "8-51",
+      "anchor": "const SLIDES = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 5,
+        "maxChars": 34,
+        "maxWords": 6,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.send-slideshow.slideBody": {
+      "path": "src/components/send/Slideshow.jsx",
+      "lines": "8-52",
+      "anchor": "const SLIDES = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 5,
+        "maxChars": 147,
+        "maxWords": 26,
+        "linesAt1440": null
+      }
+    },
+    "copy.transition.light-to-dark.statement": {
+      "path": "src/components/DarkTransition.jsx",
+      "lines": "22-23",
+      "anchor": "className=\"type-display text-primary text-center\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 49,
+        "maxWords": 8,
+        "linesAt1440": 3
+      }
+    },
+    "copy.features.finances-overview.kicker": {
+      "path": "src/components/Overview.jsx",
+      "lines": "41-45",
+      "anchor": "<motion.p",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 17,
+        "maxWords": 3,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.finances-overview.heading": {
+      "path": "src/components/Overview.jsx",
+      "lines": "78-79",
+      "anchor": "as=\"h2\" amount={0} className=\"type-h2 text-primary span-text\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 32,
+        "maxWords": 7,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.finances-overview.body": {
+      "path": "src/components/Overview.jsx",
+      "lines": "81-82",
+      "anchor": "as=\"p\" amount={0} delay={0.1}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 78,
+        "maxWords": 13,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.finances-overview.deviceAlt": {
+      "path": "src/components/Overview.jsx",
+      "lines": "90-90",
+      "anchor": "alt=\"Charter app overview of earnings and expenses\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 45,
+        "maxWords": 7,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.earn-collapse.eyebrow": {
+      "path": "src/components/Earn.jsx",
+      "lines": "119-120",
+      "anchor": "as=\"p\" amount={0} className=\"type-tag text-secondary span-text\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 30,
+        "maxWords": 6,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.earn-collapse.heading": {
+      "path": "src/components/Earn.jsx",
+      "lines": "122-123",
+      "anchor": "as=\"h2\" amount={0} delay={0.2}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 32,
+        "maxWords": 7,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.earn-collapse.body": {
+      "path": "src/components/Earn.jsx",
+      "lines": "15-16",
+      "anchor": "const COPY =",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 138,
+        "maxWords": 26,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.earn-collapse.deviceAlt": {
+      "path": "src/components/Earn.jsx",
+      "lines": "18-19",
+      "anchor": "const ALT_LEFT",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 2,
+        "maxChars": 65,
+        "maxWords": 11,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.earn-collapse.photoAlt": {
+      "path": "src/components/Earn.jsx",
+      "lines": "20-20",
+      "anchor": "const ALT_PHOTO",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 55,
+        "maxWords": 12,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.payroll-rise.eyebrow": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "65-66",
+      "anchor": "as=\"p\" amount={0} className=\"type-tag text-secondary span-text\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 21,
+        "maxWords": 5,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.payroll-rise.heading": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "68-69",
+      "anchor": "as=\"h2\" amount={0} delay={0.2}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 38,
+        "maxWords": 7,
+        "linesAt1440": 2
+      }
+    },
+    "copy.features.payroll-rise.statementLine": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "28-31",
+      "anchor": "className=\"type-h4 text-center max-w-300\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 2,
+        "maxChars": 12,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.payroll-rise.statementSub": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "33-33",
+      "anchor": "className=\"type-body2 text-center max-w-300\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 28,
+        "maxWords": 5,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.payroll-rise.statTitle": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "15-18",
+      "anchor": "const STATS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 3,
+        "maxChars": 13,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.payroll-rise.statLabel": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "15-18",
+      "anchor": "const STATS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 3,
+        "maxChars": 9,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.payroll-rise.body": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "13-14",
+      "anchor": "const BODY =",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 151,
+        "maxWords": 29,
+        "linesAt1440": 3
+      }
+    },
+    "copy.features.payroll-rise.portraitAlt": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "11-11",
+      "anchor": "const ALT_PORTRAIT",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 37,
+        "maxWords": 7,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.payroll-rise.productAlt": {
+      "path": "src/components/Payroll.jsx",
+      "lines": "12-12",
+      "anchor": "const ALT_PAYDAY",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 76,
+        "maxWords": 13,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.security-ascii.eyebrow": {
+      "path": "src/components/Security.jsx",
+      "lines": "55-56",
+      "anchor": "as=\"p\" amount={0} className=\"type-body1 text-secondary\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 27,
+        "maxWords": 5,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.security-ascii.heading": {
+      "path": "src/components/Security.jsx",
+      "lines": "58-59",
+      "anchor": "as=\"h2\" amount={0} delay={0.2}",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 22,
+        "maxWords": 3,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.security-ascii.statementLine": {
+      "path": "src/components/Security.jsx",
+      "lines": "86-89",
+      "anchor": "className=\"type-h3 text-center text-primary\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 2,
+        "maxChars": 12,
+        "maxWords": 2,
+        "linesAt1440": 1
+      }
+    },
+    "copy.features.security-ascii.term": {
+      "path": "src/components/Security.jsx",
+      "lines": "7-19",
+      "anchor": "const ROWS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 3,
+        "maxChars": 21,
+        "maxWords": 3,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.security-ascii.description": {
+      "path": "src/components/Security.jsx",
+      "lines": "7-20",
+      "anchor": "const ROWS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 3,
+        "maxChars": 198,
+        "maxWords": 35,
+        "linesAt1440": null
+      }
+    },
+    "copy.features.security-ascii.portraitAlt": {
+      "path": "src/components/Security.jsx",
+      "lines": "67-67",
+      "anchor": "alt=\"A woman in sunglasses outside a building\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 40,
+        "maxWords": 7,
+        "linesAt1440": null
+      }
+    },
+    "copy.support.faq-accordion.heading": {
+      "path": "src/components/Faq.jsx",
+      "lines": "108-108",
+      "anchor": "<h2 className=\"type-h2 text-primary\">",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 3,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.support.faq-accordion.question": {
+      "path": "src/components/Faq.jsx",
+      "lines": "6-40",
+      "anchor": "const ITEMS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 5,
+        "maxChars": 36,
+        "maxWords": 7,
+        "linesAt1440": 1
+      }
+    },
+    "copy.support.faq-accordion.answerParagraph": {
+      "path": "src/components/Faq.jsx",
+      "lines": "6-45",
+      "anchor": "const ITEMS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 16,
+        "maxChars": 243,
+        "maxWords": 44,
+        "linesAt1440": null
+      }
+    },
+    "copy.chrome.footer.homeLabel": {
+      "path": "src/components/Footer.jsx",
+      "lines": "102-102",
+      "anchor": "aria-label=\"Charter home\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 12,
+        "maxWords": 2,
+        "linesAt1440": null
+      }
+    },
+    "copy.chrome.footer.columnTitle": {
+      "path": "src/components/Footer.jsx",
+      "lines": "7-34",
+      "anchor": "const COLUMNS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 4,
+        "maxChars": 8,
+        "maxWords": 1,
+        "linesAt1440": 1
+      }
+    },
+    "copy.chrome.footer.linkLabel": {
+      "path": "src/components/Footer.jsx",
+      "lines": "7-37",
+      "anchor": "const COLUMNS = [",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 12,
+        "maxChars": 14,
+        "maxWords": 3,
+        "linesAt1440": 1
+      }
+    },
+    "copy.chrome.footer.legalLine": {
+      "path": "src/components/Footer.jsx",
+      "lines": "42-42",
+      "anchor": "const COPYRIGHT =",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 45,
+        "maxWords": 8,
+        "linesAt1440": 1
+      }
+    },
+    "copy.page.meta.title": {
+      "path": "index.html",
+      "lines": "6-6",
+      "anchor": "<title>",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 24,
+        "maxWords": 4,
+        "linesAt1440": null
+      }
+    },
+    "copy.page.meta.description": {
+      "path": "index.html",
+      "lines": "8-9",
+      "anchor": "name=\"description\"",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 150,
+        "maxWords": 20,
+        "linesAt1440": null
+      }
+    },
+    "copy.page.meta.socialImageAlt": {
+      "path": "ASSETS.md",
+      "lines": "79-79",
+      "anchor": "og/twitter image alt",
+      "claim": "copy budget measured from the source string(s) at this location",
+      "measured": {
+        "samples": 1,
+        "maxChars": 116,
+        "maxWords": 23,
+        "linesAt1440": null
+      }
+    },
+    "protected.waitlist-endpoint": {
+      "path": "CLONE_SPEC.md",
+      "lines": "270-270",
+      "anchor": "Posts JSON `{email}` to",
+      "claim": "fingerprint source for the live form endpoint (text not stored)"
+    },
+    "protected.social-x": {
+      "path": "src/components/Header.jsx",
+      "lines": "50-50",
+      "anchor": "x.com/",
+      "claim": "fingerprint source for a real social profile URL (text not stored)"
+    },
+    "protected.social-linkedin": {
+      "path": "src/components/Header.jsx",
+      "lines": "51-51",
+      "anchor": "linkedin.com/company/",
+      "claim": "fingerprint source for a real social profile URL (text not stored)"
+    }
+  }
+}

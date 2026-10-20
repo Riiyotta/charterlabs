@@ -1,0 +1,572 @@
+/* ---------------------------------------------------------------------------
+   Fonts (§0.4)
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: inter;
+  src: url('/fonts/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'inter Fallback';
+  src: local('Arial');
+  ascent-override: 89.79%;
+  descent-override: 22.36%;
+  line-gap-override: 0%;
+  size-adjust: 107.89%;
+}
+
+/* Animatable colour for the waitlist pill fill (§2.1.1) */
+@property --waitlist-fill {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+
+/* ---------------------------------------------------------------------------
+   Lenis (§3.9, verbatim)
+--------------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Tokens (§0.1, §0.5, §0.6, §0.7, §2.0)
+--------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* palette */
+    --color-gray-0: #fff;
+    --color-gray-50: #fafafa;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #ebebeb;
+    --color-gray-300: #d6d6d6;
+    --color-gray-400: #b3b3b3;
+    --color-gray-500: #8f8f8f;
+    --color-gray-600: #6b6b6b;
+    --color-gray-700: #4d4d4d;
+    --color-gray-800: #2e2e2e;
+    --color-gray-900: #1a1a1a;
+    --color-gray-950: #0d0d0d;
+    --color-gray-1000: #000;
+    --color-alpha-black-4: #0000000a;
+    --color-alpha-black-8: #00000014;
+    --color-alpha-black-12: #0000001f;
+    --color-alpha-black-20: #0003;
+    --color-alpha-black-40: #0006;
+    --color-alpha-black-60: #0009;
+    --color-alpha-black-80: #000c;
+    --color-alpha-white-4: #ffffff0a;
+    --color-alpha-white-8: #ffffff14;
+    --color-alpha-white-12: #ffffff1f;
+    --color-alpha-white-20: #fff3;
+    --color-alpha-white-40: #fff6;
+    --color-alpha-white-60: #fff9;
+    --color-alpha-white-80: #fffc;
+    --color-text-primary: #000;
+    --color-text-secondary: #6b6b6b;
+    --color-text-tertiary: #8f8f8f;
+    --color-text-disabled: #b3b3b3;
+    --color-text-inverse-primary: #fff;
+    --color-text-inverse-secondary: #fff9;
+    --color-text-inverse-tertiary: #fff6;
+    --color-surface-page: #fff;
+    --color-surface-subtle: #f5f5f5;
+    --color-surface-muted: #ebebeb;
+    --color-surface-inverse: #000;
+    --color-surface-inverse-raised: #1a1a1a;
+    --color-border-subtle: #00000014;
+    --color-border-strong: #0003;
+    --color-border-inverse-subtle: #ffffff14;
+    --color-border-inverse-strong: #fff3;
+    --color-status-error: #ff2244;
+
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-card: 28px;
+    --radius-lg: 32px;
+    --radius-xl: 64px;
+    --radius-pill: 999px;
+    --blur-reveal: 5px;
+    --blur-glass: 10px;
+    --blur-mirror: 24px;
+    --blur-ambient: 48px;
+    --container-page: 1700px;
+
+    /* tone (default = light) */
+    --tone-text-primary: var(--color-text-primary);
+    --tone-text-secondary: var(--color-text-secondary);
+    --tone-text-tertiary: var(--color-text-tertiary);
+    --tone-text-disabled: var(--color-text-disabled);
+    --tone-surface: var(--color-surface-page);
+    --tone-surface-raised: var(--color-surface-subtle);
+    --tone-border-subtle: var(--color-border-subtle);
+    --tone-border-strong: var(--color-border-strong);
+
+    /* type sizes: phone (<810) */
+    --type-display-size: 2.75rem;
+    --type-h1-size: 2.5rem;
+    --type-h2-size: 2.25rem;
+    --type-h3-size: 2rem;
+    --type-h4-size: 1.75rem;
+    --type-h5-size: 1.5rem;
+    --type-h6-size: 1.25rem;
+    --type-tag-size: 1rem;
+    --type-body1-size: 1.125rem;
+    --type-body1-strong-size: 1.125rem;
+    --type-body2-size: 1rem;
+    --type-body3-size: 0.875rem;
+    --type-caption-size: 0.75rem;
+    --type-button-size: 1rem;
+
+    /* grid: phone */
+    --section-y: 96px;
+    --gutter-x: 20px;
+    --grid-columns: 4;
+    --grid-gap: 16px;
+
+    /* mirror (§2.0) */
+    --mirror-floor-width: 110%;
+    --mirror-floor-aspect: 12;
+    --mirror-floor-rise: 56px;
+    --mirror-floor-light: linear-gradient(180deg, var(--color-surface-subtle) 0%, #fff0 50%);
+    --mirror-floor-light-edge: inset 0 1px 0 0 var(--color-alpha-black-4);
+    --mirror-floor-dark: linear-gradient(180deg, var(--color-alpha-white-4) 0%, #fff0 50%);
+    --mirror-floor-dark-edge: none;
+    --mirror-mask-soft: linear-gradient(0deg, #000 -50%, #0006 10%, #00000014 70%, #0000 100%);
+    --mirror-mask-deep: linear-gradient(0deg, #000 0%, #0006 15%, #00000014 40%, #0000 80%);
+    --mirror-mask-title: linear-gradient(0deg, #000 -25%, #0000003b 20%, #0000000f 45%, #0000 60%);
+    --mirror-mask-short: linear-gradient(0deg, #000 -35%, #0000 60%);
+    --mirror-mask-stage: linear-gradient(0deg, #000 -15%, #00000073 45%, #0000 90%);
+    --mirror-mask-fade: linear-gradient(0deg, #000 -45%, #00000073 35%, #0000 100%);
+    --mirror-mask-wide: linear-gradient(0deg, #000 -20%, #0006 20%, #0000 65%);
+    --mirror-height-sm: 120px;
+    --mirror-height-md: 200px;
+    --mirror-height-lg: 260px;
+    --mirror-height-xl: 300px;
+
+    /* ticker (§2.3) */
+    --ticker-mask: radial-gradient(60.8974% 656% at 50% 50%, #000 0%, #0000 38.7264%);
+
+    /* section gradient (intro, send) */
+    --section-gradient: linear-gradient(180deg, var(--color-surface-subtle) 0%, var(--color-surface-page) 50%);
+  }
+
+  @media (min-width: 810px) {
+    :root {
+      --type-display-size: 3.75rem;
+      --type-h1-size: 3.375rem;
+      --type-h2-size: 2.875rem;
+      --type-h3-size: 2.5rem;
+      --type-h4-size: 2.125rem;
+      --type-h5-size: 1.625rem;
+      --type-h6-size: 1.375rem;
+      --type-tag-size: 1.125rem;
+      --type-body1-size: 1.25rem;
+      --type-body1-strong-size: 1.25rem;
+      --type-body2-size: 1.0625rem;
+      --type-body3-size: 0.9375rem;
+      --type-caption-size: 0.8125rem;
+      --type-button-size: 1.0625rem;
+      --section-y: 112px;
+      --gutter-x: 40px;
+      --grid-columns: 8;
+      --grid-gap: 16px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    :root {
+      --type-display-size: 4.5rem;
+      --type-h1-size: 4rem;
+      --type-h2-size: 3.375rem;
+      --type-h3-size: 2.875rem;
+      --type-h4-size: 2.375rem;
+      --type-h5-size: 1.875rem;
+      --type-h6-size: 1.5rem;
+      --type-body1-size: 1.3125rem;
+      --type-body1-strong-size: 1.3125rem;
+      --section-y: 128px;
+      --gutter-x: 32px;
+      --grid-columns: 12;
+      --grid-gap: 16px;
+    }
+  }
+
+  [data-tone='light'] {
+    --tone-text-primary: var(--color-text-primary);
+    --tone-text-secondary: var(--color-text-secondary);
+    --tone-text-tertiary: var(--color-text-tertiary);
+    --tone-text-disabled: var(--color-text-disabled);
+    --tone-surface: var(--color-surface-page);
+    --tone-surface-raised: var(--color-surface-subtle);
+    --tone-border-subtle: var(--color-border-subtle);
+    --tone-border-strong: var(--color-border-strong);
+  }
+  [data-tone='subtle'] {
+    --tone-text-primary: var(--color-text-primary);
+    --tone-text-secondary: var(--color-text-secondary);
+    --tone-text-tertiary: var(--color-text-tertiary);
+    --tone-text-disabled: var(--color-text-disabled);
+    --tone-surface: var(--color-surface-subtle);
+    --tone-surface-raised: var(--color-surface-muted);
+    --tone-border-subtle: var(--color-border-subtle);
+    --tone-border-strong: var(--color-border-strong);
+  }
+  [data-tone='inverse'] {
+    --tone-text-primary: var(--color-text-inverse-primary);
+    --tone-text-secondary: var(--color-text-inverse-secondary);
+    --tone-text-tertiary: var(--color-text-inverse-tertiary);
+    --tone-text-disabled: var(--color-alpha-white-20);
+    --tone-surface: var(--color-surface-inverse);
+    --tone-surface-raised: var(--color-surface-inverse-raised);
+    --tone-border-subtle: var(--color-border-inverse-subtle);
+    --tone-border-strong: var(--color-border-inverse-strong);
+  }
+  [data-tone] {
+    color: var(--tone-text-primary);
+  }
+
+  html {
+    font-family: inter, 'inter Fallback', Inter, ui-sans-serif, system-ui, sans-serif;
+    font-variation-settings: 'opsz' 32;
+    font-feature-settings: 'cv03', 'cv04', 'cv09', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: #fff;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  p,
+  li,
+  dt,
+  dd,
+  blockquote,
+  figcaption,
+  label,
+  summary {
+    text-wrap-style: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  [class*='type-display'],
+  [class*='type-h'],
+  .text-center :is(p, li, dt, dd),
+  :is(p, li, dt, dd).text-center {
+    text-wrap-style: balance;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Layout + type classes (in @layer components so `tablet:` / `desktop:` work)
+--------------------------------------------------------------------------- */
+@layer components {
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    width: 100%;
+    max-width: var(--container-page);
+    padding-inline: var(--gutter-x);
+    margin-inline: auto;
+  }
+  .page-frame {
+    width: 100%;
+    max-width: var(--container-page);
+    padding-inline: var(--gutter-x);
+    margin-inline: auto;
+  }
+  .grid-columns {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+  }
+  /* padding-inline = gutter + one column + gap */
+  .px-page-col {
+    padding-inline: calc(
+      var(--gutter-x) + (100% - 2 * var(--gutter-x) - (var(--grid-columns) - 1) * var(--grid-gap)) /
+        var(--grid-columns) + var(--grid-gap)
+    );
+  }
+
+  /* Named spans. Base values are phone; responsive rules live below so that
+     `desktop:span-wide` etc. also work when combined with other col classes. */
+  .span-main,
+  .span-narrow,
+  .span-text,
+  .span-wide {
+    grid-column: 1 / -1;
+  }
+  @media (min-width: 810px) {
+    .span-main {
+      grid-column: 2 / span 6;
+    }
+    .span-narrow {
+      grid-column: 3 / span 4;
+    }
+    .span-text {
+      grid-column: 2 / span 6;
+    }
+  }
+  @media (min-width: 1200px) {
+    .span-main {
+      grid-column: 3 / span 8;
+    }
+    .span-narrow {
+      grid-column: 5 / span 4;
+    }
+    .span-text {
+      grid-column: 4 / span 6;
+    }
+    .span-wide {
+      grid-column: 2 / span 10;
+    }
+  }
+
+  /* Type scale (§0.5). Size is a responsive CSS var. */
+  .type-display {
+    font-size: var(--type-display-size);
+    letter-spacing: -0.03em;
+    font-weight: 440;
+    line-height: 1;
+  }
+  .type-h1 {
+    font-size: var(--type-h1-size);
+    letter-spacing: -0.02em;
+    font-weight: 450;
+    line-height: 1.04;
+  }
+  .type-h2 {
+    font-size: var(--type-h2-size);
+    letter-spacing: -0.02em;
+    font-weight: 450;
+    line-height: 1.06;
+  }
+  .type-h3 {
+    font-size: var(--type-h3-size);
+    letter-spacing: -0.015em;
+    font-weight: 450;
+    line-height: 1.08;
+  }
+  .type-h4 {
+    font-size: var(--type-h4-size);
+    letter-spacing: -0.01em;
+    font-weight: 450;
+    line-height: 1.1;
+  }
+  .type-h5 {
+    font-size: var(--type-h5-size);
+    letter-spacing: -0.005em;
+    font-weight: 450;
+    line-height: 1.15;
+  }
+  .type-h6 {
+    font-size: var(--type-h6-size);
+    letter-spacing: -0.01em;
+    font-weight: 485;
+    line-height: 1.2;
+  }
+  .type-tag {
+    font-size: var(--type-tag-size);
+    letter-spacing: -0.005em;
+    font-weight: 420;
+    line-height: 1.4;
+  }
+  .type-body1 {
+    font-size: var(--type-body1-size);
+    letter-spacing: 0;
+    font-weight: 450;
+    line-height: 1.38;
+  }
+  .type-body1-strong {
+    font-size: var(--type-body1-strong-size);
+    letter-spacing: -0.01em;
+    font-weight: 550;
+    line-height: 1.38;
+  }
+  .type-body2 {
+    font-size: var(--type-body2-size);
+    letter-spacing: 0.005em;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .type-body3 {
+    font-size: var(--type-body3-size);
+    letter-spacing: 0.01em;
+    font-weight: 450;
+    line-height: 1.35;
+  }
+  .type-caption {
+    font-size: var(--type-caption-size);
+    letter-spacing: 0.01em;
+    font-weight: 450;
+    line-height: 1.35;
+  }
+  .type-button {
+    font-size: var(--type-button-size);
+    letter-spacing: 0;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  /* Hovering one link dims the others to tertiary (§1.1, §2.11) */
+  .dim-siblings a {
+    transition: color 0.2s;
+  }
+  .dim-siblings:has(a:hover, a:focus-visible) a:not(:hover, :focus-visible) {
+    color: var(--tone-text-tertiary);
+  }
+
+  /* Overview upper mask (§2.6) — shared so the Overview agent can use it */
+  .overview-top-fade {
+    -webkit-mask-image: linear-gradient(#0000 20%, #000000a3 40%, #000 55%);
+    mask-image: linear-gradient(#0000 20%, #000000a3 40%, #000 55%);
+  }
+  @media (min-width: 810px) {
+    .overview-top-fade {
+      -webkit-mask-image: linear-gradient(#0000 15%, #000000a3 30%, #000 40%);
+      mask-image: linear-gradient(#0000 15%, #000000a3 30%, #000 40%);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reveal (§3.2)
+--------------------------------------------------------------------------- */
+html.js [data-reveal='pending'] {
+  visibility: hidden;
+  animation: 0s linear 4s forwards reveal-failsafe;
+}
+@keyframes reveal-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+.reveal-line-mask {
+  overflow: clip;
+  overflow-clip-margin: 0.06em;
+  margin-bottom: -0.18em;
+}
+.reveal-line {
+  padding-bottom: 0.18em;
+}
+
+/* ---------------------------------------------------------------------------
+   Header entrance (§1.1)
+--------------------------------------------------------------------------- */
+.nav-drop {
+  /* delay counted from navigation start (startTime anchored in Header.jsx) */
+  animation: 1s cubic-bezier(0.16, 1, 0.3, 1) 1.77s backwards nav-drop;
+}
+@keyframes nav-drop {
+  0% {
+    transform: translateY(-100px);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Waitlist pill (§2.1.1)
+--------------------------------------------------------------------------- */
+.waitlist {
+  --open: 0;
+  --pill-width: 150px;
+  --waitlist-fill: var(--tone-text-primary);
+  --waitlist-label: var(--tone-surface);
+  transition: --waitlist-fill 0.2s;
+}
+.waitlist:has([data-waitlist-trigger]:not(:disabled):hover) {
+  --waitlist-fill: var(--tone-surface);
+  --waitlist-label: var(--tone-text-primary);
+}
+.waitlist-pill {
+  width: calc(var(--pill-width) + (100% - var(--pill-width)) * var(--open));
+  background-image: radial-gradient(
+    224% 716.8% at calc(60.2% - 10.2% * var(--open)) calc(-553.2% + 603.2% * var(--open)),
+    transparent 23.4885%,
+    var(--waitlist-fill) 77.2329%
+  );
+  box-shadow:
+    inset 0.5px 0.5px 0 0 var(--color-alpha-black-12),
+    inset -0.5px -0.5px 0 0 var(--color-alpha-black-12);
+}
+.waitlist-label {
+  color: var(--waitlist-label);
+  opacity: calc(1 - var(--open) * 4);
+  transition: color 0.2s;
+}
+.waitlist-field {
+  opacity: calc(var(--open) * 2 - 1);
+}
+@media (max-width: 809.98px) {
+  .waitlist[data-phone-open] {
+    --open: 1 !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Ticker (§3.7)
+--------------------------------------------------------------------------- */
+.ticker-track {
+  animation: ticker var(--ticker-duration, 12s) linear infinite;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(calc(-100% / var(--ticker-copies, 2)));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion (§3.11)
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal='pending'] {
+    visibility: visible;
+    animation: none;
+  }
+  .nav-drop {
+    animation: none;
+  }
+  .ticker-track {
+    animation: none;
+  }
+  [data-appear] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}

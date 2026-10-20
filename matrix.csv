@@ -1,0 +1,14 @@
+section,category,templates,routes,Homepage
+chrome.header,CHROME,1,1,x
+hero.waitlist-hero,HERO,1,1,x
+features.wallet-intro,FEATURES,1,1,x
+proof.logo-ticker,PROOF,1,1,x
+features.send-slideshow,FEATURES,1,1,x
+transition.light-to-dark,TRANSITION,1,1,x
+features.finances-overview,FEATURES,1,1,x
+features.earn-collapse,FEATURES,1,1,x
+features.payroll-rise,FEATURES,1,1,x
+features.security-ascii,FEATURES,1,1,x
+support.faq-accordion,SUPPORT,1,1,x
+chrome.footer,CHROME,1,1,x
+ROUTE COUNT,,,1,1

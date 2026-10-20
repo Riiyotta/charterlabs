@@ -1,0 +1,58 @@
+{
+  "id": "page.meta",
+  "kind": "page-meta",
+  "content": {
+    "title": {
+      "type": "text",
+      "maxChars": 24,
+      "maxWords": 4,
+      "maxLines": null,
+      "linesNote": "not measured; render-check",
+      "evidence": [
+        "copy.page.meta.title"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "maxChars": 150,
+      "maxWords": 20,
+      "maxLines": null,
+      "linesNote": "not measured; render-check",
+      "evidence": [
+        "copy.page.meta.description"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "roles": [
+        "brand.mark"
+      ],
+      "alt": "decorative",
+      "aspect": "svg/png icon",
+      "evidence": [
+        "assets.head-metadata"
+      ]
+    },
+    "socialImage": {
+      "type": "media",
+      "roles": [
+        "social.og-image"
+      ],
+      "alt": {
+        "maxChars": 116,
+        "maxWords": 23,
+        "evidence": [
+          "copy.page.meta.socialImageAlt"
+        ]
+      },
+      "aspect": "1200x630",
+      "evidence": [
+        "assets.head-metadata"
+      ]
+    }
+  },
+  "evidence": [
+    "assets.head-metadata"
+  ],
+  "note": "Head metadata; not a section and not in the allowlist."
+}

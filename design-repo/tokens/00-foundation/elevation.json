@@ -1,0 +1,80 @@
+{
+  "$description": "Only three shadows exist on the page; nothing else uses box-shadow.",
+  "shadow": {
+    "waitlistPill": {
+      "$type": "shadow",
+      "$value": "inset .5px .5px 0 0 rgba(0,0,0,.12), inset -.5px -.5px 0 0 rgba(0,0,0,.12)",
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.waitlist"
+      ]
+    },
+    "mirrorFloorLightEdge": {
+      "$type": "shadow",
+      "$value": "inset 0 1px 0 0 rgba(0,0,0,.04)",
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.mirror-vars"
+      ]
+    },
+    "inputFocus": {
+      "$type": "shadow",
+      "$value": "inset 0 0 0 1px {tone.text.primary}",
+      "evidence": [
+        "spec.0.7-radii-shadows"
+      ]
+    }
+  },
+  "blur": {
+    "reveal": {
+      "$type": "dimension",
+      "$value": 5,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "blurred reflections"
+    },
+    "glass": {
+      "$type": "dimension",
+      "$value": 10,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "backdrop blurs (nav overlay, payroll centre)"
+    },
+    "mirror": {
+      "$type": "dimension",
+      "$value": 24,
+      "evidence": [
+        "spec.0.7-radii-shadows"
+      ],
+      "usage": "unused on home"
+    },
+    "ambient": {
+      "$type": "dimension",
+      "$value": 48,
+      "evidence": [
+        "spec.0.7-radii-shadows"
+      ],
+      "usage": "unused on home"
+    }
+  },
+  "zIndex": {
+    "$type": "zIndex",
+    "$value": {
+      "header": 10,
+      "navOverlay": 9,
+      "main": 6,
+      "footer": 5,
+      "overview": 4,
+      "darkTransition": 3,
+      "payroll": 3,
+      "security": 2
+    },
+    "evidence": [
+      "spec.0.8-structure"
+    ]
+  }
+}

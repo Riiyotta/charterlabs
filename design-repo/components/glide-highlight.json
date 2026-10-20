@@ -1,0 +1,12 @@
+{
+  "id": "component.glide-highlight",
+  "kind": "component",
+  "description": "Clip-path highlight pill over a duplicated nav row (bg alpha-black-4, text primary). Spring 400/36/1 renders one frame then snaps (qa.02). Used by the desktop nav and the phone tab row.",
+  "composes": [],
+  "evidence": [
+    "spec.1.1-nav-desktop",
+    "src.header.tokens",
+    "qa.02-nav-glide-snaps"
+  ],
+  "instantiableInPageSpec": false
+}

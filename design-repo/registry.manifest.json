@@ -1,0 +1,65 @@
+{
+  "repositoryId": "charterlabs-homepage-design-repo",
+  "repositoryVersion": "1.0.0",
+  "pageSpecVersion": "1.0.0",
+  "allowlistVersion": "1.0.0",
+  "versionFieldNote": "allowlistVersion is MACHINE-CHECKED (verify_all allowlist-version: must equal tokens/llm/component-allowlist.json version). pageSpecVersion is MACHINE-CHECKED (verify_all pagespec-version: must equal the schema's pageSpecVersion const and the example). repositoryVersion is DOCUMENTATION-ONLY: hand-maintained, nothing checks it.",
+  "status": "design-review-pending",
+  "productionApproved": false,
+  "source": {
+    "name": "Charter homepage clone (single route /)",
+    "original": "https://www.charterlabs.io/",
+    "measuredOn": "2026-10-20",
+    "realCompany": true,
+    "note": "Real, live company. Brand, wordmark, copy, screenshots, partner logos and portraits are theirs; see docs/sensitivity-and-licensing.md. Do not publish this repo or make it public."
+  },
+  "defaultTheme": "light",
+  "themes": [
+    "light",
+    "inverse"
+  ],
+  "schemaValidatedThemes": [
+    "light",
+    "inverse"
+  ],
+  "themeNote": "Tone is per section (data-tone). A page runs light, hands off once to inverse at transition.light-to-dark, and never returns to light (TONE_SEQUENCE).",
+  "counts": {
+    "tokens": 152,
+    "primitives": 8,
+    "components": 11,
+    "sections": 12,
+    "templates": 1,
+    "routes": 1,
+    "linkedUnbuiltRoutes": 2,
+    "assetRoles": 14,
+    "graphRules": 24,
+    "citations": 155,
+    "copyFingerprints": 77
+  },
+  "entryPoints": {
+    "readme": "README.md",
+    "changelog": "CHANGELOG.md",
+    "sensitivity": "docs/sensitivity-and-licensing.md",
+    "generationGuide": "docs/generation-guide.md",
+    "schema": "schema/pagespec.schema.json",
+    "example": "schema/example.pagespec.json",
+    "validator": "schema/semantic_validate.py",
+    "adversarialTests": "schema/tests/adversarial_test.py",
+    "pageMetaContract": "schema/page-meta.contract.json",
+    "protectedContent": "schema/protected-content.json",
+    "templates": "templates/templates.json",
+    "routes": "templates/routes.json",
+    "compatibilityGraph": "compatibility/graph.json",
+    "assetRoles": "assets/asset-roles.json",
+    "componentAllowlist": "tokens/llm/component-allowlist.json",
+    "tokenCatalog": "tokens/llm/token-catalog.json",
+    "tokenPolicy": "tokens/llm/token-policy.json",
+    "motionTokens": "tokens/00-foundation/motion.json",
+    "themeLight": "tokens/themes/light.json",
+    "themeInverse": "tokens/themes/inverse.json",
+    "measuredValues": "extraction/measured-values.json",
+    "verifyAll": "extraction/verify_all.py",
+    "proveDrift": "extraction/prove_drift.py"
+  },
+  "externalEvidenceNote": "External evidence (CLONE_SPEC.md, ASSETS.md, src/, tailwind.config.js, index.html, ia.json) is cited ONLY in extraction/measured-values.json, relative to the project root, and is never an entry point. verify_all warns, not fails, when it is absent."
+}

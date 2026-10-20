@@ -1,0 +1,118 @@
+{
+  "$comment": "IA for the local Charter homepage clone. Derived from src/App.jsx (render order) and CLONE_SPEC.md §0.8/§1/§2 (Playwright-measured on the live site 2026-10-20). Only built routes are templates; routes the site links to but that are not built (/contact, /legal/privacy-policy) are recorded in meta.linkedUnbuiltRoutes, not invented as templates.",
+  "meta": {
+    "source": "https://www.charterlabs.io/ (homepage only), as cloned in this project",
+    "status": "measured-from-live",
+    "productionApproved": false,
+    "totalRoutes": 1,
+    "totalTemplates": 1,
+    "linkedUnbuiltRoutes": ["/contact", "/legal/privacy-policy"],
+    "generatedBy": "ia-builder skill"
+  },
+  "categories": {
+    "CHROME": "Site navigation and footer that frame the page; outside <main>.",
+    "HERO": "Page-opening block with the headline and primary call to action.",
+    "PROOF": "Social proof: partner/backer logos.",
+    "FEATURES": "Product capability modules, each a heading + lead paragraph + phone/photo visual with scroll-linked motion.",
+    "TRANSITION": "Non-content blocks whose job is to change the page's tone or pacing.",
+    "SUPPORT": "Help content that answers objections."
+  },
+  "sections": {
+    "chrome.header": {
+      "category": "CHROME",
+      "description": "Absolute (non-sticky) 54px header, light tone: centred pill nav (Home / Overview / Company mega-menus with image cards, plus a Contact link) with a snapping highlight pill; on phone a logo + burger opening a tabbed sheet. Drops in from -100px ~1.77s after load.",
+      "scope": "Present on the single built route, above <main>.",
+      "implementedBy": "src/components/Header.jsx"
+    },
+    "hero.waitlist-hero": {
+      "category": "HERO",
+      "description": "Full-height light hero wrapped in a light Handoff (drifts down and darkens to 0.12 as it scrolls away): tilted hero phone image entering on load, h1 + lead paragraph line-reveals, and the expandable email waitlist pill.",
+      "scope": "First section of main on the single built route.",
+      "implementedBy": "src/components/Hero.jsx (+ Waitlist.jsx, wrapped by motion/Handoff.jsx)"
+    },
+    "features.wallet-intro": {
+      "category": "FEATURES",
+      "description": "Light intro block with a section gradient: eyebrow + heading + paragraph beside a phone that tilts from -60deg to -40deg with scroll, mirrored by a reflection.",
+      "scope": "Second section on the single built route.",
+      "implementedBy": "src/components/Intro.jsx"
+    },
+    "proof.logo-ticker": {
+      "category": "PROOF",
+      "description": "Light-Handoff-wrapped h3 statement over an infinite marquee of four partner logos at 50px/s (no hover slowdown).",
+      "scope": "Third section on the single built route.",
+      "implementedBy": "src/components/Logo.jsx (wrapped by motion/Handoff.jsx)"
+    },
+    "features.send-slideshow": {
+      "category": "FEATURES",
+      "description": "Light payments block: two reflected phones that settle from scale 1.5 / y -300 with scroll, then an eyebrow + h2 and a 5-slide Embla carousel (8s autoplay while >=25% visible, off-screen slides dimmed to 0.1, dots; arrows on phone).",
+      "scope": "Fourth section on the single built route.",
+      "implementedBy": "src/components/Send.jsx (+ send/Slideshow.jsx)"
+    },
+    "transition.light-to-dark": {
+      "category": "TRANSITION",
+      "description": "640px block with a sticky display-size statement while a full-viewport black overlay fades in, flipping the page from light to inverse tone.",
+      "scope": "Fifth section on the single built route; every section after it is inverse tone.",
+      "implementedBy": "src/components/DarkTransition.jsx"
+    },
+    "features.finances-overview": {
+      "category": "FEATURES",
+      "description": "First inverse block: a small caption that fades out while a reflected phone drops in from y -550, followed by h2 + paragraph.",
+      "scope": "Sixth section on the single built route.",
+      "implementedBy": "src/components/Overview.jsx"
+    },
+    "features.earn-collapse": {
+      "category": "FEATURES",
+      "description": "Inverse block: a photo between two phones that parallax at +/-0.02 x scroll; 96px past the section top the side panels slide apart, the photo blurs/shrinks away and an overlay paragraph fades in (reversible 1s spring).",
+      "scope": "Seventh section on the single built route.",
+      "implementedBy": "src/components/Earn.jsx"
+    },
+    "features.payroll-rise": {
+      "category": "FEATURES",
+      "description": "Inverse block: sticky heading that a black-gradient stage scrolls over, a two-photo row (with reflection) rising from y 500, a centre statement and a three-item stat list; stacked cards on phone.",
+      "scope": "Eighth section on the single built route.",
+      "implementedBy": "src/components/Payroll.jsx (+ styles/payroll.css)"
+    },
+    "features.security-ascii": {
+      "category": "FEATURES",
+      "description": "Inverse-Handoff-wrapped block: rounded portrait card whose ASCII-art layer and statement fade in when the section reaches the viewport top (reversible 1s spring), followed by a definition list of security points.",
+      "scope": "Ninth section on the single built route.",
+      "implementedBy": "src/components/Security.jsx (wrapped by motion/Handoff.jsx)"
+    },
+    "support.faq-accordion": {
+      "category": "SUPPORT",
+      "description": "Inverse FAQ: plain h2 beside a five-item single-open accordion (0.5s spring height/opacity, plus-icon bar rotates 90deg).",
+      "scope": "Last section of main on the single built route.",
+      "implementedBy": "src/components/Faq.jsx"
+    },
+    "chrome.footer": {
+      "category": "CHROME",
+      "description": "Inverse footer (#1a1a1a), sticky to the bottom at >=810px so main scrolls up to uncover it while it scales/fades in; wordmark, copyright and a four-column link nav (2x2 on phone).",
+      "scope": "Present on the single built route, after <main>.",
+      "implementedBy": "src/components/Footer.jsx"
+    }
+  },
+  "templates": [
+    {
+      "id": "template.home",
+      "name": "Homepage",
+      "routeCount": 1,
+      "routes": ["/"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "hero.waitlist-hero",
+        "features.wallet-intro",
+        "proof.logo-ticker",
+        "features.send-slideshow",
+        "transition.light-to-dark",
+        "features.finances-overview",
+        "features.earn-collapse",
+        "features.payroll-rise",
+        "features.security-ascii",
+        "support.faq-accordion",
+        "chrome.footer"
+      ]
+    }
+  ]
+}

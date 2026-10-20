@@ -1,0 +1,178 @@
+{
+  "id": "features.wallet-intro",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "Introduce the product with an eyebrow, a short claim and a lead paragraph beside a tilting phone.",
+  "implementedBy": "src/components/Intro.jsx",
+  "region": "main",
+  "anchorId": "intro-section",
+  "tone": "light",
+  "variants": [
+    "text-left-device-right"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "eyebrow": {
+      "type": "text",
+      "maxChars": 26,
+      "maxWords": 3,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.wallet-intro.eyebrow"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 22,
+      "maxWords": 4,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.wallet-intro.heading"
+      ]
+    },
+    "body": {
+      "type": "text",
+      "maxChars": 96,
+      "maxWords": 16,
+      "maxLines": 3,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.wallet-intro.body"
+      ]
+    },
+    "device": {
+      "type": "media",
+      "roles": [
+        "device.screen"
+      ],
+      "alt": {
+        "maxChars": 19,
+        "maxWords": 4,
+        "evidence": [
+          "copy.features.wallet-intro.deviceAlt"
+        ]
+      },
+      "aspect": "991x2048 (w 420 desktop, 280 phone), rest rotate -40deg",
+      "evidence": [
+        "spec.2.2-intro",
+        "assets.1-public-images"
+      ]
+    },
+    "deviceReflection": {
+      "type": "media",
+      "roles": [
+        "device.screen-reflection"
+      ],
+      "alt": "decorative",
+      "aspect": "496x1025, 120px flipped soft-masked",
+      "evidence": [
+        "spec.2.2-intro",
+        "assets.1-public-images"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "eyebrow",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "heading",
+        "delay": 0.2,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "body",
+        "delay": 0.1,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "appear": [
+      {
+        "target": "device",
+        "trigger": "inView",
+        "observe": "section",
+        "from": {
+          "opacity": 0,
+          "x": -150,
+          "y": -300,
+          "rotate": -20,
+          "rotateX": 40,
+          "rotateY": 30
+        },
+        "spring": {
+          "duration": 1.5,
+          "bounce": 0
+        },
+        "delay": 0,
+        "amount": 0.5,
+        "clock": "trigger",
+        "mirrorX": false,
+        "breakpoints": "phone"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "introPhoneTilt",
+        "source": "#hero-section",
+        "offset": "line:start",
+        "breakpoints": "tablet-up"
+      }
+    ],
+    "reducedMotionFallback": "text-shown-phone-appear-at-rest"
+  },
+  "motionEvidence": [
+    "spec.3.2-reveal",
+    "spec.3.5-scroll-linked",
+    "qa.08-intro-phone-appear-section"
+  ],
+  "responsive": {
+    "phone": [
+      "text moves below the mirror",
+      "upper height 420, device 280 wide, one-shot appear"
+    ],
+    "tablet": [
+      "text col 4, device col 5-8, scroll tilt"
+    ],
+    "desktop": [
+      "text col 2-5, device col 7-11, upper height 600"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "primitive.appear",
+    "component.mirror",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.2-intro",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

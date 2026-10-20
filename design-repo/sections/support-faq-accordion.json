@@ -1,0 +1,103 @@
+{
+  "id": "support.faq-accordion",
+  "kind": "section",
+  "category": "SUPPORT",
+  "purpose": "Answer objections in a five-item single-open accordion.",
+  "implementedBy": "src/components/Faq.jsx",
+  "region": "main",
+  "anchorId": "faq-section",
+  "tone": "inverse",
+  "variants": [
+    "heading-left-accordion"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "lastInMain": true
+  },
+  "content": {
+    "heading": {
+      "type": "text",
+      "maxChars": 3,
+      "maxWords": 1,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.support.faq-accordion.heading"
+      ]
+    },
+    "items": {
+      "type": "list",
+      "item": {
+        "question": {
+          "type": "text",
+          "maxChars": 36,
+          "maxWords": 7,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.support.faq-accordion.question"
+          ]
+        },
+        "answer": {
+          "type": "paragraphs",
+          "minItems": 2,
+          "maxItems": 4,
+          "maxChars": 243,
+          "maxWords": 44,
+          "evidence": [
+            "copy.support.faq-accordion.answerParagraph"
+          ]
+        }
+      },
+      "count": 5,
+      "evidence": [
+        "spec.2.10-faq"
+      ]
+    }
+  },
+  "motion": {
+    "toggles": [
+      {
+        "effect": "faqAccordion",
+        "spring": {
+          "duration": 0.5,
+          "bounce": 0
+        },
+        "settle": "spring",
+        "switchAtPx": null
+      }
+    ],
+    "reducedMotionFallback": "accordion-instant"
+  },
+  "motionEvidence": [
+    "spec.2.10-faq",
+    "spec.3.6-toggles"
+  ],
+  "responsive": {
+    "phone": [
+      "list -20px side margin, items 382 wide"
+    ],
+    "tablet": [
+      "list -24px margin"
+    ],
+    "desktop": [
+      "heading col 3-4, list col 5-10"
+    ]
+  },
+  "composes": [
+    "component.accordion-item"
+  ],
+  "evidence": [
+    "spec.2.10-faq",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "primitive.appear",
+  "kind": "primitive",
+  "description": "Fade/rise/un-tilt entrance (Appear.jsx): from {opacity 0, y 100, rotateX 50} spring {duration 1, bounce 0}, whileInView once amount 0.5, or on mount.",
+  "props": {
+    "x": "px",
+    "y": "px",
+    "rotateX": "deg",
+    "duration": "s",
+    "delay": "s",
+    "onMount": "bool",
+    "amount": "0..1"
+  },
+  "reducedMotion": "[data-appear] forced to opacity 1, no transform",
+  "evidence": [
+    "spec.3.3-appear",
+    "src.motion.appear"
+  ],
+  "instantiableInPageSpec": false
+}

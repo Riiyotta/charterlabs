@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "routes": [
+    {
+      "path": "/",
+      "template": "template.home",
+      "status": "built",
+      "evidence": [
+        "src.app.composition"
+      ]
+    }
+  ],
+  "router": "none (single page, no router; src/main.jsx renders App directly)",
+  "sectionAnchors": [
+    "hero-section",
+    "intro-section",
+    "logo-section",
+    "send-section",
+    "overview-section",
+    "earn-section",
+    "payroll-section",
+    "security-section",
+    "faq-section"
+  ],
+  "linkedUnbuiltRoutes": [
+    {
+      "path": "/contact",
+      "status": "unbuilt (linked from header Contact, phone sheet Contact and footer Email)",
+      "evidence": [
+        "src.header.menus",
+        "src.footer.columns"
+      ],
+      "policy": "Do not invent this page. In a PageSpec it is a project-route href the target project must supply."
+    },
+    {
+      "path": "/legal/privacy-policy",
+      "status": "unbuilt (linked from the footer Company column)",
+      "evidence": [
+        "src.footer.columns"
+      ],
+      "policy": "Do not invent this page. Project-route href supplied by the target project."
+    }
+  ]
+}

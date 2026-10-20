@@ -1,0 +1,238 @@
+{
+  "$description": "Foundation colours. Exactly the values in CLONE_SPEC §0.6 / src/index.css palette. No colour outside this file may be used.",
+  "color": {
+    "gray": {
+      "0": {
+        "$type": "color",
+        "$value": "#fff",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#fafafa",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#f5f5f5",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ebebeb",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#d6d6d6",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#b3b3b3",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#8f8f8f",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#6b6b6b",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#4d4d4d",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2e2e2e",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1a1a1a",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#0d0d0d",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "1000": {
+        "$type": "color",
+        "$value": "#000",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      }
+    },
+    "alphaBlack": {
+      "4": {
+        "$type": "color",
+        "$value": "#0000000a",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "8": {
+        "$type": "color",
+        "$value": "#00000014",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "12": {
+        "$type": "color",
+        "$value": "#0000001f",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#0003",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#0006",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#0009",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#000c",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      }
+    },
+    "alphaWhite": {
+      "4": {
+        "$type": "color",
+        "$value": "#ffffff0a",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "8": {
+        "$type": "color",
+        "$value": "#ffffff14",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "12": {
+        "$type": "color",
+        "$value": "#ffffff1f",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fff3",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#fff6",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#fff9",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#fffc",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ]
+      }
+    },
+    "status": {
+      "error": {
+        "$type": "color",
+        "$value": "#ff2244",
+        "evidence": [
+          "spec.0.6-colors",
+          "src.css.palette"
+        ],
+        "usage": "waitlist error message"
+      }
+    }
+  }
+}

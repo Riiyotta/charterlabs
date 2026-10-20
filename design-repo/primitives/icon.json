@@ -1,0 +1,13 @@
+{
+  "id": "primitive.icon",
+  "kind": "primitive",
+  "description": "Glyphs from the source: send arrow, chevron, spinner, plus/minus bars, burger bars. Generic UI geometry; the brand mark/wordmark are NOT icons (they are brand.* asset roles).",
+  "props": {
+    "name": "arrow | chevron | spinner | plus-minus | burger"
+  },
+  "reducedMotion": "n/a",
+  "evidence": [
+    "assets.4-inline-svgs"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "component.smooth-scroll",
+  "kind": "component",
+  "description": "Page-level Lenis {lerp .06, autoRaf, anchors} only at >=810px without reduced motion; phone scrolls natively. Mounted once by the template.",
+  "composes": [],
+  "evidence": [
+    "spec.3.9-lenis",
+    "src.motion.smooth-scroll"
+  ],
+  "instantiableInPageSpec": false
+}

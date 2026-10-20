@@ -1,0 +1,15 @@
+{
+  "id": "primitive.media-image",
+  "kind": "primitive",
+  "description": "Image slot bound to a closed assetRole (fill + object-cover unless noted). Every media field in a PageSpec is {assetRole, assetRef, alt}.",
+  "props": {
+    "assetRole": "closed enum (assets/asset-roles.json)",
+    "assetRef": "project-supplied path",
+    "alt": "budgeted, or '' when decorative"
+  },
+  "reducedMotion": "n/a",
+  "evidence": [
+    "assets.1-public-images"
+  ],
+  "instantiableInPageSpec": false
+}

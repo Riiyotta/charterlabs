@@ -1,0 +1,14 @@
+{
+  "id": "component.logo-ticker",
+  "kind": "component",
+  "description": "Endless marquee: 6 copies of the logo list (gap 48, logos h 30), 50px/s linear, radial mask, mix-blend-difference. NO hover slowdown (qa.01). Reduced motion: static.",
+  "composes": [
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.3-logo",
+    "spec.3.7-ticker",
+    "qa.01-ticker-no-hover-slowdown"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,244 @@
+{
+  "id": "features.send-slideshow",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "Show the payments flow: two settling phones then a five-step carousel of screens with short captions.",
+  "implementedBy": "src/components/Send.jsx",
+  "region": "main",
+  "anchorId": "send-section",
+  "tone": "light",
+  "variants": [
+    "mirrored-phones-carousel"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "dependsOnTrigger": "send-scroll-trigger (proof.logo-ticker)"
+  },
+  "content": {
+    "eyebrow": {
+      "type": "text",
+      "maxChars": 15,
+      "maxWords": 2,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.send-slideshow.eyebrow"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 36,
+      "maxWords": 6,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.send-slideshow.heading"
+      ]
+    },
+    "phones": {
+      "type": "list",
+      "item": {
+        "device": {
+          "type": "media",
+          "roles": [
+            "device.screen"
+          ],
+          "alt": {
+            "maxChars": 30,
+            "maxWords": 4,
+            "evidence": [
+              "copy.features.send-slideshow.deviceAlt"
+            ]
+          },
+          "aspect": "260x670 (796x2048)",
+          "evidence": [
+            "spec.2.4-send"
+          ]
+        },
+        "reflection": {
+          "type": "media",
+          "roles": [
+            "device.screen-reflection"
+          ],
+          "alt": "decorative",
+          "aspect": "167x430",
+          "evidence": [
+            "spec.2.4-send",
+            "assets.1-public-images"
+          ]
+        }
+      },
+      "count": 2,
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "slides": {
+      "type": "list",
+      "item": {
+        "layout": {
+          "type": "enum",
+          "values": [
+            "top",
+            "center",
+            "tilt-right",
+            "tilt-left"
+          ],
+          "evidence": [
+            "spec.2.4-send"
+          ]
+        },
+        "image": {
+          "type": "media",
+          "roles": [
+            "device.screen"
+          ],
+          "alt": {
+            "maxChars": 43,
+            "maxWords": 7,
+            "evidence": [
+              "copy.features.send-slideshow.slideAlt"
+            ]
+          },
+          "aspect": "max-w 400 in a 500px rounded-64 box",
+          "evidence": [
+            "spec.2.4-send"
+          ]
+        },
+        "title": {
+          "type": "text",
+          "maxChars": 34,
+          "maxWords": 6,
+          "maxLines": null,
+          "linesNote": "not measured; render-check",
+          "evidence": [
+            "copy.features.send-slideshow.slideTitle"
+          ]
+        },
+        "body": {
+          "type": "text",
+          "maxChars": 147,
+          "maxWords": 26,
+          "maxLines": null,
+          "linesNote": "not measured; render-check",
+          "evidence": [
+            "copy.features.send-slideshow.slideBody"
+          ]
+        }
+      },
+      "count": 5,
+      "evidence": [
+        "spec.2.4-send",
+        "src.send.slideshow-autoplay"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "eyebrow",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "heading",
+        "delay": 0.2,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "appear": [
+      {
+        "target": "phones",
+        "trigger": "midline",
+        "observe": "section",
+        "from": {
+          "x": -260,
+          "y": -200
+        },
+        "spring": {
+          "duration": 1.5,
+          "bounce": 0
+        },
+        "delay": 0,
+        "amount": null,
+        "clock": "trigger",
+        "mirrorX": true,
+        "breakpoints": "phone"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "sendPhonesSettle",
+        "source": "#send-scroll-trigger",
+        "offset": "line:start",
+        "breakpoints": "tablet-up"
+      },
+      {
+        "effect": "sendPhonesParallax",
+        "source": "scrollY",
+        "offset": "raw",
+        "breakpoints": "phone"
+      }
+    ],
+    "autoplay": {
+      "autoplayIntervalMs": 8000,
+      "visibilityThreshold": 0.25,
+      "playOnInit": false,
+      "stopOnInteraction": false,
+      "stopOnMouseEnter": true,
+      "loop": true,
+      "emblaDuration": 35,
+      "dimOpacity": 0.1
+    },
+    "reducedMotionFallback": "text-shown-autoplay-off-phone-appear-at-rest"
+  },
+  "motionEvidence": [
+    "spec.3.2-reveal",
+    "spec.3.4-load",
+    "spec.3.5-scroll-linked",
+    "spec.3.8-slideshow"
+  ],
+  "responsive": {
+    "phone": [
+      "phones in 2-col grid with appear + parallax",
+      "one slide per view, prev/next arrows, no dimming"
+    ],
+    "tablet": [
+      "mirrored phone row",
+      "dots, dim .1"
+    ],
+    "desktop": [
+      "two slides per view, viewport padding px-page-col"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "primitive.appear",
+    "component.mirror",
+    "component.slideshow-carousel",
+    "primitive.media-image",
+    "primitive.button-icon",
+    "primitive.dot-indicator"
+  ],
+  "evidence": [
+    "spec.2.4-send",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

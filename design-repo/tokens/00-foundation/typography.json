@@ -1,0 +1,368 @@
+{
+  "$description": "Inter Variable only. Intermediate weights (420/440/450/485/550) are real and must not be rounded. Tablet sizes come from CSS (not measured, CLONE_SPEC §5).",
+  "fontFamily": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "inter",
+        "inter Fallback",
+        "Inter",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif"
+      ],
+      "evidence": [
+        "spec.0.4-fonts",
+        "src.css.font-face"
+      ],
+      "license": "Inter is SIL Open Font License 1.1 (OFL-1.1); may be bundled and referenced"
+    }
+  },
+  "fontFeatures": {
+    "$type": "fontFeatures",
+    "$value": {
+      "fontVariationSettings": "\"opsz\" 32",
+      "fontFeatureSettings": [
+        "cv03",
+        "cv04",
+        "cv09",
+        "cv11"
+      ],
+      "htmlLineHeight": 1.5
+    },
+    "evidence": [
+      "spec.0.4-fonts"
+    ]
+  },
+  "fontWeight": {
+    "400": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "420": {
+      "$type": "fontWeight",
+      "$value": 420,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "440": {
+      "$type": "fontWeight",
+      "$value": 440,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "450": {
+      "$type": "fontWeight",
+      "$value": 450,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "485": {
+      "$type": "fontWeight",
+      "$value": 485,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "500": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    },
+    "550": {
+      "$type": "fontWeight",
+      "$value": 550,
+      "evidence": [
+        "spec.0.4-fonts"
+      ]
+    }
+  },
+  "textWrap": {
+    "$type": "textWrap",
+    "$value": {
+      "headings": "text-wrap-style: balance",
+      "p,li,dt,dd": "text-wrap-style: pretty"
+    },
+    "evidence": [
+      "src.css.text-wrap",
+      "qa.06-text-wrap-style"
+    ],
+    "note": "QA correction qa.06: the longhand text-wrap-style, not the text-wrap shorthand stated in CLONE_SPEC §0.4"
+  },
+  "typeStyle": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 72,
+          "tablet": 60,
+          "phone": 44
+        },
+        "fontWeight": 440,
+        "lineHeight": 1,
+        "letterSpacingEm": -0.03
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "dark-transition statement"
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 64,
+          "tablet": 54,
+          "phone": 40
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.04,
+        "letterSpacingEm": -0.02
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "hero h1"
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 54,
+          "tablet": 46,
+          "phone": 36
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.06,
+        "letterSpacingEm": -0.02
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "all section h2"
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 46,
+          "tablet": 40,
+          "phone": 32
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.08,
+        "letterSpacingEm": -0.015
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "logo statement, security statement"
+    },
+    "h4": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 38,
+          "tablet": 34,
+          "phone": 28
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.1,
+        "letterSpacingEm": -0.01
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "payroll statement, phone menu links"
+    },
+    "h5": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 30,
+          "tablet": 26,
+          "phone": 24
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.15,
+        "letterSpacingEm": -0.005
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "overview kicker, payroll stat titles on phone"
+    },
+    "h6": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 24,
+          "tablet": 22,
+          "phone": 20
+        },
+        "fontWeight": 485,
+        "lineHeight": 1.2,
+        "letterSpacingEm": -0.01
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "FAQ questions, desktop menu links"
+    },
+    "tag": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 18,
+          "tablet": 18,
+          "phone": 16
+        },
+        "fontWeight": 420,
+        "lineHeight": 1.4,
+        "letterSpacingEm": -0.005
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "eyebrows"
+    },
+    "body1": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 21,
+          "tablet": 20,
+          "phone": 18
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.38,
+        "letterSpacingEm": 0
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "lead paragraphs, dt/dd"
+    },
+    "body1-strong": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 21,
+          "tablet": 20,
+          "phone": 18
+        },
+        "fontWeight": 550,
+        "lineHeight": 1.38,
+        "letterSpacingEm": -0.01
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "slide titles, payroll stat titles (tablet+)"
+    },
+    "body2": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 17,
+          "tablet": 17,
+          "phone": 16
+        },
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "letterSpacingEm": 0.005
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "FAQ answers, support line, input"
+    },
+    "body3": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 15,
+          "tablet": 15,
+          "phone": 14
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.35,
+        "letterSpacingEm": 0.01
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "nav items, footer"
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 13,
+          "tablet": 13,
+          "phone": 12
+        },
+        "fontWeight": 450,
+        "lineHeight": 1.35,
+        "letterSpacingEm": 0.01
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "menu panel label"
+    },
+    "button": {
+      "$type": "typography",
+      "$value": {
+        "fontSize": {
+          "desktop": 17,
+          "tablet": 17,
+          "phone": 16
+        },
+        "fontWeight": 500,
+        "lineHeight": 1,
+        "letterSpacingEm": 0
+      },
+      "evidence": [
+        "spec.0.5-type-scale",
+        "src.css.type-classes",
+        "src.css.type-size-vars"
+      ],
+      "usage": "waitlist label"
+    }
+  }
+}

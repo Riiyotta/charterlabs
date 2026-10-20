@@ -1,0 +1,98 @@
+{
+  "$description": "Spacing unit is 1px (Tailwind --spacing: 1px): every numeric utility is px.",
+  "spacing": {
+    "unit": {
+      "$type": "dimension",
+      "$value": 1,
+      "evidence": [
+        "spec.0.3-spacing"
+      ]
+    },
+    "scale": {
+      "4": {
+        "$type": "dimension",
+        "$value": 4,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": 8,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": 12,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": 16,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": 24,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": 32,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": 48,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "64": {
+        "$type": "dimension",
+        "$value": 64,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "96": {
+        "$type": "dimension",
+        "$value": 96,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "128": {
+        "$type": "dimension",
+        "$value": 128,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "192": {
+        "$type": "dimension",
+        "$value": 192,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      },
+      "256": {
+        "$type": "dimension",
+        "$value": 256,
+        "evidence": [
+          "spec.0.3-spacing"
+        ]
+      }
+    }
+  }
+}

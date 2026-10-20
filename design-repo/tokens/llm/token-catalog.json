@@ -1,0 +1,176 @@
+{
+  "version": "1.0.0",
+  "$description": "Referenceable foundation token ids, keyed by the real top-level keys of tokens/00-foundation/*.json.",
+  "categories": {
+    "breakpoint": [
+      "breakpoint.phone",
+      "breakpoint.tablet",
+      "breakpoint.desktop",
+      "breakpoint.wide"
+    ],
+    "color": [
+      "color.gray.0",
+      "color.gray.50",
+      "color.gray.100",
+      "color.gray.200",
+      "color.gray.300",
+      "color.gray.400",
+      "color.gray.500",
+      "color.gray.600",
+      "color.gray.700",
+      "color.gray.800",
+      "color.gray.900",
+      "color.gray.950",
+      "color.gray.1000",
+      "color.alphaBlack.4",
+      "color.alphaBlack.8",
+      "color.alphaBlack.12",
+      "color.alphaBlack.20",
+      "color.alphaBlack.40",
+      "color.alphaBlack.60",
+      "color.alphaBlack.80",
+      "color.alphaWhite.4",
+      "color.alphaWhite.8",
+      "color.alphaWhite.12",
+      "color.alphaWhite.20",
+      "color.alphaWhite.40",
+      "color.alphaWhite.60",
+      "color.alphaWhite.80",
+      "color.status.error"
+    ],
+    "shadow": [
+      "shadow.waitlistPill",
+      "shadow.mirrorFloorLightEdge",
+      "shadow.inputFocus"
+    ],
+    "blur": [
+      "blur.reveal",
+      "blur.glass",
+      "blur.mirror",
+      "blur.ambient"
+    ],
+    "zIndex": [
+      "zIndex"
+    ],
+    "gradient": [
+      "gradient.sectionLight",
+      "gradient.payrollStage",
+      "gradient.heroImageMask",
+      "gradient.tickerMask",
+      "gradient.overviewTopFade",
+      "gradient.payrollCenterBlurMask",
+      "gradient.mirrorFloor",
+      "gradient.mirrorMask"
+    ],
+    "easing": [
+      "easing.expoOut",
+      "easing.drawer",
+      "easing.standard"
+    ],
+    "reveal": [
+      "reveal"
+    ],
+    "appear": [
+      "appear"
+    ],
+    "handoff": [
+      "handoff"
+    ],
+    "navDrop": [
+      "navDrop"
+    ],
+    "nav": [
+      "nav"
+    ],
+    "waitlist": [
+      "waitlist"
+    ],
+    "ticker": [
+      "ticker"
+    ],
+    "slideshow": [
+      "slideshow"
+    ],
+    "toggles": [
+      "toggles"
+    ],
+    "scrollLinked": [
+      "scrollLinked"
+    ],
+    "smoothScroll": [
+      "smoothScroll"
+    ],
+    "sticky": [
+      "sticky"
+    ],
+    "radius": [
+      "radius.xs",
+      "radius.sm",
+      "radius.md",
+      "radius.card",
+      "radius.lg",
+      "radius.xl",
+      "radius.pill"
+    ],
+    "spacing": [
+      "spacing.unit",
+      "spacing.scale.4",
+      "spacing.scale.8",
+      "spacing.scale.12",
+      "spacing.scale.16",
+      "spacing.scale.24",
+      "spacing.scale.32",
+      "spacing.scale.48",
+      "spacing.scale.64",
+      "spacing.scale.96",
+      "spacing.scale.128",
+      "spacing.scale.192",
+      "spacing.scale.256"
+    ],
+    "fontFamily": [
+      "fontFamily.sans"
+    ],
+    "fontFeatures": [
+      "fontFeatures"
+    ],
+    "fontWeight": [
+      "fontWeight.400",
+      "fontWeight.420",
+      "fontWeight.440",
+      "fontWeight.450",
+      "fontWeight.485",
+      "fontWeight.500",
+      "fontWeight.550"
+    ],
+    "textWrap": [
+      "textWrap"
+    ],
+    "typeStyle": [
+      "typeStyle.display",
+      "typeStyle.h1",
+      "typeStyle.h2",
+      "typeStyle.h3",
+      "typeStyle.h4",
+      "typeStyle.h5",
+      "typeStyle.h6",
+      "typeStyle.tag",
+      "typeStyle.body1",
+      "typeStyle.body1-strong",
+      "typeStyle.body2",
+      "typeStyle.body3",
+      "typeStyle.caption",
+      "typeStyle.button"
+    ]
+  },
+  "semanticRoles": [
+    "tone.text.primary",
+    "tone.text.secondary",
+    "tone.text.tertiary",
+    "tone.text.disabled",
+    "tone.surface.base",
+    "tone.surface.raised",
+    "tone.border.subtle",
+    "tone.border.strong",
+    "status.error"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "component.nav-menu-panel",
+  "kind": "component",
+  "description": "Mega-menu panel: height 0->auto .45s drawer ease, columns cross-fade (.25 in / .12 out), links stagger .04 from y 16; open delay .06, close delay .14, Escape/scroll>48 closes; page overlay alpha-black-20 + blur 10 fades .3s.",
+  "composes": [
+    "primitive.link-text",
+    "primitive.media-image",
+    "component.mirror"
+  ],
+  "evidence": [
+    "spec.1.1-nav-desktop",
+    "src.header.tokens"
+  ],
+  "instantiableInPageSpec": false
+}

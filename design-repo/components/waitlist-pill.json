@@ -1,0 +1,17 @@
+{
+  "id": "component.waitlist-pill",
+  "kind": "component",
+  "description": "Expanding waitlist form: closed 150x50 black pill 'CTA label'; click springs --open 0->1 (80/20/1) to full width, focus input after 250ms; auto-close 20s after leave if empty; success/error message held 2.5s (error pill 230 wide). Phone: always open. POSTs {email} to config.waitlistEndpoint (REQUIRED, project-supplied).",
+  "composes": [
+    "primitive.input-email",
+    "primitive.button-icon",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.2.1.1-waitlist",
+    "src.css.waitlist",
+    "src.waitlist.fake-submit",
+    "spec.2.1.1-waitlist-live-post"
+  ],
+  "instantiableInPageSpec": false
+}

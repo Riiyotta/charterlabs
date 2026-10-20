@@ -1,0 +1,216 @@
+{
+  "version": "1.0.0",
+  "$description": "Closed assetRole enum. The source is a REAL, live company (Charter / charterlabs.io): every raster, the logo mark, the wordmark and the partner logos are theirs or their partners'. No source file may be reused in generated output (sourceFiles are listed so the validator can reject them).",
+  "generationPolicies": {
+    "project-supplied-only": "Must come from the target project's own brand kit. A generator must not draw it.",
+    "fictional-placeholder-only": "Only invented placeholder marks/names (or the project's own permissioned partners). Never real third-party trademarks.",
+    "generate-original-fictional-ui": "Generate an original, fictional product UI for the target brand.",
+    "generate-non-identifiable-or-licensed-stock": "Generated people must be non-identifiable; otherwise licensed, model-released stock with the licence recorded.",
+    "generate-original": "May be generated new; no source resemblance required or allowed.",
+    "derive-from-generated-parent": "Produced from the slot's own generated parent asset (reflection/ASCII pass); never sourced."
+  },
+  "pinnedPolicies": {
+    "brand.mark": "project-supplied-only",
+    "brand.wordmark": "project-supplied-only",
+    "social.og-image": "project-supplied-only",
+    "device.screen": "generate-original-fictional-ui",
+    "partner.logo": "fictional-placeholder-only",
+    "photo.product-in-hand": "generate-original-fictional-ui",
+    "photo.portrait": "generate-non-identifiable-or-licensed-stock"
+  },
+  "roles": {
+    "brand.mark": {
+      "generationPolicy": "project-supplied-only",
+      "guidance": "Use ONLY the target project's own logo mark. Never trace, redraw, recolour or approximate the source company's ring mark.",
+      "sourceFiles": [
+        "icons/icon-light.svg",
+        "icons/icon-dark.png",
+        "icons/apple-touch-icon.png",
+        "inline SVG (ASSETS.md 4.1)"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.4-inline-svgs",
+        "assets.head-metadata"
+      ]
+    },
+    "brand.wordmark": {
+      "generationPolicy": "project-supplied-only",
+      "guidance": "Use ONLY the target project's own wordmark. Never set the source company's name or reproduce its wordmark.",
+      "sourceFiles": [
+        "inline SVG (ASSETS.md 4.2)"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.4-inline-svgs"
+      ]
+    },
+    "social.og-image": {
+      "generationPolicy": "project-supplied-only",
+      "guidance": "Project-supplied 1200x630 share image. Never reuse or imitate the source's share image.",
+      "sourceFiles": [
+        "social/charter-wallet.png"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.head-metadata"
+      ]
+    },
+    "nav.card-image": {
+      "generationPolicy": "generate-original-fictional-ui",
+      "guidance": "Generate an original product shot of a FICTIONAL app UI (no real brand, no real people). Card is 250px tall, object-cover, radius 32.",
+      "sourceFiles": [
+        "nav/home-live-activity.webp",
+        "nav/home-payroll.webp",
+        "nav/overview-earn.webp",
+        "nav/overview-expenses.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.2-nav-images",
+        "src.header.menus"
+      ]
+    },
+    "nav.ring": {
+      "generationPolicy": "generate-original",
+      "guidance": "Generate an original abstract 164x164 object render shown with a short mirror reflection.",
+      "sourceFiles": [
+        "nav/ring.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.2-nav-images",
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "device.screen": {
+      "generationPolicy": "generate-original-fictional-ui",
+      "guidance": "Phone UI screenshots: generate an ORIGINAL fictional app UI with the target brand. Never reproduce the source app's screens, layouts, numbers or brand. Keep the measured aspect of each slot.",
+      "sourceFiles": [
+        "hero-phone.2560.webp",
+        "intro-phone.2560.webp",
+        "currency.2560.webp",
+        "amount.2560.webp",
+        "recipient.2560.webp",
+        "virtual-account.2560.webp",
+        "receipt.2560.webp",
+        "overview.2560.webp",
+        "forecast.2560.webp",
+        "earnings.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "device.screen-reflection": {
+      "generationPolicy": "derive-from-generated-parent",
+      "guidance": "Pre-made low-res reflection of the slot's own device.screen: derive it from YOUR generated screen (downscale, same crop). Never source it.",
+      "sourceFiles": [
+        "intro-phone-reflection.2560.webp",
+        "currency-reflection.2560.webp",
+        "amount-reflection.2560.webp",
+        "overview-reflection.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "partner.logo": {
+      "generationPolicy": "fictional-placeholder-only",
+      "guidance": "Real partner trademarks (the four companies in the source ticker) must NEVER be reproduced or named. Use fictional placeholder marks, or the target project's own real partners' logos supplied with permission.",
+      "sourceFiles": [
+        "circle.2560.webp",
+        "hifi.2560.webp",
+        "turnkey.2560.webp",
+        "rhinestone.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images",
+        "spec.2.3-logo"
+      ]
+    },
+    "texture.backdrop": {
+      "generationPolicy": "generate-original",
+      "guidance": "Generate an original soft backdrop texture behind the earn phones.",
+      "sourceFiles": [
+        "backdrop.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "photo.lifestyle": {
+      "generationPolicy": "generate-non-identifiable-or-licensed-stock",
+      "guidance": "Landscape/lifestyle photo: generated (no identifiable person) or licensed stock with a recorded licence.",
+      "sourceFiles": [
+        "photo.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "photo.product-in-hand": {
+      "generationPolicy": "generate-original-fictional-ui",
+      "guidance": "Hand holding a phone: generate with a FICTIONAL lock-screen/notification UI of the target brand; never the source's notifications.",
+      "sourceFiles": [
+        "payday.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "photo.portrait": {
+      "generationPolicy": "generate-non-identifiable-or-licensed-stock",
+      "guidance": "These depict REAL people. Never reproduce, edit or imitate them. Use generated non-identifiable people or licensed stock (model-released) with a recorded licence.",
+      "sourceFiles": [
+        "payroll-portrait.webp",
+        "portrait-soft.2560.webp",
+        "security-portrait.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "photo.portrait-ascii": {
+      "generationPolicy": "derive-from-generated-parent",
+      "guidance": "ASCII-art render of the slot's own replacement portrait (same crop 1128x788).",
+      "sourceFiles": [
+        "portrait-ascii.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "photo.reflection": {
+      "generationPolicy": "derive-from-generated-parent",
+      "guidance": "Low-res reflection derived from the slot's own replacement photo (same object-position).",
+      "sourceFiles": [
+        "portrait-reflection.2560.webp",
+        "payday-reflection.2560.webp"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    }
+  },
+  "licensedResources": {
+    "font.inter": {
+      "file": "InterVariable.woff2",
+      "license": "SIL Open Font License 1.1 (OFL-1.1)",
+      "policy": "may be bundled and referenced",
+      "evidence": [
+        "assets.font-identity",
+        "spec.0.4-fonts"
+      ]
+    }
+  }
+}

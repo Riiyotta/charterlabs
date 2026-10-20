@@ -1,0 +1,271 @@
+{
+  "version": "1.0.0",
+  "$description": "Rules here and RULES in schema/semantic_validate.py are two sources for one fact; verify_all.py fails if their ids diverge.",
+  "toneModel": {
+    "tones": [
+      "light",
+      "inverse"
+    ],
+    "handoffSection": "transition.light-to-dark",
+    "sequence": "light+ (ending at the handoff section) then inverse+",
+    "evidence": [
+      "spec.0.6-colors",
+      "spec.0.8-structure"
+    ]
+  },
+  "dependencies": {
+    "SEND_REQUIRES_LOGO_TRIGGER": {
+      "dependent": "features.send-slideshow",
+      "host": "proof.logo-ticker",
+      "triggerId": "send-scroll-trigger",
+      "evidence": [
+        "src.logo.send-trigger",
+        "src.send.phones"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "id": "ROUTE_MATCHES_TEMPLATE",
+      "severity": "error",
+      "description": "PageSpec.route must be one of the declared template's routes.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_UNKNOWN_NODE",
+      "severity": "error",
+      "description": "Every node's section must be a node of the DECLARED template (cross-referenced against templates.json, not checked in isolation).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "NO_REPEAT",
+      "severity": "error",
+      "description": "No section repeats; every template node is repeatable:false. Keyed on (section, variant) in the message.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_NODE_ORDER",
+      "severity": "error",
+      "description": "Nodes must follow the template's node order exactly (optional nodes may be skipped, never moved).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_REQUIRED_NODES",
+      "severity": "error",
+      "description": "Every required template node must be present (header, hero, dark transition, footer).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "OPTIONAL_NODE_OMITTED",
+      "severity": "warn",
+      "description": "Omitting an optional node is valid but unmeasured: the only real composition contains all 12.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "VARIANT_ALLOWED",
+      "severity": "error",
+      "description": "variant must be in the template node's allowedVariants.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ANCHOR_ID_MATCH",
+      "severity": "error",
+      "description": "anchorId must equal the template node's anchorId (dark transition and shell have none).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TONE_MATCHES_TEMPLATE",
+      "severity": "error",
+      "description": "Each node's tone must equal its template node's tone.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TONE_SEQUENCE",
+      "severity": "error",
+      "description": "Exactly one light->inverse handoff, at transition.light-to-dark: header and every main node up to and including it are light; every main node after it and the footer are inverse. No light section may follow it.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "HANDOFF_ALLOWED_VALUE",
+      "severity": "error",
+      "description": "handoff must be the template's observed value or null (hero/logo: light, security: inverse, others: null). A generator may drop a Handoff, never add or retone one.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "HANDOFF_TONE_MATCH",
+      "severity": "error",
+      "description": "A Handoff's tone must equal the wrapped section's tone (overlay .12 light / .6 inverse).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "HANDOFF_NEEDS_MAIN_FOLLOWER",
+      "severity": "error",
+      "description": "A Handoff-wrapped section must be inside <main> and followed by another <main> section that scrolls over it.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "SEND_REQUIRES_LOGO_TRIGGER",
+      "severity": "error",
+      "description": "features.send-slideshow reads #send-scroll-trigger, which lives in proof.logo-ticker; Logo must directly precede Send.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "REDUCED_MOTION_FALLBACK_PINNED",
+      "severity": "error",
+      "description": "motion.reducedMotionFallback must be the section's pinned value.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "MOTION_MATCHES_CONTRACT",
+      "severity": "error",
+      "description": "The node's motion block must equal its section contract (no invented, altered or missing motion).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "COPY_BUDGET",
+      "severity": "error",
+      "description": "Text within maxChars/maxWords; explicit-line fields have exactly the measured line count; lists have the measured item counts.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ASSET_ROLE_ALLOWED_FOR_SLOT",
+      "severity": "error",
+      "description": "assetRole must be in the closed enum AND allowed for that media slot.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ASSET_REF_NOT_SOURCE_FILE",
+      "severity": "error",
+      "description": "assetRef must not be a file from the source site.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "NO_VERBATIM_SOURCE_COPY",
+      "severity": "error",
+      "description": "No string may equal (normalised) any source copy string; fingerprints only, text not stored.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "NO_SOURCE_BRAND_NAME",
+      "severity": "error",
+      "description": "No copy, link, alt, assetRef or brand.name may contain the source brand token; partner-logo slots may not name the real partners.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "EXTERNAL_LINK_NOT_PROTECTED",
+      "severity": "error",
+      "description": "External links are instance data: never the source company's real social profiles; https only.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "WAITLIST_ENDPOINT_PROJECT_SUPPLIED",
+      "severity": "error",
+      "description": "config.waitlistEndpoint is required when the hero is present, must be https and must not be the source company's live form endpoint.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "INTERNAL_ANCHOR_RESOLVES",
+      "severity": "error",
+      "description": "Every '/#id' link must point at an anchorId of a node present on the page.",
+      "enforcedBy": "schema/semantic_validate.py"
+    }
+  ],
+  "adjacency": [
+    {
+      "section": "chrome.header",
+      "recommendedAfter": null,
+      "recommendedBefore": "hero.waitlist-hero",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "hero.waitlist-hero",
+      "recommendedAfter": "chrome.header",
+      "recommendedBefore": "features.wallet-intro",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.wallet-intro",
+      "recommendedAfter": "hero.waitlist-hero",
+      "recommendedBefore": "proof.logo-ticker",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "proof.logo-ticker",
+      "recommendedAfter": "features.wallet-intro",
+      "recommendedBefore": "features.send-slideshow",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.send-slideshow",
+      "recommendedAfter": "proof.logo-ticker",
+      "recommendedBefore": "transition.light-to-dark",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "transition.light-to-dark",
+      "recommendedAfter": "features.send-slideshow",
+      "recommendedBefore": "features.finances-overview",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.finances-overview",
+      "recommendedAfter": "transition.light-to-dark",
+      "recommendedBefore": "features.earn-collapse",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.earn-collapse",
+      "recommendedAfter": "features.finances-overview",
+      "recommendedBefore": "features.payroll-rise",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.payroll-rise",
+      "recommendedAfter": "features.earn-collapse",
+      "recommendedBefore": "features.security-ascii",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "features.security-ascii",
+      "recommendedAfter": "features.payroll-rise",
+      "recommendedBefore": "support.faq-accordion",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "support.faq-accordion",
+      "recommendedAfter": "features.security-ascii",
+      "recommendedBefore": "chrome.footer",
+      "evidence": [
+        "src.app.composition"
+      ]
+    },
+    {
+      "section": "chrome.footer",
+      "recommendedAfter": "support.faq-accordion",
+      "recommendedBefore": null,
+      "evidence": [
+        "src.app.composition"
+      ]
+    }
+  ]
+}

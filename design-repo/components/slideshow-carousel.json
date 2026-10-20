@@ -1,0 +1,17 @@
+{
+  "id": "component.slideshow-carousel",
+  "kind": "component",
+  "description": "Embla carousel {loop, align start, duration 35}; autoplay 8s only while >=25% visible, stops on mouse enter, off under reduced motion; tablet+ slides dimmed to .1 by visible fraction; dots tablet+, arrows phone.",
+  "composes": [
+    "primitive.media-image",
+    "primitive.dot-indicator",
+    "primitive.button-icon"
+  ],
+  "evidence": [
+    "spec.2.4-send",
+    "spec.3.8-slideshow",
+    "src.send.slideshow-autoplay",
+    "src.send.slideshow-visibility"
+  ],
+  "instantiableInPageSpec": false
+}

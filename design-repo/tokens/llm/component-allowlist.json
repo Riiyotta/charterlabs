@@ -1,0 +1,416 @@
+{
+  "version": "1.0.0",
+  "$description": "Closed list of what a generator may instantiate/set. verify_all.py checks parity with the contract files and the schema.",
+  "entries": [
+    {
+      "id": "chrome.header",
+      "kind": "section",
+      "file": "sections/chrome-header.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "brandMark",
+        "menuPrimary",
+        "menuSecondary",
+        "menuCompany",
+        "contactLink"
+      ]
+    },
+    {
+      "id": "hero.waitlist-hero",
+      "kind": "section",
+      "file": "sections/hero-waitlist-hero.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "heading",
+        "body",
+        "device",
+        "waitlist"
+      ]
+    },
+    {
+      "id": "features.wallet-intro",
+      "kind": "section",
+      "file": "sections/features-wallet-intro.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "eyebrow",
+        "heading",
+        "body",
+        "device",
+        "deviceReflection"
+      ]
+    },
+    {
+      "id": "proof.logo-ticker",
+      "kind": "section",
+      "file": "sections/proof-logo-ticker.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "statement",
+        "supportLine",
+        "partners"
+      ]
+    },
+    {
+      "id": "features.send-slideshow",
+      "kind": "section",
+      "file": "sections/features-send-slideshow.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "eyebrow",
+        "heading",
+        "phones",
+        "slides"
+      ]
+    },
+    {
+      "id": "transition.light-to-dark",
+      "kind": "section",
+      "file": "sections/transition-light-to-dark.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "statement"
+      ]
+    },
+    {
+      "id": "features.finances-overview",
+      "kind": "section",
+      "file": "sections/features-finances-overview.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "kicker",
+        "heading",
+        "body",
+        "device",
+        "deviceReflection"
+      ]
+    },
+    {
+      "id": "features.earn-collapse",
+      "kind": "section",
+      "file": "sections/features-earn-collapse.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "eyebrow",
+        "heading",
+        "body",
+        "backdrop",
+        "devices",
+        "photo"
+      ]
+    },
+    {
+      "id": "features.payroll-rise",
+      "kind": "section",
+      "file": "sections/features-payroll-rise.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "eyebrow",
+        "heading",
+        "statementLines",
+        "statementSub",
+        "stats",
+        "body",
+        "portrait",
+        "portraitPhone",
+        "productPhoto",
+        "portraitReflection",
+        "productReflection"
+      ]
+    },
+    {
+      "id": "features.security-ascii",
+      "kind": "section",
+      "file": "sections/features-security-ascii.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "eyebrow",
+        "heading",
+        "statementLines",
+        "rows",
+        "portrait",
+        "portraitAscii"
+      ]
+    },
+    {
+      "id": "support.faq-accordion",
+      "kind": "section",
+      "file": "sections/support-faq-accordion.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "heading",
+        "items"
+      ]
+    },
+    {
+      "id": "chrome.footer",
+      "kind": "section",
+      "file": "sections/chrome-footer.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "handoff",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "settableContentFields": [
+        "wordmark",
+        "columns",
+        "legalLine"
+      ]
+    },
+    {
+      "id": "primitive.reveal-text",
+      "kind": "primitive",
+      "file": "primitives/reveal-text.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.appear",
+      "kind": "primitive",
+      "file": "primitives/appear.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.media-image",
+      "kind": "primitive",
+      "file": "primitives/media-image.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.link-text",
+      "kind": "primitive",
+      "file": "primitives/link-text.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.button-icon",
+      "kind": "primitive",
+      "file": "primitives/button-icon.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.dot-indicator",
+      "kind": "primitive",
+      "file": "primitives/dot-indicator.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.icon",
+      "kind": "primitive",
+      "file": "primitives/icon.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.input-email",
+      "kind": "primitive",
+      "file": "primitives/input-email.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.waitlist-pill",
+      "kind": "component",
+      "file": "components/waitlist-pill.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.mirror",
+      "kind": "component",
+      "file": "components/mirror.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.handoff",
+      "kind": "component",
+      "file": "components/handoff.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.glide-highlight",
+      "kind": "component",
+      "file": "components/glide-highlight.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.nav-menu-panel",
+      "kind": "component",
+      "file": "components/nav-menu-panel.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.logo-ticker",
+      "kind": "component",
+      "file": "components/logo-ticker.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.slideshow-carousel",
+      "kind": "component",
+      "file": "components/slideshow-carousel.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.accordion-item",
+      "kind": "component",
+      "file": "components/accordion-item.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.stat-row",
+      "kind": "component",
+      "file": "components/stat-row.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.definition-row",
+      "kind": "component",
+      "file": "components/definition-row.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.smooth-scroll",
+      "kind": "component",
+      "file": "components/smooth-scroll.json",
+      "instantiableInPageSpec": false
+    }
+  ],
+  "assetRoles": [
+    "brand.mark",
+    "brand.wordmark",
+    "social.og-image",
+    "nav.card-image",
+    "nav.ring",
+    "device.screen",
+    "device.screen-reflection",
+    "partner.logo",
+    "texture.backdrop",
+    "photo.lifestyle",
+    "photo.product-in-hand",
+    "photo.portrait",
+    "photo.portrait-ascii",
+    "photo.reflection"
+  ],
+  "pageSpecTopLevel": [
+    "pageSpecVersion",
+    "template",
+    "route",
+    "brand",
+    "config",
+    "meta",
+    "nodes"
+  ]
+}

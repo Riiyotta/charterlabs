@@ -1,0 +1,13 @@
+{
+  "id": "component.accordion-item",
+  "kind": "component",
+  "description": "FAQ item: rounded-md, h6 question button, plus/minus icon (vertical bar rotates 90deg), panel height/opacity spring .5/0; single-open list, all closed initially, no hover style.",
+  "composes": [
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.2.10-faq",
+    "src.faq.spring"
+  ],
+  "instantiableInPageSpec": false
+}

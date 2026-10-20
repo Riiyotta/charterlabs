@@ -1,0 +1,86 @@
+{
+  "id": "transition.light-to-dark",
+  "kind": "section",
+  "category": "TRANSITION",
+  "purpose": "Flip the page from light to inverse: a sticky display statement disappears into a full-viewport black fade. The only tone handoff.",
+  "implementedBy": "src/components/DarkTransition.jsx",
+  "region": "main",
+  "anchorId": null,
+  "tone": "light",
+  "variants": [
+    "sticky-display-statement"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "toneHandoff": "light -> inverse",
+    "hostsTrigger": "overview-screen-trigger, overview-dark-trigger"
+  },
+  "content": {
+    "statement": {
+      "type": "text",
+      "maxChars": 49,
+      "maxWords": 8,
+      "maxLines": 3,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.transition.light-to-dark.statement"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "statement",
+        "delay": 0.1,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "darkOverlayFade",
+        "source": "#overview-dark-trigger",
+        "offset": "line:middle",
+        "breakpoints": "all"
+      }
+    ],
+    "sticky": {
+      "topPx": 124
+    },
+    "reducedMotionFallback": "text-shown"
+  },
+  "motionEvidence": [
+    "spec.2.5-dark",
+    "spec.3.5-scroll-linked"
+  ],
+  "responsive": {
+    "phone": [
+      "section 460 tall, display 44px"
+    ],
+    "tablet": [
+      "section 640 tall"
+    ],
+    "desktop": [
+      "display 72px span-text"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text"
+  ],
+  "evidence": [
+    "spec.2.5-dark",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

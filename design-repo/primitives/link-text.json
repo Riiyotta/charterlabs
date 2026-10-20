@@ -1,0 +1,16 @@
+{
+  "id": "primitive.link-text",
+  "kind": "primitive",
+  "description": "Text link inside a .dim-siblings list: hovering one link turns the others tertiary (color .2s); focus-visible underline.",
+  "props": {
+    "label": "budgeted text",
+    "href": "internal-anchor | project-route | external-social"
+  },
+  "reducedMotion": "n/a (colour transition only)",
+  "evidence": [
+    "spec.3.10-hover",
+    "spec.1.1-nav-desktop",
+    "spec.2.11-footer"
+  ],
+  "instantiableInPageSpec": false
+}

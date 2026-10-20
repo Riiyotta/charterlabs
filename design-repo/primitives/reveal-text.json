@@ -1,0 +1,18 @@
+{
+  "id": "primitive.reveal-text",
+  "kind": "primitive",
+  "description": "Line-mask text reveal (Reveal.jsx): split into lines, each translateY(110%)->0, 1s expo-out, +0.06s per line, IO threshold 'amount', fires ~1 frame after crossing, once.",
+  "props": {
+    "as": "tag",
+    "delay": "s (0 | 0.1 | 0.2; hero 1 / 1.2 from navigation start)",
+    "amount": "0 | 0.5 (default 0.5)"
+  },
+  "reducedMotion": "reduced motion: no split, shown immediately; 4s CSS failsafe if JS fails",
+  "evidence": [
+    "spec.3.2-reveal",
+    "src.motion.reveal",
+    "qa.10-reveal-one-frame",
+    "qa.03-hero-reveal-in-view"
+  ],
+  "instantiableInPageSpec": false
+}

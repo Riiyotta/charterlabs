@@ -1,0 +1,115 @@
+{
+  "grid": {
+    "pageGrid": {
+      "$type": "layout",
+      "$value": {
+        "maxWidth": 1700,
+        "columns": "{breakpoint.*.columns}",
+        "columnGap": 16,
+        "paddingInline": "{breakpoint.*.gutterX}",
+        "columnWidthAt1440": 100,
+        "columnLeftFormulaAt1440": "32 + (n-1)*116"
+      },
+      "evidence": [
+        "spec.0.2-page-grid",
+        "src.css.page-grid"
+      ]
+    },
+    "spans": {
+      "span-main": {
+        "$type": "gridSpan",
+        "$value": {
+          "phone": "1/-1",
+          "tablet": "2 / span 6",
+          "desktop": "3 / span 8"
+        },
+        "evidence": [
+          "spec.0.2-page-grid",
+          "src.css.page-grid"
+        ]
+      },
+      "span-narrow": {
+        "$type": "gridSpan",
+        "$value": {
+          "phone": "1/-1",
+          "tablet": "3 / span 4",
+          "desktop": "5 / span 4"
+        },
+        "evidence": [
+          "spec.0.2-page-grid",
+          "src.css.page-grid"
+        ]
+      },
+      "span-text": {
+        "$type": "gridSpan",
+        "$value": {
+          "phone": "1/-1",
+          "tablet": "2 / span 6",
+          "desktop": "4 / span 6"
+        },
+        "evidence": [
+          "spec.0.2-page-grid",
+          "src.css.page-grid"
+        ]
+      },
+      "span-wide": {
+        "$type": "gridSpan",
+        "$value": {
+          "phone": "1/-1",
+          "tablet": "1/-1",
+          "desktop": "2 / span 10"
+        },
+        "evidence": [
+          "spec.0.2-page-grid",
+          "src.css.page-grid"
+        ]
+      }
+    },
+    "pxPageCol": {
+      "$type": "layout",
+      "$value": "gutter + 1 column + gap (148px at 1440)",
+      "evidence": [
+        "spec.0.2-page-grid",
+        "src.css.page-grid"
+      ]
+    }
+  },
+  "sectionPadding": {
+    "$type": "layout",
+    "$value": {
+      "hero": "pt 128 (tablet+; 0 phone), pb 128",
+      "logo": "pt 192, pb 256 tablet+ / 192 phone",
+      "send": "pb 128",
+      "overview": "pb 128",
+      "earn": "py 128",
+      "payroll": "py 128",
+      "security": "py 128",
+      "faq": "py 128",
+      "footer": "py 192 desktop / 128 tablet / 96 phone"
+    },
+    "evidence": [
+      "spec.0.8-structure"
+    ]
+  },
+  "sectionHeightAt1440": {
+    "$type": "layout",
+    "$value": {
+      "header": 54,
+      "hero": 1059.1,
+      "intro": 720,
+      "logo": 712.5,
+      "send": 1869.7,
+      "darkTransition": 640,
+      "overview": 1028,
+      "earn": 1261.7,
+      "payroll": 1151.7,
+      "security": 1538,
+      "faq": 624,
+      "footer": 532.25,
+      "document": 11137
+    },
+    "evidence": [
+      "spec.0.8-structure"
+    ]
+  }
+}

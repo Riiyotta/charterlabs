@@ -1,0 +1,239 @@
+{
+  "id": "features.payroll-rise",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "Explain a payout feature: sticky heading, two photos rising with a blended statement, three stats and a paragraph.",
+  "implementedBy": "src/components/Payroll.jsx",
+  "region": "main",
+  "anchorId": "payroll-section",
+  "tone": "inverse",
+  "variants": [
+    "rising-photo-stage"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "eyebrow": {
+      "type": "text",
+      "maxChars": 21,
+      "maxWords": 5,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.payroll-rise.eyebrow"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 38,
+      "maxWords": 7,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.payroll-rise.heading"
+      ]
+    },
+    "statementLines": {
+      "type": "lines",
+      "count": 2,
+      "maxCharsPerLine": 12,
+      "maxWordsPerLine": 2,
+      "note": "explicit <br> line breaks in the source",
+      "evidence": [
+        "copy.features.payroll-rise.statementLine"
+      ]
+    },
+    "statementSub": {
+      "type": "text",
+      "maxChars": 28,
+      "maxWords": 5,
+      "maxLines": null,
+      "linesNote": "not measured; render-check",
+      "evidence": [
+        "copy.features.payroll-rise.statementSub"
+      ]
+    },
+    "stats": {
+      "type": "list",
+      "item": {
+        "title": {
+          "type": "text",
+          "maxChars": 13,
+          "maxWords": 2,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.features.payroll-rise.statTitle"
+          ]
+        },
+        "label": {
+          "type": "text",
+          "maxChars": 9,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.features.payroll-rise.statLabel"
+          ]
+        }
+      },
+      "count": 3,
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    },
+    "body": {
+      "type": "text",
+      "maxChars": 151,
+      "maxWords": 29,
+      "maxLines": 3,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.payroll-rise.body"
+      ]
+    },
+    "portrait": {
+      "type": "media",
+      "roles": [
+        "photo.portrait"
+      ],
+      "alt": {
+        "maxChars": 37,
+        "maxWords": 7,
+        "evidence": [
+          "copy.features.payroll-rise.portraitAlt"
+        ]
+      },
+      "aspect": "aspect 1.92, min-h 440",
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    },
+    "portraitPhone": {
+      "type": "media",
+      "roles": [
+        "photo.portrait"
+      ],
+      "alt": {
+        "maxChars": 37,
+        "maxWords": 7,
+        "evidence": [
+          "copy.features.payroll-rise.portraitAlt"
+        ]
+      },
+      "aspect": "500px rounded-64 card (<810 only)",
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    },
+    "productPhoto": {
+      "type": "media",
+      "roles": [
+        "photo.product-in-hand"
+      ],
+      "alt": {
+        "maxChars": 76,
+        "maxWords": 13,
+        "evidence": [
+          "copy.features.payroll-rise.productAlt"
+        ]
+      },
+      "aspect": "aspect 1.92, object-position 44.4% 28.3%",
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    },
+    "portraitReflection": {
+      "type": "media",
+      "roles": [
+        "photo.reflection"
+      ],
+      "alt": "decorative",
+      "aspect": "596x395",
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    },
+    "productReflection": {
+      "type": "media",
+      "roles": [
+        "photo.reflection"
+      ],
+      "alt": "decorative",
+      "aspect": "598x481",
+      "evidence": [
+        "spec.2.8-payroll"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "eyebrow",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "heading",
+        "delay": 0.2,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "payrollPhotoRise",
+        "source": "#payroll-section",
+        "offset": "line:end",
+        "breakpoints": "tablet-up"
+      }
+    ],
+    "sticky": {
+      "topPx": 188
+    },
+    "reducedMotionFallback": "text-shown"
+  },
+  "motionEvidence": [
+    "spec.2.8-payroll",
+    "spec.3.5-scroll-linked"
+  ],
+  "responsive": {
+    "phone": [
+      "two 500px rounded cards",
+      "stats stacked, label above title (h5)"
+    ],
+    "tablet": [
+      "sticky head top 188, photo row rises"
+    ],
+    "desktop": [
+      "stats row 3x130 in span-text"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "component.mirror",
+    "component.stat-row",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.8-payroll",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

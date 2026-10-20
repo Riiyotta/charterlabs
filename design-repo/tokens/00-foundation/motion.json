@@ -1,0 +1,410 @@
+{
+  "$description": "CLONE_SPEC §3.1 motion-token file (verbatim from the live site) with QA corrections applied where they override it.",
+  "easing": {
+    "expoOut": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.16,1,.3,1)",
+      "evidence": [
+        "spec.3.1-motion-tokens",
+        "src.css.nav-drop"
+      ]
+    },
+    "drawer": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.32,.72,0,1)",
+      "evidence": [
+        "spec.3.1-motion-tokens"
+      ]
+    },
+    "standard": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.4,0,.2,1)",
+      "evidence": [
+        "spec.3.10-hover"
+      ]
+    }
+  },
+  "reveal": {
+    "$type": "motion",
+    "$value": {
+      "fromYPercent": 110,
+      "durationS": 1,
+      "curve": "cubic-bezier(.16,1,.3,1)",
+      "staggerS": 0.06,
+      "defaultAmount": 0.5,
+      "triggerLatency": "1 frame (~16ms) after threshold",
+      "failsafeS": 4
+    },
+    "evidence": [
+      "spec.3.2-reveal",
+      "src.motion.reveal",
+      "qa.10-reveal-one-frame"
+    ]
+  },
+  "appear": {
+    "$type": "motion",
+    "$value": {
+      "from": {
+        "opacity": 0,
+        "x": 0,
+        "y": 100,
+        "rotateX": 50
+      },
+      "spring": {
+        "duration": 1,
+        "bounce": 0
+      },
+      "amount": 0.5,
+      "perspective": "none"
+    },
+    "evidence": [
+      "spec.3.3-appear",
+      "src.motion.appear"
+    ]
+  },
+  "handoff": {
+    "$type": "motion",
+    "$value": {
+      "distancePx": 240,
+      "overlayOpacity": {
+        "light": 0.12,
+        "inverse": 0.6
+      },
+      "offset": [
+        "end end",
+        "end start"
+      ],
+      "reducedMotion": {
+        "distancePx": 0,
+        "overlayOpacity": 0
+      },
+      "phone": {
+        "distancePx": 0
+      }
+    },
+    "evidence": [
+      "spec.3.5-scroll-linked",
+      "src.motion.handoff",
+      "qa.05-handoff-reduced-motion"
+    ]
+  },
+  "navDrop": {
+    "$type": "motion",
+    "$value": {
+      "delayFromNavStartS": 1.77,
+      "durationS": 1,
+      "curve": "cubic-bezier(.16,1,.3,1)",
+      "fromYPx": -100
+    },
+    "evidence": [
+      "qa.04-nav-drop-1.77s",
+      "src.css.nav-drop"
+    ]
+  },
+  "nav": {
+    "$type": "motion",
+    "$value": {
+      "glideSpring": {
+        "stiffness": 400,
+        "damping": 36,
+        "mass": 1
+      },
+      "glideSettle": "snap-after-first-frame",
+      "highlightOpacityS": 0.2,
+      "panelDurationS": 0.45,
+      "panelEase": "cubic-bezier(.32,.72,0,1)",
+      "overlayDurationS": 0.3,
+      "linkStaggerS": 0.04,
+      "linkDelayChildrenS": 0.05,
+      "linkDurationS": 0.4,
+      "linkFromYPx": 16,
+      "openDelayS": 0.06,
+      "closeDelayS": 0.14,
+      "closeOnScrollPx": 48
+    },
+    "evidence": [
+      "spec.1.1-nav-desktop",
+      "src.header.tokens",
+      "qa.02-nav-glide-snaps"
+    ]
+  },
+  "waitlist": {
+    "$type": "motion",
+    "$value": {
+      "pressSpring": {
+        "stiffness": 80,
+        "damping": 20,
+        "mass": 1
+      },
+      "closedWidthPx": 150,
+      "messageWidthPx": 230,
+      "focusAfterMs": 250,
+      "closeAfterS": 20,
+      "messageHoldS": 2.5,
+      "hoverFillS": 0.2
+    },
+    "evidence": [
+      "spec.2.1.1-waitlist",
+      "spec.3.1-motion-tokens"
+    ]
+  },
+  "ticker": {
+    "$type": "motion",
+    "$value": {
+      "velocityPxPerS": 50,
+      "copies": 6,
+      "gapPx": 48,
+      "logoHeightPx": 30,
+      "hoverPlaybackRate": 1
+    },
+    "evidence": [
+      "spec.3.7-ticker",
+      "src.logo.ticker",
+      "qa.01-ticker-no-hover-slowdown"
+    ],
+    "note": "CLONE_SPEC §3.7/§3.10 'x0.5 on hover' is superseded by qa.01 (no hover slowdown on live)"
+  },
+  "slideshow": {
+    "$type": "motion",
+    "$value": {
+      "autoplayIntervalMs": 8000,
+      "visibilityThreshold": 0.25,
+      "playOnInit": false,
+      "stopOnInteraction": false,
+      "stopOnMouseEnter": true,
+      "loop": true,
+      "emblaDuration": 35,
+      "dimOpacity": 0.1,
+      "dotTransition": "opacity .3s cubic-bezier(.4,0,.2,1)"
+    },
+    "evidence": [
+      "spec.3.8-slideshow",
+      "src.send.slideshow-autoplay",
+      "src.send.slideshow-visibility"
+    ]
+  },
+  "toggles": {
+    "$type": "motion",
+    "$value": {
+      "earnStage": {
+        "switchAtPx": 96,
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        }
+      },
+      "securityCard": {
+        "switchAtPx": 0,
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        }
+      },
+      "faqAccordion": {
+        "spring": {
+          "duration": 0.5,
+          "bounce": 0
+        }
+      }
+    },
+    "evidence": [
+      "spec.3.6-toggles",
+      "src.earn.toggle",
+      "src.security.toggle",
+      "src.faq.spring"
+    ]
+  },
+  "scrollLinked": {
+    "$type": "motion",
+    "$value": {
+      "heroTextFade": {
+        "source": "hero image wrapper",
+        "offset": "start start,end start",
+        "map": {
+          "opacity": [
+            1,
+            0
+          ]
+        },
+        "breakpoints": "tablet-up"
+      },
+      "introPhoneTilt": {
+        "source": "#hero-section",
+        "offset": "line:start",
+        "map": {
+          "x": [
+            -150,
+            0
+          ],
+          "y": [
+            -150,
+            0
+          ],
+          "rotate": [
+            -60,
+            -40
+          ],
+          "rotateX": [
+            30,
+            0
+          ],
+          "rotateY": [
+            30,
+            0
+          ]
+        },
+        "breakpoints": "tablet-up"
+      },
+      "sendPhonesSettle": {
+        "source": "#send-scroll-trigger",
+        "offset": "line:start",
+        "map": {
+          "x": [
+            [
+              -150,
+              150
+            ],
+            0
+          ],
+          "y": [
+            -300,
+            0
+          ],
+          "scale": [
+            1.5,
+            1
+          ],
+          "rotateX": [
+            40,
+            0
+          ]
+        },
+        "breakpoints": "tablet-up"
+      },
+      "sendPhonesParallax": {
+        "source": "scrollY",
+        "offset": "raw",
+        "map": {
+          "y": "-/+0.02*scrollY"
+        },
+        "breakpoints": "phone"
+      },
+      "darkOverlayFade": {
+        "source": "#overview-dark-trigger",
+        "offset": "line:middle",
+        "map": {
+          "opacity": [
+            0,
+            1
+          ]
+        },
+        "breakpoints": "all"
+      },
+      "meetCaptionFade": {
+        "source": "#overview-dark-trigger",
+        "offset": "line:start",
+        "map": {
+          "opacity": [
+            1,
+            0
+          ]
+        },
+        "breakpoints": "all"
+      },
+      "overviewDeviceDrop": {
+        "source": "#overview-screen-trigger",
+        "offset": "line:start",
+        "map": {
+          "y": [
+            -550,
+            0
+          ],
+          "opacity": [
+            0,
+            1
+          ],
+          "reflectionOpacity": [
+            0,
+            0.7
+          ]
+        },
+        "breakpoints": "tablet-up"
+      },
+      "earnPhoneDrift": {
+        "source": "scrollY",
+        "offset": "raw",
+        "map": {
+          "y": "+/-0.02*scrollY"
+        },
+        "breakpoints": "all"
+      },
+      "payrollPhotoRise": {
+        "source": "#payroll-section",
+        "offset": "line:end",
+        "map": {
+          "y": [
+            500,
+            0
+          ]
+        },
+        "breakpoints": "tablet-up"
+      },
+      "footerReveal": {
+        "source": "document end",
+        "offset": "startAt:1.35,endAt:0.1",
+        "map": {
+          "opacity": [
+            0,
+            1
+          ],
+          "y": [
+            -100,
+            0
+          ],
+          "scale": [
+            0.9,
+            1
+          ]
+        },
+        "breakpoints": "tablet-up"
+      }
+    },
+    "evidence": [
+      "spec.3.5-scroll-linked",
+      "src.motion.target-progress",
+      "src.hero.text-fade",
+      "src.intro.tilt",
+      "src.send.phones",
+      "src.dark.overlay",
+      "src.overview.drop",
+      "src.payroll.rise",
+      "src.footer.reveal"
+    ],
+    "note": "darkOverlayFade/meetCaptionFade: the spec table header scopes effects to tablet+ 'unless noted'; the clone applies these two at every width and phone was not measured for them (open item)"
+  },
+  "smoothScroll": {
+    "$type": "motion",
+    "$value": {
+      "library": "lenis",
+      "lerp": 0.06,
+      "anchors": true,
+      "minWidth": 810,
+      "disabledUnderReducedMotion": true
+    },
+    "evidence": [
+      "spec.3.9-lenis",
+      "src.motion.smooth-scroll"
+    ]
+  },
+  "sticky": {
+    "$type": "motion",
+    "$value": {
+      "darkTransitionStatementTopPx": 124,
+      "payrollHeadTopPx": 188,
+      "footer": "bottom:0 (tablet+)"
+    },
+    "evidence": [
+      "spec.3.5-scroll-linked"
+    ]
+  }
+}

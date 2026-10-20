@@ -1,0 +1,13 @@
+{
+  "id": "component.handoff",
+  "kind": "component",
+  "description": "Wrapper that drifts the section down 0->240px and fades a black overlay 0->.12 (light) / .6 (inverse) as its bottom moves from viewport bottom to top, while the next section scrolls over it. Phone: no drift. Reduced motion: no drift AND no overlay (qa.05).",
+  "composes": [],
+  "evidence": [
+    "spec.0.8-structure",
+    "spec.3.5-scroll-linked",
+    "src.motion.handoff",
+    "qa.05-handoff-reduced-motion"
+  ],
+  "instantiableInPageSpec": false
+}

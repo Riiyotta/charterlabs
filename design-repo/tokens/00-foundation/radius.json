@@ -1,0 +1,67 @@
+{
+  "radius": {
+    "xs": {
+      "$type": "dimension",
+      "$value": 4,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "unused on home"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": 8,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "unused on home"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": 16,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "FAQ items"
+    },
+    "card": {
+      "$type": "dimension",
+      "$value": 28,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "unused on home"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": 32,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "menu image cards"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": 64,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "slide image boxes, security card, phone payroll cards"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": 999,
+      "evidence": [
+        "spec.0.7-radii-shadows",
+        "src.css.radius-blur"
+      ],
+      "usage": "pills, nav items, dots"
+    }
+  }
+}

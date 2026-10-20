@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+__pycache__/
+.playwright-mcp/
+# packaged from design-repo/ — regenerate, don't commit alongside the live folder
+design-repo.zip

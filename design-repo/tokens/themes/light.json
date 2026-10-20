@@ -1,0 +1,18 @@
+{
+  "theme": "light",
+  "usedBy": "header, hero, intro, logo, send, dark transition",
+  "resolve": {
+    "text.primary": "{color.gray.1000}",
+    "text.secondary": "{color.gray.600}",
+    "text.tertiary": "{color.gray.500}",
+    "text.disabled": "{color.gray.400}",
+    "surface.base": "{color.gray.0}",
+    "surface.raised": "{color.gray.100}",
+    "border.subtle": "{color.alphaBlack.8}",
+    "border.strong": "{color.alphaBlack.20}"
+  },
+  "evidence": [
+    "spec.0.6-colors",
+    "src.css.tones"
+  ]
+}

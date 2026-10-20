@@ -1,0 +1,209 @@
+{
+  "version": "1.0.0",
+  "templates": {
+    "template.home": {
+      "id": "template.home",
+      "name": "Homepage",
+      "routes": [
+        "/"
+      ],
+      "chrome": "full",
+      "composition": "required = header, hero, dark transition, footer (structural: tone handoff + shell). Every other node is optional policy: it may be omitted (warn OPTIONAL_NODE_OMITTED) but never added, repeated or reordered. The only measured composition contains all 12.",
+      "pageBehaviour": {
+        "smoothScroll": "component.smooth-scroll",
+        "mainSurface": "light (#fff) above a sticky inverse footer",
+        "toneHandoffAt": "transition.light-to-dark"
+      },
+      "nodes": [
+        {
+          "section": "chrome.header",
+          "required": true,
+          "repeatable": false,
+          "region": "header",
+          "tone": "light",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "centered-pill-nav"
+          ],
+          "anchorId": null
+        },
+        {
+          "section": "hero.waitlist-hero",
+          "required": true,
+          "repeatable": false,
+          "region": "main",
+          "tone": "light",
+          "handoffObserved": "light",
+          "handoffAllowed": [
+            "light",
+            null
+          ],
+          "allowedVariants": [
+            "centered-device-waitlist"
+          ],
+          "anchorId": "hero-section"
+        },
+        {
+          "section": "features.wallet-intro",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "light",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "text-left-device-right"
+          ],
+          "anchorId": "intro-section"
+        },
+        {
+          "section": "proof.logo-ticker",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "light",
+          "handoffObserved": "light",
+          "handoffAllowed": [
+            "light",
+            null
+          ],
+          "allowedVariants": [
+            "statement-over-ticker"
+          ],
+          "anchorId": "logo-section"
+        },
+        {
+          "section": "features.send-slideshow",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "light",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "mirrored-phones-carousel"
+          ],
+          "anchorId": "send-section"
+        },
+        {
+          "section": "transition.light-to-dark",
+          "required": true,
+          "repeatable": false,
+          "region": "main",
+          "tone": "light",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "sticky-display-statement"
+          ],
+          "anchorId": null
+        },
+        {
+          "section": "features.finances-overview",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "inverse",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "dropping-device-reflection"
+          ],
+          "anchorId": "overview-section"
+        },
+        {
+          "section": "features.earn-collapse",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "inverse",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "collapsing-stage"
+          ],
+          "anchorId": "earn-section"
+        },
+        {
+          "section": "features.payroll-rise",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "inverse",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "rising-photo-stage"
+          ],
+          "anchorId": "payroll-section"
+        },
+        {
+          "section": "features.security-ascii",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "inverse",
+          "handoffObserved": "inverse",
+          "handoffAllowed": [
+            "inverse",
+            null
+          ],
+          "allowedVariants": [
+            "ascii-card-definition-list"
+          ],
+          "anchorId": "security-section"
+        },
+        {
+          "section": "support.faq-accordion",
+          "required": false,
+          "repeatable": false,
+          "region": "main",
+          "tone": "inverse",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "heading-left-accordion"
+          ],
+          "anchorId": "faq-section"
+        },
+        {
+          "section": "chrome.footer",
+          "required": true,
+          "repeatable": false,
+          "region": "footer",
+          "tone": "inverse",
+          "handoffObserved": null,
+          "handoffAllowed": [
+            null
+          ],
+          "allowedVariants": [
+            "sticky-reveal-columns"
+          ],
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "spec.0.8-structure",
+        "src.app.composition",
+        "ia.template-home"
+      ]
+    }
+  }
+}

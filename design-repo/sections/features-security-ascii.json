@@ -1,0 +1,175 @@
+{
+  "id": "features.security-ascii",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "Reassure on security: portrait card switching to an ASCII render with a statement, then three term/description rows.",
+  "implementedBy": "src/components/Security.jsx",
+  "region": "main",
+  "anchorId": "security-section",
+  "tone": "inverse",
+  "variants": [
+    "ascii-card-definition-list"
+  ],
+  "handoff": {
+    "observed": "inverse",
+    "allowed": [
+      "inverse",
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "eyebrow": {
+      "type": "text",
+      "maxChars": 27,
+      "maxWords": 5,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.security-ascii.eyebrow"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 22,
+      "maxWords": 3,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.security-ascii.heading"
+      ]
+    },
+    "statementLines": {
+      "type": "lines",
+      "count": 2,
+      "maxCharsPerLine": 12,
+      "maxWordsPerLine": 2,
+      "note": "explicit <br> line breaks in the source",
+      "evidence": [
+        "copy.features.security-ascii.statementLine"
+      ]
+    },
+    "rows": {
+      "type": "list",
+      "item": {
+        "term": {
+          "type": "text",
+          "maxChars": 21,
+          "maxWords": 3,
+          "maxLines": null,
+          "linesNote": "not measured; render-check",
+          "evidence": [
+            "copy.features.security-ascii.term"
+          ]
+        },
+        "description": {
+          "type": "text",
+          "maxChars": 198,
+          "maxWords": 35,
+          "maxLines": null,
+          "linesNote": "not measured; render-check",
+          "evidence": [
+            "copy.features.security-ascii.description"
+          ]
+        }
+      },
+      "count": 3,
+      "evidence": [
+        "spec.2.9-security"
+      ]
+    },
+    "portrait": {
+      "type": "media",
+      "roles": [
+        "photo.portrait"
+      ],
+      "alt": {
+        "maxChars": 40,
+        "maxWords": 7,
+        "evidence": [
+          "copy.features.security-ascii.portraitAlt"
+        ]
+      },
+      "aspect": "1128x788 fill in 1144x600 card",
+      "evidence": [
+        "spec.2.9-security"
+      ]
+    },
+    "portraitAscii": {
+      "type": "media",
+      "roles": [
+        "photo.portrait-ascii"
+      ],
+      "alt": "decorative",
+      "aspect": "1128x788",
+      "evidence": [
+        "spec.2.9-security"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "eyebrow",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "heading",
+        "delay": 0.2,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "toggles": [
+      {
+        "effect": "securityCard",
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        },
+        "settle": "spring",
+        "switchAtPx": 0
+      }
+    ],
+    "reducedMotionFallback": "text-shown-toggle-instant-handoff-static"
+  },
+  "motionEvidence": [
+    "spec.2.9-security",
+    "spec.3.6-toggles",
+    "qa.05-handoff-reduced-motion"
+  ],
+  "responsive": {
+    "phone": [
+      "card 350x600, dt/dd stacked"
+    ],
+    "tablet": [
+      "dt col 3 / dd col 5"
+    ],
+    "desktop": [
+      "card span-wide, dl span-main"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "component.handoff",
+    "component.definition-row",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.9-security",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

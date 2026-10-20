@@ -1,0 +1,15 @@
+{
+  "id": "primitive.dot-indicator",
+  "kind": "primitive",
+  "description": "Slideshow dots: pill track alpha-black-20, 10px white dots, active 1 / inactive .5, opacity .3s standard; click scrollTo(i).",
+  "props": {
+    "count": "5",
+    "active": "index"
+  },
+  "reducedMotion": "n/a",
+  "evidence": [
+    "spec.2.4-send",
+    "spec.3.8-slideshow"
+  ],
+  "instantiableInPageSpec": false
+}

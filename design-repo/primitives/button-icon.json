@@ -1,0 +1,15 @@
+{
+  "id": "primitive.button-icon",
+  "kind": "primitive",
+  "description": "Round icon button: waitlist submit 44px (#000/#fff, hover opacity .8 .2s standard) and phone slideshow arrows 40px (alpha-black-20).",
+  "props": {
+    "size": "44 | 40",
+    "icon": "arrow | chevron"
+  },
+  "reducedMotion": "n/a",
+  "evidence": [
+    "spec.2.1.1-waitlist",
+    "spec.2.4-send"
+  ],
+  "instantiableInPageSpec": false
+}

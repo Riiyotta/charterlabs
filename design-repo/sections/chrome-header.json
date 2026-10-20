@@ -1,0 +1,356 @@
+{
+  "id": "chrome.header",
+  "kind": "section",
+  "category": "CHROME",
+  "purpose": "Frame the page: centred pill nav with three hover mega-menus and a contact link; phone gets a burger and a tabbed sheet. Absolute, not sticky.",
+  "implementedBy": "src/components/Header.jsx",
+  "region": "header",
+  "anchorId": null,
+  "tone": "light",
+  "variants": [
+    "centered-pill-nav"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirst": true,
+    "position": "absolute, scrolls away (not sticky)"
+  },
+  "content": {
+    "brandMark": {
+      "type": "media",
+      "roles": [
+        "brand.mark"
+      ],
+      "alt": {
+        "maxChars": 12,
+        "maxWords": 2,
+        "evidence": [
+          "copy.chrome.header.homeLabel"
+        ]
+      },
+      "aspect": "22x22 in a 38x38 pill link",
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "menuPrimary": {
+      "type": "object",
+      "fields": {
+        "label": {
+          "type": "text",
+          "maxChars": 8,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.chrome.header.menuLabel"
+          ]
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "link",
+            "label": {
+              "maxChars": 11,
+              "maxWords": 2
+            },
+            "hrefKinds": [
+              "internal-anchor",
+              "project-route"
+            ],
+            "evidence": [
+              "copy.chrome.header.menuLinkLabel"
+            ]
+          },
+          "count": 4,
+          "evidence": [
+            "src.header.menus"
+          ]
+        },
+        "media": {
+          "type": "list",
+          "item": {
+            "image": {
+              "type": "media",
+              "roles": [
+                "nav.card-image"
+              ],
+              "alt": {
+                "maxChars": 52,
+                "maxWords": 9,
+                "evidence": [
+                  "copy.chrome.header.menuMediaAlt"
+                ]
+              },
+              "aspect": "fill h-250 (object-cover)",
+              "evidence": [
+                "src.header.menus"
+              ]
+            }
+          },
+          "count": 2,
+          "evidence": [
+            "src.header.menus"
+          ]
+        }
+      },
+      "evidence": [
+        "src.header.menus"
+      ]
+    },
+    "menuSecondary": {
+      "type": "object",
+      "fields": {
+        "label": {
+          "type": "text",
+          "maxChars": 8,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.chrome.header.menuLabel"
+          ]
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "link",
+            "label": {
+              "maxChars": 11,
+              "maxWords": 2
+            },
+            "hrefKinds": [
+              "internal-anchor",
+              "project-route"
+            ],
+            "evidence": [
+              "copy.chrome.header.menuLinkLabel"
+            ]
+          },
+          "count": 3,
+          "evidence": [
+            "src.header.menus"
+          ]
+        },
+        "media": {
+          "type": "list",
+          "item": {
+            "image": {
+              "type": "media",
+              "roles": [
+                "nav.card-image"
+              ],
+              "alt": {
+                "maxChars": 52,
+                "maxWords": 9,
+                "evidence": [
+                  "copy.chrome.header.menuMediaAlt"
+                ]
+              },
+              "aspect": "fill h-250 (object-cover)",
+              "evidence": [
+                "src.header.menus"
+              ]
+            }
+          },
+          "count": 2,
+          "evidence": [
+            "src.header.menus"
+          ]
+        }
+      },
+      "evidence": [
+        "src.header.menus"
+      ]
+    },
+    "menuCompany": {
+      "type": "object",
+      "fields": {
+        "label": {
+          "type": "text",
+          "maxChars": 8,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.chrome.header.menuLabel"
+          ]
+        },
+        "socialLinks": {
+          "type": "list",
+          "item": {
+            "platform": {
+              "type": "enum",
+              "values": [
+                "x",
+                "linkedin"
+              ],
+              "evidence": [
+                "src.header.menus"
+              ]
+            },
+            "link": {
+              "type": "link",
+              "label": {
+                "maxChars": 11,
+                "maxWords": 2
+              },
+              "hrefKinds": [
+                "external-social"
+              ],
+              "evidence": [
+                "copy.chrome.header.menuLinkLabel"
+              ]
+            }
+          },
+          "count": 2,
+          "evidence": [
+            "src.header.menus"
+          ]
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "link",
+            "label": {
+              "maxChars": 11,
+              "maxWords": 2
+            },
+            "hrefKinds": [
+              "internal-anchor",
+              "project-route"
+            ],
+            "evidence": [
+              "copy.chrome.header.menuLinkLabel"
+            ]
+          },
+          "count": 1,
+          "evidence": [
+            "src.header.menus"
+          ]
+        },
+        "ring": {
+          "type": "media",
+          "roles": [
+            "nav.ring"
+          ],
+          "alt": "decorative",
+          "aspect": "164x164 with 44px reflection",
+          "evidence": [
+            "spec.1.1-nav-desktop"
+          ]
+        }
+      },
+      "evidence": [
+        "src.header.menus"
+      ]
+    },
+    "contactLink": {
+      "type": "link",
+      "label": {
+        "maxChars": 7,
+        "maxWords": 1
+      },
+      "hrefKinds": [
+        "project-route"
+      ],
+      "evidence": [
+        "copy.chrome.header.contactLabel"
+      ]
+    }
+  },
+  "motion": {
+    "navDrop": {
+      "delayFromNavStartS": 1.77,
+      "durationS": 1,
+      "curve": "cubic-bezier(.16,1,.3,1)",
+      "fromYPx": -100
+    },
+    "navMenu": {
+      "panelDurationS": 0.45,
+      "panelEase": "cubic-bezier(.32,.72,0,1)",
+      "overlayDurationS": 0.3,
+      "linkStaggerS": 0.04,
+      "linkDelayChildrenS": 0.05,
+      "linkDurationS": 0.4,
+      "linkFromYPx": 16,
+      "openDelayS": 0.06,
+      "closeDelayS": 0.14,
+      "closeOnScrollPx": 48,
+      "highlightOpacityS": 0.2
+    },
+    "toggles": [
+      {
+        "effect": "navGlide",
+        "spring": {
+          "stiffness": 400,
+          "damping": 36,
+          "mass": 1
+        },
+        "settle": "snap-after-first-frame",
+        "switchAtPx": null
+      },
+      {
+        "effect": "tabGlide",
+        "spring": {
+          "stiffness": 400,
+          "damping": 36,
+          "mass": 1
+        },
+        "settle": "snap-after-first-frame",
+        "switchAtPx": null
+      },
+      {
+        "effect": "burgerMorph",
+        "spring": {
+          "stiffness": 400,
+          "damping": 36,
+          "mass": 1
+        },
+        "settle": "spring",
+        "switchAtPx": null
+      }
+    ],
+    "reducedMotionFallback": "no-nav-drop"
+  },
+  "motionEvidence": [
+    "spec.1.1-nav-desktop",
+    "src.header.tokens",
+    "qa.02-nav-glide-snaps",
+    "qa.04-nav-drop-1.77s"
+  ],
+  "responsive": {
+    "phone": [
+      "logo + burger bar (38px buttons)",
+      "tabbed sheet, h4 links, one image card per tab, html overflow hidden while open"
+    ],
+    "tablet": [
+      "centred pill row",
+      "mega menu: second image card hidden <1200"
+    ],
+    "desktop": [
+      "mega menu 2 image cards (or ring card)"
+    ]
+  },
+  "composes": [
+    "primitive.link-text",
+    "primitive.icon",
+    "component.glide-highlight",
+    "component.nav-menu-panel",
+    "component.mirror",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.1.1-nav-desktop",
+    "spec.1.2-nav-phone",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

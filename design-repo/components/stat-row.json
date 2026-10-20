@@ -1,0 +1,10 @@
+{
+  "id": "component.stat-row",
+  "kind": "component",
+  "description": "Payroll stat list: 3 items (title + label); row of 130px items tablet+, stacked with label above title on phone.",
+  "composes": [],
+  "evidence": [
+    "spec.2.8-payroll"
+  ],
+  "instantiableInPageSpec": false
+}

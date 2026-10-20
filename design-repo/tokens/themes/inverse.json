@@ -1,0 +1,18 @@
+{
+  "theme": "inverse",
+  "usedBy": "overview, earn, payroll, security, faq, footer",
+  "resolve": {
+    "text.primary": "{color.gray.0}",
+    "text.secondary": "{color.alphaWhite.60}",
+    "text.tertiary": "{color.alphaWhite.40}",
+    "text.disabled": "{color.alphaWhite.20}",
+    "surface.base": "{color.gray.1000}",
+    "surface.raised": "{color.gray.900}",
+    "border.subtle": "{color.alphaWhite.8}",
+    "border.strong": "{color.alphaWhite.20}"
+  },
+  "evidence": [
+    "spec.0.6-colors",
+    "src.css.tones"
+  ]
+}

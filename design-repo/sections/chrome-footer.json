@@ -1,0 +1,140 @@
+{
+  "id": "chrome.footer",
+  "kind": "section",
+  "category": "CHROME",
+  "purpose": "Close the page: wordmark, legal line and four link columns, revealed as main scrolls off a sticky footer.",
+  "implementedBy": "src/components/Footer.jsx",
+  "region": "footer",
+  "anchorId": null,
+  "tone": "inverse",
+  "variants": [
+    "sticky-reveal-columns"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "mustBeLast": true,
+    "sticky": "bottom 0 at >=810"
+  },
+  "content": {
+    "wordmark": {
+      "type": "media",
+      "roles": [
+        "brand.wordmark"
+      ],
+      "alt": {
+        "maxChars": 12,
+        "maxWords": 2,
+        "evidence": [
+          "copy.chrome.footer.homeLabel"
+        ]
+      },
+      "aspect": "h 20 (107.77x20 source)",
+      "evidence": [
+        "spec.2.11-footer"
+      ]
+    },
+    "columns": {
+      "type": "list",
+      "item": {
+        "title": {
+          "type": "text",
+          "maxChars": 8,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.chrome.footer.columnTitle"
+          ]
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "link",
+            "label": {
+              "maxChars": 14,
+              "maxWords": 3
+            },
+            "hrefKinds": [
+              "internal-anchor",
+              "project-route",
+              "external-social"
+            ],
+            "evidence": [
+              "copy.chrome.footer.linkLabel"
+            ]
+          },
+          "count": null,
+          "evidence": [
+            "src.footer.columns"
+          ],
+          "countByParentIndex": [
+            4,
+            3,
+            3,
+            2
+          ]
+        }
+      },
+      "count": 4,
+      "evidence": [
+        "src.footer.columns"
+      ]
+    },
+    "legalLine": {
+      "type": "text",
+      "maxChars": 45,
+      "maxWords": 8,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.chrome.footer.legalLine"
+      ]
+    }
+  },
+  "motion": {
+    "scrollLinked": [
+      {
+        "effect": "footerReveal",
+        "source": "document end",
+        "offset": "startAt:1.35,endAt:0.1",
+        "breakpoints": "tablet-up"
+      }
+    ],
+    "reducedMotionFallback": "footer-reveal-static"
+  },
+  "motionEvidence": [
+    "spec.2.11-footer",
+    "spec.3.5-scroll-linked"
+  ],
+  "responsive": {
+    "phone": [
+      "not sticky, no reveal",
+      "2x2 link grid, copyright at bottom, padding 96/20"
+    ],
+    "tablet": [
+      "sticky, py 128, copyright below grid"
+    ],
+    "desktop": [
+      "py 192, columns at x 496/728/960/1192 (rest, scale 1)",
+      "copyright in left column"
+    ]
+  },
+  "composes": [
+    "primitive.link-text",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.11-footer",
+    "qa.07-footer-rest-layout",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

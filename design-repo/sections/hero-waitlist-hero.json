@@ -1,0 +1,233 @@
+{
+  "id": "hero.waitlist-hero",
+  "kind": "section",
+  "category": "HERO",
+  "purpose": "Open the page with one product promise and capture waitlist emails.",
+  "implementedBy": "src/components/Hero.jsx",
+  "region": "main",
+  "anchorId": "hero-section",
+  "tone": "light",
+  "variants": [
+    "centered-device-waitlist"
+  ],
+  "handoff": {
+    "observed": "light",
+    "allowed": [
+      "light",
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirstInMain": true
+  },
+  "content": {
+    "heading": {
+      "type": "text",
+      "maxChars": 36,
+      "maxWords": 7,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.hero.waitlist-hero.heading"
+      ]
+    },
+    "body": {
+      "type": "text",
+      "maxChars": 72,
+      "maxWords": 10,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.hero.waitlist-hero.body"
+      ]
+    },
+    "device": {
+      "type": "media",
+      "roles": [
+        "device.screen"
+      ],
+      "alt": {
+        "maxChars": 39,
+        "maxWords": 6,
+        "evidence": [
+          "copy.hero.waitlist-hero.deviceAlt"
+        ]
+      },
+      "aspect": "0.77 box rotated 19deg, 460 wide (380 phone), masked",
+      "evidence": [
+        "spec.2.1-hero",
+        "assets.1-public-images"
+      ]
+    },
+    "waitlist": {
+      "type": "object",
+      "fields": {
+        "ctaLabel": {
+          "type": "text",
+          "maxChars": 13,
+          "maxWords": 2,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.hero.waitlist-hero.ctaLabel"
+          ]
+        },
+        "inputPlaceholder": {
+          "type": "text",
+          "maxChars": 5,
+          "maxWords": 1,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.hero.waitlist-hero.inputPlaceholder"
+          ]
+        },
+        "successMessage": {
+          "type": "text",
+          "maxChars": 9,
+          "maxWords": 2,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.hero.waitlist-hero.successMessage"
+          ]
+        },
+        "errorMessage": {
+          "type": "text",
+          "maxChars": 20,
+          "maxWords": 3,
+          "maxLines": 1,
+          "linesNote": "measured at 1440x900",
+          "evidence": [
+            "copy.hero.waitlist-hero.errorMessage"
+          ]
+        }
+      },
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "heading",
+        "delay": 1,
+        "amount": 0.5,
+        "trigger": "inView",
+        "clock": "navigationStart",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "body",
+        "delay": 1.2,
+        "amount": 0.5,
+        "trigger": "inView",
+        "clock": "navigationStart",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "appear": [
+      {
+        "target": "device",
+        "trigger": "mount",
+        "observe": "self",
+        "from": {
+          "opacity": 0,
+          "x": -150,
+          "y": 300,
+          "rotateX": 0
+        },
+        "spring": {
+          "duration": 2,
+          "bounce": 0
+        },
+        "delay": 0.5,
+        "amount": null,
+        "clock": "navigationStart",
+        "mirrorX": false,
+        "breakpoints": "all"
+      },
+      {
+        "target": "waitlist",
+        "trigger": "mount",
+        "observe": "self",
+        "from": {
+          "opacity": 0,
+          "x": 0,
+          "y": 100,
+          "rotateX": 50
+        },
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        },
+        "delay": 1.3,
+        "amount": null,
+        "clock": "navigationStart",
+        "mirrorX": false,
+        "breakpoints": "all"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "heroTextFade",
+        "source": "hero image wrapper",
+        "offset": "start start,end start",
+        "breakpoints": "tablet-up"
+      }
+    ],
+    "toggles": [
+      {
+        "effect": "waitlistOpen",
+        "spring": {
+          "stiffness": 80,
+          "damping": 20,
+          "mass": 1
+        },
+        "settle": "spring",
+        "switchAtPx": null
+      }
+    ],
+    "reducedMotionFallback": "text-shown-appear-at-rest-handoff-static"
+  },
+  "motionEvidence": [
+    "spec.3.4-load",
+    "qa.03-hero-reveal-in-view",
+    "spec.3.5-scroll-linked",
+    "spec.2.1.1-waitlist"
+  ],
+  "responsive": {
+    "phone": [
+      "pt 0",
+      "device 380 wide",
+      "text start-aligned, scroll fade disabled (opacity 1)",
+      "waitlist always open full width"
+    ],
+    "tablet": [
+      "pt 128, centred text",
+      "device 460 wide"
+    ],
+    "desktop": [
+      "h1 64px span-text, body span-narrow"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "primitive.appear",
+    "component.waitlist-pill",
+    "component.handoff",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.1-hero",
+    "spec.2.1.1-waitlist",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

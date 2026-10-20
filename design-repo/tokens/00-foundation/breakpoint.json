@@ -1,0 +1,63 @@
+{
+  "breakpoint": {
+    "phone": {
+      "$type": "breakpoint",
+      "$value": {
+        "maxWidth": 809.98,
+        "columns": 4,
+        "gutterX": 20,
+        "columnGap": 16,
+        "sectionY": 96
+      },
+      "evidence": [
+        "spec.0.1-breakpoints",
+        "src.tailwind.screens"
+      ]
+    },
+    "tablet": {
+      "$type": "breakpoint",
+      "$value": {
+        "minWidth": 810,
+        "columns": 8,
+        "gutterX": 40,
+        "columnGap": 16,
+        "sectionY": 112
+      },
+      "evidence": [
+        "spec.0.1-breakpoints",
+        "src.tailwind.screens"
+      ],
+      "measured": false,
+      "note": "from CSS only; tablet range not loaded (CLONE_SPEC §5)"
+    },
+    "desktop": {
+      "$type": "breakpoint",
+      "$value": {
+        "minWidth": 1200,
+        "columns": 12,
+        "gutterX": 32,
+        "columnGap": 16,
+        "sectionY": 128
+      },
+      "evidence": [
+        "spec.0.1-breakpoints",
+        "src.tailwind.screens"
+      ]
+    },
+    "wide": {
+      "$type": "breakpoint",
+      "$value": {
+        "minWidth": 1920,
+        "columns": 12,
+        "gutterX": 32,
+        "columnGap": 16,
+        "sectionY": 128
+      },
+      "evidence": [
+        "spec.0.1-breakpoints",
+        "src.tailwind.screens"
+      ],
+      "usage": "payroll blur mask only"
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "id": "features.earn-collapse",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "Explain a yield feature: a photo between two phones collapses into an explanatory paragraph once scrolled 96px.",
+  "implementedBy": "src/components/Earn.jsx",
+  "region": "main",
+  "anchorId": "earn-section",
+  "tone": "inverse",
+  "variants": [
+    "collapsing-stage"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "eyebrow": {
+      "type": "text",
+      "maxChars": 30,
+      "maxWords": 6,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.earn-collapse.eyebrow"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 32,
+      "maxWords": 7,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.earn-collapse.heading"
+      ]
+    },
+    "body": {
+      "type": "text",
+      "maxChars": 138,
+      "maxWords": 26,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.earn-collapse.body"
+      ]
+    },
+    "backdrop": {
+      "type": "media",
+      "roles": [
+        "texture.backdrop"
+      ],
+      "alt": "decorative",
+      "aspect": "fill/cover 360x568 panels",
+      "evidence": [
+        "spec.2.7-earn"
+      ]
+    },
+    "devices": {
+      "type": "list",
+      "item": {
+        "device": {
+          "type": "media",
+          "roles": [
+            "device.screen"
+          ],
+          "alt": {
+            "maxChars": 65,
+            "maxWords": 11,
+            "evidence": [
+              "copy.features.earn-collapse.deviceAlt"
+            ]
+          },
+          "aspect": "796/2048, max-w 260",
+          "evidence": [
+            "spec.2.7-earn"
+          ]
+        }
+      },
+      "count": 2,
+      "evidence": [
+        "spec.2.7-earn"
+      ]
+    },
+    "photo": {
+      "type": "media",
+      "roles": [
+        "photo.lifestyle"
+      ],
+      "alt": {
+        "maxChars": 55,
+        "maxWords": 12,
+        "evidence": [
+          "copy.features.earn-collapse.photoAlt"
+        ]
+      },
+      "aspect": "720x598 centre (1920x1280 source)",
+      "evidence": [
+        "spec.2.7-earn"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "eyebrow",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "heading",
+        "delay": 0.2,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "earnPhoneDrift",
+        "source": "scrollY",
+        "offset": "raw",
+        "breakpoints": "all"
+      }
+    ],
+    "toggles": [
+      {
+        "effect": "earnStage",
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        },
+        "settle": "spring",
+        "switchAtPx": 96
+      }
+    ],
+    "reducedMotionFallback": "text-shown-toggle-instant"
+  },
+  "motionEvidence": [
+    "spec.2.7-earn",
+    "spec.3.6-toggles",
+    "spec.3.5-scroll-linked"
+  ],
+  "responsive": {
+    "phone": [
+      "static two-cell row 600 tall, no photo, no switch, paragraph always visible"
+    ],
+    "tablet": [
+      "stage 598 row, toggle at -96"
+    ],
+    "desktop": [
+      "panels 360x568, photo 720x598"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "component.mirror",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.7-earn",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}

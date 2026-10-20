@@ -1,0 +1,13 @@
+{
+  "id": "primitive.input-email",
+  "kind": "primitive",
+  "description": "Pill email input: type-body2, placeholder gray-400, focus inset 1px tone.text.primary ring, invalid inset ring status.error.",
+  "props": {
+    "placeholder": "budgeted text"
+  },
+  "reducedMotion": "n/a",
+  "evidence": [
+    "spec.2.1.1-waitlist"
+  ],
+  "instantiableInPageSpec": false
+}

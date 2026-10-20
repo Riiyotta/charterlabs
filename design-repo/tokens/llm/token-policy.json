@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "rawValueRestrictions": {
+    "breakpoint": "reference-only: never emit a raw value not present in this category",
+    "color": "reference-only: never emit a raw value not present in this category",
+    "shadow": "reference-only: never emit a raw value not present in this category",
+    "blur": "reference-only: never emit a raw value not present in this category",
+    "zIndex": "reference-only: never emit a raw value not present in this category",
+    "gradient": "reference-only: never emit a raw value not present in this category",
+    "easing": "reference-only: never emit a raw value not present in this category",
+    "reveal": "reference-only: never emit a raw value not present in this category",
+    "appear": "reference-only: never emit a raw value not present in this category",
+    "handoff": "reference-only: never emit a raw value not present in this category",
+    "navDrop": "reference-only: never emit a raw value not present in this category",
+    "nav": "reference-only: never emit a raw value not present in this category",
+    "waitlist": "reference-only: never emit a raw value not present in this category",
+    "ticker": "reference-only: never emit a raw value not present in this category",
+    "slideshow": "reference-only: never emit a raw value not present in this category",
+    "toggles": "reference-only: never emit a raw value not present in this category",
+    "scrollLinked": "reference-only: never emit a raw value not present in this category",
+    "smoothScroll": "reference-only: never emit a raw value not present in this category",
+    "sticky": "reference-only: never emit a raw value not present in this category",
+    "radius": "reference-only: never emit a raw value not present in this category",
+    "spacing": "reference-only: never emit a raw value not present in this category",
+    "fontFamily": "reference-only: never emit a raw value not present in this category",
+    "fontFeatures": "reference-only: never emit a raw value not present in this category",
+    "fontWeight": "reference-only: never emit a raw value not present in this category",
+    "textWrap": "reference-only: never emit a raw value not present in this category",
+    "typeStyle": "reference-only: never emit a raw value not present in this category"
+  },
+  "overrides": {
+    "pageSpecField": null,
+    "note": "PageSpecs carry NO per-instance style/token-override field (MASTER-GUIDE 3.21). Styling is owned by section/component contracts; there is nothing to override."
+  },
+  "resolutionOrder": [
+    "foundation",
+    "theme (light|inverse via data-tone)",
+    "semantic tone roles",
+    "component tokens"
+  ]
+}

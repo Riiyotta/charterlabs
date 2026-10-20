@@ -1,0 +1,236 @@
+{
+  "$description": "Component-scoped tokens (approved applications of foundation tokens).",
+  "mirror": {
+    "height": {
+      "$type": "dimension",
+      "$value": {
+        "sm": 120,
+        "md": 200,
+        "lg": 260,
+        "xl": 300
+      },
+      "evidence": [
+        "spec.2.0-mirror",
+        "src.css.mirror-vars"
+      ]
+    },
+    "floor": {
+      "$type": "dimension",
+      "$value": {
+        "widthPercent": 110,
+        "aspectRatio": 12,
+        "risePx": 56
+      },
+      "evidence": [
+        "spec.2.0-mirror"
+      ]
+    }
+  },
+  "waitlist": {
+    "heightPx": {
+      "$type": "dimension",
+      "$value": 50,
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    },
+    "submitSizePx": {
+      "$type": "dimension",
+      "$value": 44,
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    },
+    "fill": {
+      "$type": "color",
+      "$value": "{tone.text.primary}",
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{tone.surface.base}",
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": "{color.gray.400}",
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    },
+    "error": {
+      "$type": "color",
+      "$value": "{color.status.error}",
+      "evidence": [
+        "spec.2.1.1-waitlist"
+      ]
+    }
+  },
+  "nav": {
+    "heightPx": {
+      "$type": "dimension",
+      "$value": 54,
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "itemHeightPx": {
+      "$type": "dimension",
+      "$value": 36,
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": "{color.alphaBlack.4}",
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "overlay": {
+      "$type": "color",
+      "$value": "{color.alphaBlack.20}",
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "menuCardHeightPx": {
+      "$type": "dimension",
+      "$value": 250,
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    },
+    "menuCardRadius": {
+      "$type": "dimension",
+      "$value": "{radius.lg}",
+      "evidence": [
+        "spec.1.1-nav-desktop"
+      ]
+    }
+  },
+  "slideshow": {
+    "heightPx": {
+      "$type": "dimension",
+      "$value": 700,
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "imageBoxHeightPx": {
+      "$type": "dimension",
+      "$value": 500,
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "imageBoxRadius": {
+      "$type": "dimension",
+      "$value": "{radius.xl}",
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "imageBoxBg": {
+      "$type": "color",
+      "$value": "{color.gray.50}",
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "tiltDeg": {
+      "$type": "angle",
+      "$value": 22.5,
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    },
+    "dots": {
+      "$type": "composite",
+      "$value": {
+        "bg": "{color.alphaBlack.20}",
+        "dotSizePx": 10,
+        "activeOpacity": 1,
+        "inactiveOpacity": 0.5
+      },
+      "evidence": [
+        "spec.2.4-send"
+      ]
+    }
+  },
+  "faq": {
+    "itemRadius": {
+      "$type": "dimension",
+      "$value": "{radius.md}",
+      "evidence": [
+        "spec.2.10-faq"
+      ]
+    },
+    "questionColor": {
+      "$type": "color",
+      "$value": "{color.alphaWhite.80}",
+      "evidence": [
+        "spec.2.10-faq"
+      ]
+    },
+    "closedHeightPx": {
+      "$type": "dimension",
+      "$value": {
+        "desktop": 68.8,
+        "phone": 64
+      },
+      "evidence": [
+        "spec.2.10-faq"
+      ]
+    }
+  },
+  "card": {
+    "securityHeightPx": {
+      "$type": "dimension",
+      "$value": 600,
+      "evidence": [
+        "spec.2.9-security"
+      ]
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.xl}",
+      "evidence": [
+        "spec.2.9-security"
+      ]
+    },
+    "hairline": {
+      "$type": "border",
+      "$value": "3px solid {color.alphaWhite.12}",
+      "evidence": [
+        "spec.2.9-security",
+        "spec.2.8-payroll"
+      ]
+    }
+  },
+  "footer": {
+    "bg": {
+      "$type": "color",
+      "$value": "{tone.surface.raised}",
+      "evidence": [
+        "spec.2.11-footer"
+      ]
+    },
+    "paddingY": {
+      "$type": "dimension",
+      "$value": {
+        "desktop": 192,
+        "tablet": 128,
+        "phone": 96
+      },
+      "evidence": [
+        "spec.2.11-footer"
+      ]
+    }
+  }
+}

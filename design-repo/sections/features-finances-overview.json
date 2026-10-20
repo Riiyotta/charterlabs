@@ -1,0 +1,169 @@
+{
+  "id": "features.finances-overview",
+  "kind": "section",
+  "category": "FEATURES",
+  "purpose": "First inverse block: a caption fades as an overview screen drops in, then one heading and one lead line.",
+  "implementedBy": "src/components/Overview.jsx",
+  "region": "main",
+  "anchorId": "overview-section",
+  "tone": "inverse",
+  "variants": [
+    "dropping-device-reflection"
+  ],
+  "handoff": {
+    "observed": null,
+    "allowed": [
+      null
+    ]
+  },
+  "constraints": {
+    "onePerPage": true,
+    "mustFollow": "transition.light-to-dark"
+  },
+  "content": {
+    "kicker": {
+      "type": "text",
+      "maxChars": 17,
+      "maxWords": 3,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.finances-overview.kicker"
+      ]
+    },
+    "heading": {
+      "type": "text",
+      "maxChars": 32,
+      "maxWords": 7,
+      "maxLines": 1,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.finances-overview.heading"
+      ]
+    },
+    "body": {
+      "type": "text",
+      "maxChars": 78,
+      "maxWords": 13,
+      "maxLines": 2,
+      "linesNote": "measured at 1440x900",
+      "evidence": [
+        "copy.features.finances-overview.body"
+      ]
+    },
+    "device": {
+      "type": "media",
+      "roles": [
+        "device.screen"
+      ],
+      "alt": {
+        "maxChars": 45,
+        "maxWords": 7,
+        "evidence": [
+          "copy.features.finances-overview.deviceAlt"
+        ]
+      },
+      "aspect": "1138x1536, max-w 560",
+      "evidence": [
+        "spec.2.6-overview"
+      ]
+    },
+    "deviceReflection": {
+      "type": "media",
+      "roles": [
+        "device.screen-reflection"
+      ],
+      "alt": "decorative",
+      "aspect": "901x1214 at opacity .7",
+      "evidence": [
+        "spec.2.6-overview"
+      ]
+    }
+  },
+  "motion": {
+    "reveal": [
+      {
+        "slot": "heading",
+        "delay": 0,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      },
+      {
+        "slot": "body",
+        "delay": 0.1,
+        "amount": 0,
+        "trigger": "inView",
+        "clock": "trigger",
+        "stagger": 0.06,
+        "curve": "cubic-bezier(.16,1,.3,1)"
+      }
+    ],
+    "appear": [
+      {
+        "target": "device",
+        "trigger": "midline",
+        "observe": "section",
+        "from": {
+          "opacity": 0,
+          "y": -450
+        },
+        "spring": {
+          "duration": 1,
+          "bounce": 0
+        },
+        "delay": 0,
+        "amount": null,
+        "clock": "trigger",
+        "mirrorX": false,
+        "breakpoints": "phone"
+      }
+    ],
+    "scrollLinked": [
+      {
+        "effect": "meetCaptionFade",
+        "source": "#overview-dark-trigger",
+        "offset": "line:start",
+        "breakpoints": "all"
+      },
+      {
+        "effect": "overviewDeviceDrop",
+        "source": "#overview-screen-trigger",
+        "offset": "line:start",
+        "breakpoints": "tablet-up"
+      }
+    ],
+    "reducedMotionFallback": "text-shown-phone-appear-at-rest"
+  },
+  "motionEvidence": [
+    "spec.2.6-overview",
+    "spec.3.4-load",
+    "spec.3.5-scroll-linked"
+  ],
+  "responsive": {
+    "phone": [
+      "one-shot appear, upper height auto"
+    ],
+    "tablet": [
+      "upper 640, scroll drop"
+    ],
+    "desktop": [
+      "h2 1 line at 1440 (2 at 1280)"
+    ]
+  },
+  "composes": [
+    "primitive.reveal-text",
+    "primitive.appear",
+    "component.mirror",
+    "primitive.media-image"
+  ],
+  "evidence": [
+    "spec.2.6-overview",
+    "spec.4-responsive",
+    "src.app.composition",
+    "ia.template-home"
+  ],
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+}
