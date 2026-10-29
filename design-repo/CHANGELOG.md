@@ -42,7 +42,7 @@ Baseline audit before: 7 pass / 14 fail. After: all pass (see README for the com
   (non-SaaS, evidence recorded), `designPolicy.contentHash` checked by `verify_all`.
   Agent attestation, not a human sign-off.
 - Adversarial suite: 9 controls, 85 mutations, 11 wrapper-gate cases. `prove_drift.py`:
-  42 injected defects. 26 `verify_all` checks.
+  41 injected defects. 26 `verify_all` checks.
 - Honest limits: detection is string-based (paraphrase not caught); nobody reviewed
   the pinned patterns by hand; visual parity was not measured; heights only at 1440.
 
