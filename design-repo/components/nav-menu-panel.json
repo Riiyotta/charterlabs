@@ -11,5 +11,7 @@
     "spec.1.1-nav-desktop",
     "src.header.tokens"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": false,
+  "retrievalIneligibleReason": "Runtime overlay UI: the mega-menu drawer/panel and its page overlay only exist while a menu is open; it is navigation chrome, not page content to retrieve."
 }

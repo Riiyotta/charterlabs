@@ -9,5 +9,6 @@
     "spec.2.0-mirror",
     "src.motion.mirror"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

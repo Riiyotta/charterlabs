@@ -10,5 +10,6 @@
     "spec.3.7-ticker",
     "qa.01-ticker-no-hover-slowdown"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

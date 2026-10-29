@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "rawValueRestrictions": {
     "breakpoint": "reference-only: never emit a raw value not present in this category",
     "color": "reference-only: never emit a raw value not present in this category",
@@ -29,13 +29,60 @@
     "typeStyle": "reference-only: never emit a raw value not present in this category"
   },
   "overrides": {
-    "pageSpecField": null,
-    "note": "PageSpecs carry NO per-instance style/token-override field (MASTER-GUIDE 3.21). Styling is owned by section/component contracts; there is nothing to override."
+    "pageSpecField": "nodes[].styleTokens",
+    "note": "Added in 2.0.0. The source renders per-section tone only; styleTokens lets a generator make a constrained token choice per node and is validated against the real catalog/themes. Absent = the section contract's own tokens. It is not evidence of a source feature."
   },
   "resolutionOrder": [
     "foundation",
     "theme (light|inverse via data-tone)",
     "semantic tone roles",
     "component tokens"
-  ]
+  ],
+  "pageSpecField": "nodes[].styleTokens (optional, closed: surface, text, border, sectionPaddingY, headingStyle, fontFamily, radius)",
+  "pageSpecSlots": {
+    "surface": {
+      "kind": "color",
+      "roleGroup": "surface",
+      "accepts": "tone.surface.* role, or the color.* id the node's tone theme resolves a surface role to"
+    },
+    "text": {
+      "kind": "color",
+      "roleGroup": "text",
+      "accepts": "tone.text.* role, or the color.* id the node's tone theme resolves a text role to"
+    },
+    "border": {
+      "kind": "color",
+      "roleGroup": "border",
+      "accepts": "tone.border.* role, or the theme-resolved color.* id"
+    },
+    "sectionPaddingY": {
+      "kind": "spacing",
+      "accepts": "a spacing.scale.* id (catalog spacingScalePx)"
+    },
+    "headingStyle": {
+      "kind": "category",
+      "categories": [
+        "typeStyle"
+      ],
+      "accepts": "a typeStyle.* id"
+    },
+    "fontFamily": {
+      "kind": "font",
+      "accepts": "a catalog supportedFonts id (fontFamily.sans = Inter Variable, OFL-1.1)"
+    },
+    "radius": {
+      "kind": "category",
+      "categories": [
+        "radius"
+      ],
+      "accepts": "a radius.* id"
+    }
+  },
+  "rules": {
+    "TOKEN_UNKNOWN": "value is not a token id in tokens/llm/token-catalog.json, or is a token of the wrong category for the slot",
+    "TOKEN_RAW_VALUE": "raw hex / rgb() / hsl() / named colour or a raw dimension instead of a token id",
+    "TOKEN_ARBITRARY_SPACING": "sectionPaddingY is not on the measured spacing scale",
+    "TOKEN_UNSUPPORTED_FONT": "fontFamily is not a supported font token",
+    "TOKEN_THEME_MISMATCH": "a color.* id that the node's tone theme (tokens/themes/<tone>.json) does not resolve that role group to"
+  }
 }

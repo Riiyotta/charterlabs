@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "$description": "Closed list of what a generator may instantiate/set. verify_all.py checks parity with the contract files and the schema.",
   "entries": [
     {
@@ -15,7 +15,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "brandMark",
@@ -23,7 +25,8 @@
         "menuSecondary",
         "menuCompany",
         "contactLink"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "hero.waitlist-hero",
@@ -38,14 +41,17 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "heading",
         "body",
         "device",
         "waitlist"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.wallet-intro",
@@ -60,7 +66,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "eyebrow",
@@ -68,7 +76,8 @@
         "body",
         "device",
         "deviceReflection"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "proof.logo-ticker",
@@ -83,13 +92,16 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "statement",
         "supportLine",
         "partners"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.send-slideshow",
@@ -104,14 +116,17 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "eyebrow",
         "heading",
         "phones",
         "slides"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "transition.light-to-dark",
@@ -126,11 +141,14 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "statement"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.finances-overview",
@@ -145,7 +163,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "kicker",
@@ -153,7 +173,8 @@
         "body",
         "device",
         "deviceReflection"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.earn-collapse",
@@ -168,7 +189,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "eyebrow",
@@ -177,7 +200,8 @@
         "backdrop",
         "devices",
         "photo"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.payroll-rise",
@@ -192,7 +216,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "eyebrow",
@@ -206,7 +232,8 @@
         "productPhoto",
         "portraitReflection",
         "productReflection"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "features.security-ascii",
@@ -221,7 +248,9 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "eyebrow",
@@ -230,7 +259,8 @@
         "rows",
         "portrait",
         "portraitAscii"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "support.faq-accordion",
@@ -245,12 +275,15 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "heading",
         "items"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "chrome.footer",
@@ -265,127 +298,151 @@
         "handoff",
         "anchorId",
         "content",
-        "motion"
+        "motion",
+        "styleTokens",
+        "retrievalEligible"
       ],
       "settableContentFields": [
         "wordmark",
         "columns",
         "legalLine"
-      ]
+      ],
+      "retrievalEligible": true
     },
     {
       "id": "primitive.reveal-text",
       "kind": "primitive",
       "file": "primitives/reveal-text.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.appear",
       "kind": "primitive",
       "file": "primitives/appear.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.media-image",
       "kind": "primitive",
       "file": "primitives/media-image.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.link-text",
       "kind": "primitive",
       "file": "primitives/link-text.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.button-icon",
       "kind": "primitive",
       "file": "primitives/button-icon.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.dot-indicator",
       "kind": "primitive",
       "file": "primitives/dot-indicator.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.icon",
       "kind": "primitive",
       "file": "primitives/icon.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "primitive.input-email",
       "kind": "primitive",
       "file": "primitives/input-email.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.waitlist-pill",
       "kind": "component",
       "file": "components/waitlist-pill.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.mirror",
       "kind": "component",
       "file": "components/mirror.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.handoff",
       "kind": "component",
       "file": "components/handoff.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.glide-highlight",
       "kind": "component",
       "file": "components/glide-highlight.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.nav-menu-panel",
       "kind": "component",
       "file": "components/nav-menu-panel.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": false,
+      "retrievalIneligibleReason": "Runtime overlay UI: the mega-menu drawer/panel and its page overlay only exist while a menu is open; it is navigation chrome, not page content to retrieve."
     },
     {
       "id": "component.logo-ticker",
       "kind": "component",
       "file": "components/logo-ticker.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.slideshow-carousel",
       "kind": "component",
       "file": "components/slideshow-carousel.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.accordion-item",
       "kind": "component",
       "file": "components/accordion-item.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.stat-row",
       "kind": "component",
       "file": "components/stat-row.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.definition-row",
       "kind": "component",
       "file": "components/definition-row.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": true
     },
     {
       "id": "component.smooth-scroll",
       "kind": "component",
       "file": "components/smooth-scroll.json",
-      "instantiableInPageSpec": false
+      "instantiableInPageSpec": false,
+      "retrievalEligible": false,
+      "retrievalIneligibleReason": "Runtime scroll utility (Lenis smooth scrolling) with no visual output of its own; nothing to retrieve or compose as content."
     }
   ],
   "assetRoles": [
@@ -402,10 +459,18 @@
     "photo.product-in-hand",
     "photo.portrait",
     "photo.portrait-ascii",
-    "photo.reflection"
+    "photo.reflection",
+    "placeholder.brand-mark",
+    "user.supplied-asset",
+    "generated.illustration",
+    "placeholder.screenshot",
+    "fictional.person",
+    "placeholder.company-logo",
+    "generated.derived-render"
   ],
   "pageSpecTopLevel": [
     "pageSpecVersion",
+    "mode",
     "template",
     "route",
     "brand",

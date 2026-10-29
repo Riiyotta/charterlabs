@@ -1,13 +1,15 @@
 {
-  "version": "1.0.0",
-  "$description": "Closed assetRole enum. The source is a REAL, live company (Charter / charterlabs.io): every raster, the logo mark, the wordmark and the partner logos are theirs or their partners'. No source file may be reused in generated output (sourceFiles are listed so the validator can reject them).",
+  "version": "2.0.0",
+  "$description": "Closed assetRole registry. The source is a REAL, live company (Charter / charterlabs.io). Every role has a closed availability: clone-only (real source asset: allowed in mode=clone for fidelity, rejected in mode=generation), blocked-for-generation (third-party or real-person rights: rejected in generation; in clone mode reuse is for private fidelity only), generation-safe (the only roles a mode=generation PageSpec may use). Availability is PINNED in code (PINNED_AVAILABILITY in extraction/verify_all.py AND schema/semantic_validate.py) so editing this file alone cannot loosen it. sourceFiles are listed so the validator can reject them in generation mode.",
   "generationPolicies": {
     "project-supplied-only": "Must come from the target project's own brand kit. A generator must not draw it.",
     "fictional-placeholder-only": "Only invented placeholder marks/names (or the project's own permissioned partners). Never real third-party trademarks.",
     "generate-original-fictional-ui": "Generate an original, fictional product UI for the target brand.",
     "generate-non-identifiable-or-licensed-stock": "Generated people must be non-identifiable; otherwise licensed, model-released stock with the licence recorded.",
     "generate-original": "May be generated new; no source resemblance required or allowed.",
-    "derive-from-generated-parent": "Produced from the slot's own generated parent asset (reflection/ASCII pass); never sourced."
+    "derive-from-generated-parent": "Produced from the slot's own generated parent asset (reflection/ASCII pass); never sourced.",
+    "reserved-placeholder-domain-only": "Only reserved placeholder hosts (*.example, *.invalid); never a real domain.",
+    "write-original": "Original text written for the target brand; never source copy."
   },
   "pinnedPolicies": {
     "brand.mark": "project-supplied-only",
@@ -20,72 +22,133 @@
   },
   "roles": {
     "brand.mark": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "project-supplied-only",
       "guidance": "Use ONLY the target project's own logo mark. Never trace, redraw, recolour or approximate the source company's ring mark.",
+      "generationSafeSubstitutes": [
+        "placeholder.brand-mark",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: never the source ring mark or any trace of it. Use placeholder.brand-mark (a simple original mark for the fictional brand) or user.supplied-asset (the operator's own mark).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "icons/icon-light.svg",
         "icons/icon-dark.png",
         "icons/apple-touch-icon.png",
         "inline SVG (ASSETS.md 4.1)"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.4-inline-svgs",
         "assets.head-metadata"
       ]
     },
     "brand.wordmark": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "project-supplied-only",
       "guidance": "Use ONLY the target project's own wordmark. Never set the source company's name or reproduce its wordmark.",
+      "generationSafeSubstitutes": [
+        "placeholder.brand-mark",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: never the source wordmark or name. Set the fictional brand name as placeholder.brand-mark, or use the operator's own wordmark (user.supplied-asset).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "inline SVG (ASSETS.md 4.2)"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.4-inline-svgs"
       ]
     },
     "social.og-image": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "project-supplied-only",
       "guidance": "Project-supplied 1200x630 share image. Never reuse or imitate the source's share image.",
+      "generationSafeSubstitutes": [
+        "placeholder.screenshot",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original 1200x630 share image of the fictional product (placeholder.screenshot) or the operator's own (user.supplied-asset).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "social/charter-wallet.png"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.head-metadata"
       ]
     },
     "nav.card-image": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-original-fictional-ui",
       "guidance": "Generate an original product shot of a FICTIONAL app UI (no real brand, no real people). Card is 250px tall, object-cover, radius 32.",
+      "generationSafeSubstitutes": [
+        "placeholder.screenshot",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original fictional app card (placeholder.screenshot); no source UI, numbers or brand.",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "nav/home-live-activity.webp",
         "nav/home-payroll.webp",
         "nav/overview-earn.webp",
         "nav/overview-expenses.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.2-nav-images",
         "src.header.menus"
       ]
     },
     "nav.ring": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-original",
       "guidance": "Generate an original abstract 164x164 object render shown with a short mirror reflection.",
+      "generationSafeSubstitutes": [
+        "generated.illustration",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original abstract object render (generated.illustration); not the source ring.",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "nav/ring.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.2-nav-images",
         "spec.1.1-nav-desktop"
       ]
     },
     "device.screen": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-original-fictional-ui",
       "guidance": "Phone UI screenshots: generate an ORIGINAL fictional app UI with the target brand. Never reproduce the source app's screens, layouts, numbers or brand. Keep the measured aspect of each slot.",
+      "generationSafeSubstitutes": [
+        "placeholder.screenshot",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original fictional app screen (placeholder.screenshot) at the slot's measured aspect; never a source screen, layout or figure.",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "hero-phone.2560.webp",
         "intro-phone.2560.webp",
@@ -98,108 +161,323 @@
         "forecast.2560.webp",
         "earnings.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "device.screen-reflection": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "derive-from-generated-parent",
       "guidance": "Pre-made low-res reflection of the slot's own device.screen: derive it from YOUR generated screen (downscale, same crop). Never source it.",
+      "generationSafeSubstitutes": [
+        "generated.derived-render"
+      ],
+      "generatedModeGuidance": "Generation mode: derive from the slot's own placeholder.screenshot (generated.derived-render: downscale, same crop).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "intro-phone-reflection.2560.webp",
         "currency-reflection.2560.webp",
         "amount-reflection.2560.webp",
         "overview-reflection.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "partner.logo": {
+      "kind": "media",
+      "availability": "blocked-for-generation",
       "generationPolicy": "fictional-placeholder-only",
       "guidance": "Real partner trademarks (the four companies in the source ticker) must NEVER be reproduced or named. Use fictional placeholder marks, or the target project's own real partners' logos supplied with permission.",
+      "generationSafeSubstitutes": [
+        "placeholder.company-logo"
+      ],
+      "generatedModeGuidance": "Blocked for generation: real third-party trademarks. Use placeholder.company-logo (an invented mark and name) only.",
+      "sourceFileReuse": {
+        "clone": "private-fidelity-only",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "circle.2560.webp",
         "hifi.2560.webp",
         "turnkey.2560.webp",
         "rhinestone.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images",
         "spec.2.3-logo"
       ]
     },
     "texture.backdrop": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-original",
       "guidance": "Generate an original soft backdrop texture behind the earn phones.",
+      "generationSafeSubstitutes": [
+        "generated.illustration",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original soft texture (generated.illustration).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "backdrop.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "photo.lifestyle": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-non-identifiable-or-licensed-stock",
       "guidance": "Landscape/lifestyle photo: generated (no identifiable person) or licensed stock with a recorded licence.",
+      "generationSafeSubstitutes": [
+        "generated.illustration",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: an original generated landscape with no identifiable person (generated.illustration), or the operator's licensed photo (user.supplied-asset).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "photo.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "photo.product-in-hand": {
+      "kind": "media",
+      "availability": "clone-only",
       "generationPolicy": "generate-original-fictional-ui",
       "guidance": "Hand holding a phone: generate with a FICTIONAL lock-screen/notification UI of the target brand; never the source's notifications.",
+      "generationSafeSubstitutes": [
+        "placeholder.screenshot",
+        "generated.illustration",
+        "user.supplied-asset"
+      ],
+      "generatedModeGuidance": "Generation mode: a generated hand + phone with a fictional lock screen (placeholder.screenshot / generated.illustration).",
+      "sourceFileReuse": {
+        "clone": "allowed",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "payday.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "photo.portrait": {
+      "kind": "media",
+      "availability": "blocked-for-generation",
       "generationPolicy": "generate-non-identifiable-or-licensed-stock",
       "guidance": "These depict REAL people. Never reproduce, edit or imitate them. Use generated non-identifiable people or licensed stock (model-released) with a recorded licence.",
+      "generationSafeSubstitutes": [
+        "fictional.person"
+      ],
+      "generatedModeGuidance": "Blocked for generation: these are real people. Use fictional.person (generated, non-identifiable) only.",
+      "sourceFileReuse": {
+        "clone": "private-fidelity-only",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "payroll-portrait.webp",
         "portrait-soft.2560.webp",
         "security-portrait.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "photo.portrait-ascii": {
+      "kind": "media",
+      "availability": "blocked-for-generation",
       "generationPolicy": "derive-from-generated-parent",
       "guidance": "ASCII-art render of the slot's own replacement portrait (same crop 1128x788).",
+      "generationSafeSubstitutes": [
+        "generated.derived-render"
+      ],
+      "generatedModeGuidance": "Blocked for generation: an ASCII render of a real person. Derive from the slot's own fictional.person (generated.derived-render).",
+      "sourceFileReuse": {
+        "clone": "private-fidelity-only",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "portrait-ascii.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
     },
     "photo.reflection": {
+      "kind": "media",
+      "availability": "blocked-for-generation",
       "generationPolicy": "derive-from-generated-parent",
       "guidance": "Low-res reflection derived from the slot's own replacement photo (same object-position).",
+      "generationSafeSubstitutes": [
+        "generated.derived-render"
+      ],
+      "generatedModeGuidance": "Blocked for generation: a reflection of a real person/product photo. Derive from the slot's own generation-safe parent (generated.derived-render).",
+      "sourceFileReuse": {
+        "clone": "private-fidelity-only",
+        "generation": "forbidden"
+      },
       "sourceFiles": [
         "portrait-reflection.2560.webp",
         "payday-reflection.2560.webp"
       ],
-      "reuseOfSourceFiles": "forbidden",
       "evidence": [
         "assets.1-public-images"
       ]
+    },
+    "placeholder.brand-mark": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "fictional-placeholder-only",
+      "guidance": "A simple original mark and/or the fictional brand name set in the type scale. Must not resemble the source ring mark or wordmark.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "A simple original mark and/or the fictional brand name set in the type scale. Must not resemble the source ring mark or wordmark.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "user.supplied-asset": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "project-supplied-only",
+      "guidance": "An asset the operator/user supplies with rights recorded (their own logo, photo or screen). The generator does not draw it; it only references it.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "An asset the operator/user supplies with rights recorded (their own logo, photo or screen). The generator does not draw it; it only references it.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "generated.illustration": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "generate-original",
+      "guidance": "An original generated image, object render or texture with no source resemblance and no identifiable person or brand.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "An original generated image, object render or texture with no source resemblance and no identifiable person or brand.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "placeholder.screenshot": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "generate-original-fictional-ui",
+      "guidance": "An original fictional app UI for the fictional brand (invented numbers, names and layout). Never a source screen.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "An original fictional app UI for the fictional brand (invented numbers, names and layout). Never a source screen.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "fictional.person": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "generate-non-identifiable-or-licensed-stock",
+      "guidance": "A generated, non-identifiable fictional person or avatar. Never a real person and never a source portrait.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "A generated, non-identifiable fictional person or avatar. Never a real person and never a source portrait.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "placeholder.company-logo": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "fictional-placeholder-only",
+      "guidance": "An invented partner/customer mark with an invented name. Never a real company's trademark.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "An invented partner/customer mark with an invented name. Never a real company's trademark.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "generated.derived-render": {
+      "kind": "media",
+      "availability": "generation-safe",
+      "generationPolicy": "derive-from-generated-parent",
+      "guidance": "A reflection or ASCII render derived from the slot's own generation-safe parent asset.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "A reflection or ASCII render derived from the slot's own generation-safe parent asset.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": [
+        "assets.1-public-images"
+      ]
+    },
+    "placeholder.url": {
+      "kind": "url",
+      "availability": "generation-safe",
+      "generationPolicy": "reserved-placeholder-domain-only",
+      "guidance": "Absolute URLs in a generation PageSpec use reserved hosts only: *.example or *.invalid (RFC 2606/6761). Project routes (/contact) and in-page anchors are allowed.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "Absolute URLs in a generation PageSpec use reserved hosts only: *.example or *.invalid (RFC 2606/6761). Project routes (/contact) and in-page anchors are allowed.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": []
+    },
+    "original.copy": {
+      "kind": "copy",
+      "availability": "generation-safe",
+      "generationPolicy": "write-original",
+      "guidance": "All text is written new for the fictional brand within the section's measured budget; no source sentence, 5-word run, claim or name.",
+      "generationSafeSubstitutes": [],
+      "generatedModeGuidance": "All text is written new for the fictional brand within the section's measured budget; no source sentence, 5-word run, claim or name.",
+      "sourceFiles": [],
+      "sourceFileReuse": {
+        "clone": "not-applicable",
+        "generation": "forbidden"
+      },
+      "evidence": []
     }
   },
   "licensedResources": {
@@ -212,5 +490,35 @@
         "spec.0.4-fonts"
       ]
     }
+  },
+  "availabilityValues": {
+    "clone-only": "Real source asset. Allowed in mode=clone; rejected in mode=generation (use a generationSafeSubstitute).",
+    "blocked-for-generation": "Third-party trademark or a real person. Rejected in mode=generation; in mode=clone only for a private, unpublished fidelity build.",
+    "generation-safe": "Placeholder, generated, fictional or operator-supplied. The only roles allowed in mode=generation."
+  },
+  "pinnedAvailability": {
+    "brand.mark": "clone-only",
+    "brand.wordmark": "clone-only",
+    "social.og-image": "clone-only",
+    "nav.card-image": "clone-only",
+    "nav.ring": "clone-only",
+    "device.screen": "clone-only",
+    "device.screen-reflection": "clone-only",
+    "partner.logo": "blocked-for-generation",
+    "texture.backdrop": "clone-only",
+    "photo.lifestyle": "clone-only",
+    "photo.product-in-hand": "clone-only",
+    "photo.portrait": "blocked-for-generation",
+    "photo.portrait-ascii": "blocked-for-generation",
+    "photo.reflection": "blocked-for-generation",
+    "placeholder.brand-mark": "generation-safe",
+    "user.supplied-asset": "generation-safe",
+    "generated.illustration": "generation-safe",
+    "placeholder.screenshot": "generation-safe",
+    "fictional.person": "generation-safe",
+    "placeholder.company-logo": "generation-safe",
+    "generated.derived-render": "generation-safe",
+    "placeholder.url": "generation-safe",
+    "original.copy": "generation-safe"
   }
 }

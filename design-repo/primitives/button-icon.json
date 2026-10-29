@@ -11,5 +11,6 @@
     "spec.2.1.1-waitlist",
     "spec.2.4-send"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

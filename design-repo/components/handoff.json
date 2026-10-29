@@ -9,5 +9,6 @@
     "src.motion.handoff",
     "qa.05-handoff-reduced-motion"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

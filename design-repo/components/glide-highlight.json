@@ -8,5 +8,6 @@
     "src.header.tokens",
     "qa.02-nav-glide-snaps"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

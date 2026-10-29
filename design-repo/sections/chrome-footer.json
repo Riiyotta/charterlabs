@@ -2,6 +2,16 @@
   "id": "chrome.footer",
   "kind": "section",
   "category": "CHROME",
+  "source": {
+    "id": "src:Footer/footer",
+    "tag": "footer",
+    "file": "src/components/Footer.jsx",
+    "lines": "94-136"
+  },
+  "semantic": {
+    "id": "chrome.footer",
+    "category": "CHROME"
+  },
   "purpose": "Close the page: wordmark, legal line and four link columns, revealed as main scrolls off a sticky footer.",
   "implementedBy": "src/components/Footer.jsx",
   "region": "footer",
@@ -25,7 +35,9 @@
     "wordmark": {
       "type": "media",
       "roles": [
-        "brand.wordmark"
+        "brand.wordmark",
+        "placeholder.brand-mark",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 12,
@@ -97,6 +109,10 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "placeholder.brand-mark",
+    "user.supplied-asset"
+  ],
   "motion": {
     "scrollLinked": [
       {
@@ -136,5 +152,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

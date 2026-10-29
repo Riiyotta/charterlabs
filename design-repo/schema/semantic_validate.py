@@ -11,25 +11,39 @@ What it enforces (see graph.json for the prose of each rule):
     repeatability, allowed variants, anchor ids (not nodes[] in isolation)
   * the route belongs to the declared template
   * tone: each node's tone matches its template node, and the page has exactly
-    one light -> inverse handoff, at transition.light-to-dark (no light main
-    section after it)
+    one light -> inverse handoff, at transition.light-to-dark
   * Handoff wrapping: only where the template observed it, same tone as the
     section, and only when another <main> section follows to scroll over it
   * cross-section scroll-trigger dependency (Send reads #send-scroll-trigger,
     which lives in the Logo section)
   * motion: each node's motion block equals its section contract exactly, and
     the reducedMotionFallback is the pinned value
-  * copy budgets (chars / words / line items / list counts) from the section
-    contracts, which were measured from the real layout
-  * media: assetRole allowed for the slot; assetRef must not reuse a source file
-  * real-company protection: no verbatim source copy (sha256 fingerprints, the
-    repo never stores the text), no source brand name, no source endpoint or
-    social profile URLs, a project-supplied https waitlist endpoint
+  * copy budgets (chars / words / line items / list counts), measured
+  * media: assetRole allowed for the slot
+  * MODE (required, closed): clone | generation.
+      clone      = private faithful reconstruction: real brand, copy, assets,
+                   partner names and social URLs may be reused for fidelity.
+      generation = a page for another brand: GENERATION_MODE_BRAND / _CUSTOMER /
+                   _PERSON / _SCREENSHOT / _ASSET / _COPY / _CLAIM / _URL reject
+                   every source identity/content category. Patterns come from
+                   schema/source-leakage-patterns.json (derived from the real
+                   source by extraction/build_leakage_patterns.py) and asset
+                   availability is PINNED below (PINNED_AVAILABILITY).
+    Both modes: the live waitlist endpoint is never allowed (the clone itself
+    replaced it with a no-op), external links are https.
+  * retrieval eligibility (RETRIEVAL_INELIGIBLE pin + node/contract parity)
+  * token choices in nodes[].styleTokens against tokens/llm/token-catalog.json
+    and token-policy.json (TOKEN_UNKNOWN / _RAW_VALUE / _ARBITRARY_SPACING /
+    _UNSUPPORTED_FONT / _THEME_MISMATCH)
   * internal "/#anchor" links resolve to a node present on the page
 
+Detection is string-based (normalised exact matches, hashed 5-word shingles):
+a paraphrase is not caught. No human has reviewed the pinned patterns.
+
 Usage:  python3 schema/semantic_validate.py [pagespec.json ...]
-        (defaults to schema/example.pagespec.json). Exit 1 on any error.
+        (defaults to schema/examples/*.pagespec.json). Exit 1 on any error.
 """
+import glob
 import hashlib
 import json
 import os
@@ -40,13 +54,65 @@ import unicodedata
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # --------------------------------------------------------------------------
+# PINS (independent of the registries: editing a JSON file alone cannot loosen
+# them; extraction/verify_all.py cross-checks these against the registries and
+# against its own copy).
+# --------------------------------------------------------------------------
+PINNED_AVAILABILITY = {
+    "brand.mark": "clone-only",
+    "brand.wordmark": "clone-only",
+    "social.og-image": "clone-only",
+    "nav.card-image": "clone-only",
+    "nav.ring": "clone-only",
+    "device.screen": "clone-only",
+    "device.screen-reflection": "clone-only",
+    "partner.logo": "blocked-for-generation",
+    "texture.backdrop": "clone-only",
+    "photo.lifestyle": "clone-only",
+    "photo.product-in-hand": "clone-only",
+    "photo.portrait": "blocked-for-generation",
+    "photo.portrait-ascii": "blocked-for-generation",
+    "photo.reflection": "blocked-for-generation",
+    "placeholder.brand-mark": "generation-safe",
+    "user.supplied-asset": "generation-safe",
+    "generated.illustration": "generation-safe",
+    "placeholder.screenshot": "generation-safe",
+    "fictional.person": "generation-safe",
+    "placeholder.company-logo": "generation-safe",
+    "generated.derived-render": "generation-safe",
+    "placeholder.url": "generation-safe",
+    "original.copy": "generation-safe",
+}
+# which GENERATION_MODE_* rule a non-generation-safe role (or its source file) violates
+PINNED_LEAK_CATEGORY = {
+    "brand.mark": "BRAND", "brand.wordmark": "BRAND",
+    "partner.logo": "CUSTOMER",
+    "photo.portrait": "PERSON", "photo.portrait-ascii": "PERSON", "photo.reflection": "PERSON",
+    "device.screen": "SCREENSHOT", "device.screen-reflection": "SCREENSHOT", "nav.card-image": "SCREENSHOT",
+    "photo.product-in-hand": "SCREENSHOT", "social.og-image": "SCREENSHOT",
+    "nav.ring": "ASSET", "texture.backdrop": "ASSET", "photo.lifestyle": "ASSET",
+}
+# runtime/utility UI that must never be retrieved as page content (R8)
+RETRIEVAL_INELIGIBLE = {
+    "component.nav-menu-panel": "Runtime overlay UI: the mega-menu drawer/panel and its page overlay only exist while a menu is open; it is navigation chrome, not page content to retrieve.",
+    "component.smooth-scroll": "Runtime scroll utility (Lenis smooth scrolling) with no visual output of its own; nothing to retrieve or compose as content.",
+}
+RUNTIME_UI_RX = re.compile(r"cookie|consent|modal|dialog|drawer|popup|pop-up|overlay|preloader|loader|toast|cursor|menu-panel|smooth-scroll", re.I)
+PLACEHOLDER_HOST_RX = re.compile(r"(^|\.)[a-z0-9-]+\.(example|invalid)$|^(example|invalid)$")
+MODES = ("clone", "generation")
+SHINGLE = 5
+
+# --------------------------------------------------------------------------
 # helpers shared with the build (fingerprints are produced with these exact
 # functions, so normalisation can never drift between build and check)
 # --------------------------------------------------------------------------
-_QUOTES = {"‘": "'", "’": "'", "“": '"', "”": '"', " ": " "}
+_QUOTES = {"‘": "'", "’": "'", "“": '"', "”": '"', " ": " "}
+_ZERO_WIDTH = re.compile("[​‌‍⁠﻿­]")
+_DASHES = re.compile("[‐‑‒–—―−]")
 
 
 def normalize_copy(s):
+    """Legacy full-string normaliser (schema/protected-content.json fingerprints)."""
     s = unicodedata.normalize("NFKC", s)
     for k, v in _QUOTES.items():
         s = s.replace(k, v)
@@ -55,7 +121,39 @@ def normalize_copy(s):
 
 
 def fingerprint(s):
-    return hashlib.sha256(normalize_copy(s).encode("utf-8")).hexdigest()
+    return hashlib.sha256(normalize_copy(_ZERO_WIDTH.sub("", s)).encode("utf-8")).hexdigest()
+
+
+def normalize_match(s):
+    """Matching normaliser: NFKC, zero-width removal, quotes, dashes, whitespace, case."""
+    s = _ZERO_WIDTH.sub("", unicodedata.normalize("NFKC", s))
+    for k, v in _QUOTES.items():
+        s = s.replace(k, v)
+    s = _DASHES.sub("-", s)
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def normalize_case_kept(s):
+    s = _ZERO_WIDTH.sub("", unicodedata.normalize("NFKC", s))
+    for k, v in _QUOTES.items():
+        s = s.replace(k, v)
+    return re.sub(r"\s+", " ", _DASHES.sub("-", s)).strip()
+
+
+def match_tokens(s):
+    return re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)*", normalize_match(s))
+
+
+def _h(s):
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def shingles(tokens, n=SHINGLE):
+    return {_h(" ".join(tokens[i:i + n])) for i in range(len(tokens) - n + 1)} if len(tokens) >= n else set()
+
+
+def phrase_hash(tokens):
+    return _h(" ".join(tokens))
 
 
 def normalize_url(u):
@@ -64,6 +162,11 @@ def normalize_url(u):
 
 def url_fingerprint(u):
     return hashlib.sha256(normalize_url(u).encode("utf-8")).hexdigest()
+
+
+def url_host(u):
+    h = re.sub(r"^[a-z][a-z0-9+.-]*://", "", normalize_match(u)).split("/")[0].split("?")[0].split("#")[0]
+    return re.sub(r"^www\.", "", h.split("@")[-1].split(":")[0])
 
 
 def word_count(s):
@@ -97,6 +200,9 @@ class Ctx:
         self.routes = load_json("templates/routes.json", repo)
         self.roles = load_json("assets/asset-roles.json", repo)
         self.protected = load_json("schema/protected-content.json", repo)
+        self.leak = load_json("schema/source-leakage-patterns.json", repo)
+        self.catalog = load_json("tokens/llm/token-catalog.json", repo)
+        self.token_policy = load_json("tokens/llm/token-policy.json", repo)
         self.sections = {}
         sdir = os.path.join(repo, "sections")
         for fn in sorted(os.listdir(sdir)):
@@ -110,6 +216,11 @@ class Ctx:
         sev = self.severity.get(rule_id, "error")
         item = {"rule": rule_id, "severity": sev, "path": where, "message": msg}
         (self.errors if sev == "error" else self.warnings).append(item)
+
+
+def _mode(spec):
+    """Fail closed: anything that is not exactly 'clone' is checked as generation."""
+    return "clone" if spec.get("mode") == "clone" else "generation"
 
 
 # ------------------------------- structure --------------------------------
@@ -456,74 +567,271 @@ def r_asset_role(ctx, spec):
                        "assetRole %r not allowed in this slot (allowed %s)" % (role, fs["roles"]))
 
 
-@rule("ASSET_REF_NOT_SOURCE_FILE")
-def r_asset_ref(ctx, spec):
-    banned = set()
-    for r in ctx.roles["roles"].values():
-        banned.update(os.path.basename(f).lower() for f in r["sourceFiles"])
-    for p, fs, v, _ in _leaves(ctx, spec):
-        if fs["type"] == "media" and isinstance(v, dict) and isinstance(v.get("assetRef"), str):
-            if os.path.basename(v["assetRef"]).lower() in banned:
-                ctx.report("ASSET_REF_NOT_SOURCE_FILE", p + ".assetRef",
-                           "%r is a file from the source site; supply an original/licensed asset" % v["assetRef"])
 
 
-# --------------------------- real-company protection ----------------------
-def _all_strings(ctx, spec):
-    out = []
-    for p, fs, v, _ in _leaves(ctx, spec):
-        t = fs["type"]
-        if t == "text" and isinstance(v, str):
-            out.append((p, v))
-        elif t in ("lines", "paragraphs") and isinstance(v, list):
-            out += [("%s[%d]" % (p, k), s) for k, s in enumerate(v) if isinstance(s, str)]
-        elif t == "link" and isinstance(v, dict):
-            out += [(p + "." + k, v[k]) for k in ("label", "href") if isinstance(v.get(k), str)]
-        elif t == "media" and isinstance(v, dict):
-            out += [(p + "." + k, v[k]) for k in ("alt", "assetRef") if isinstance(v.get(k), str)]
-    brand = spec.get("brand") or {}
-    if isinstance(brand.get("name"), str):
-        out.append(("brand.name", brand["name"]))
+# ------------------------------ retrieval (R8) -----------------------------
+@rule("RETRIEVAL_ELIGIBILITY_MATCH")
+def r_retrieval(ctx, spec):
+    for i, n in enumerate(spec.get("nodes", [])):
+        c = ctx.sections.get(n.get("section"))
+        if not c:
+            continue
+        want = n.get("section") not in RETRIEVAL_INELIGIBLE
+        if c.get("retrievalEligible") is not want:
+            ctx.report("RETRIEVAL_ELIGIBILITY_MATCH", "nodes[%d]" % i,
+                       "section contract %s says retrievalEligible=%r but the code pin says %r" % (n.get("section"), c.get("retrievalEligible"), want))
+        if "retrievalEligible" in n and n["retrievalEligible"] is not want:
+            ctx.report("RETRIEVAL_ELIGIBILITY_MATCH", "nodes[%d].retrievalEligible" % i,
+                       "%s is %s; a PageSpec may not change retrieval eligibility" % (n.get("section"), "retrieval-eligible content" if want else "runtime UI"))
+
+
+# ------------------------------ tokens (R10) -------------------------------
+_RAW_COLOR = re.compile(r"^#[0-9a-f]{3,8}$|^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(|^(white|black|red|blue|green|transparent|currentcolor)$", re.I)
+_RAW_DIM = re.compile(r"^-?\d+(\.\d+)?\s*(px|rem|em|%|vh|vw|svh|dvh|pt)?$", re.I)
+
+
+def _all_catalog_ids(cat):
+    out = set()
+    for layer in cat["layers"].values():
+        for ids in layer.values():
+            out.update(ids)
     return out
 
 
-@rule("NO_VERBATIM_SOURCE_COPY")
-def r_verbatim(ctx, spec):
-    fps = set(ctx.protected["copyFingerprints"]["sha256"])
-    for p, s in _all_strings(ctx, spec):
-        if fingerprint(s) in fps:
-            ctx.report("NO_VERBATIM_SOURCE_COPY", p, "verbatim copy from the source site (fingerprint match); write original copy")
+@rule("TOKEN_RAW_VALUE")
+def r_tok_raw(ctx, spec):
+    slots = ctx.token_policy["pageSpecSlots"]
+    for i, n in enumerate(spec.get("nodes", [])):
+        for k, v in (n.get("styleTokens") or {}).items():
+            if not isinstance(v, str):
+                continue
+            if _RAW_COLOR.search(v.strip()) or (_RAW_DIM.match(v.strip()) and slots.get(k, {}).get("kind") != "spacing"):
+                ctx.report("TOKEN_RAW_VALUE", "nodes[%d].styleTokens.%s" % (i, k), "raw value %r: use a token id from tokens/llm/token-catalog.json" % v)
 
 
-@rule("NO_SOURCE_BRAND_NAME")
-def r_brand(ctx, spec):
-    toks = ctx.protected["brandTokens"]
-    everywhere = [re.compile(r"\b%s\b" % re.escape(t), re.I) for t in toks["everywhere"]]
-    partner = [re.compile(r"\b%s\b" % re.escape(t), re.I) for t in toks["partnerSlots"]]
-    for p, s in _all_strings(ctx, spec):
-        for rx in everywhere:
-            if rx.search(s):
-                ctx.report("NO_SOURCE_BRAND_NAME", p, "contains the source company's brand token %r" % rx.pattern)
-    for p, fs, v, _ in _leaves(ctx, spec):
-        if fs["type"] == "media" and "partner.logo" in fs["roles"] and isinstance(v, dict):
+@rule("TOKEN_ARBITRARY_SPACING")
+def r_tok_spacing(ctx, spec):
+    slots = ctx.token_policy["pageSpecSlots"]
+    scale = ctx.catalog["spacingScalePx"]
+    for i, n in enumerate(spec.get("nodes", [])):
+        for k, v in (n.get("styleTokens") or {}).items():
+            if slots.get(k, {}).get("kind") == "spacing" and isinstance(v, str) and v not in scale:
+                ctx.report("TOKEN_ARBITRARY_SPACING", "nodes[%d].styleTokens.%s" % (i, k),
+                           "%r is not on the measured spacing scale (%s)" % (v, ", ".join(scale)))
+
+
+@rule("TOKEN_UNSUPPORTED_FONT")
+def r_tok_font(ctx, spec):
+    slots = ctx.token_policy["pageSpecSlots"]
+    fonts = ctx.catalog["supportedFonts"]
+    for i, n in enumerate(spec.get("nodes", [])):
+        for k, v in (n.get("styleTokens") or {}).items():
+            if slots.get(k, {}).get("kind") == "font" and isinstance(v, str) and v not in fonts:
+                ctx.report("TOKEN_UNSUPPORTED_FONT", "nodes[%d].styleTokens.%s" % (i, k),
+                           "%r is not a supported font token (supported: %s)" % (v, ", ".join(fonts)))
+
+
+@rule("TOKEN_UNKNOWN")
+def r_tok_unknown(ctx, spec):
+    slots = ctx.token_policy["pageSpecSlots"]
+    ids = _all_catalog_ids(ctx.catalog)
+    for i, n in enumerate(spec.get("nodes", [])):
+        for k, v in (n.get("styleTokens") or {}).items():
+            s = slots.get(k)
+            if s is None or not isinstance(v, str) or s["kind"] in ("spacing", "font"):
+                continue
+            if _RAW_COLOR.search(v.strip()) or _RAW_DIM.match(v.strip()):
+                continue  # TOKEN_RAW_VALUE
+            p = "nodes[%d].styleTokens.%s" % (i, k)
+            if v not in ids:
+                ctx.report("TOKEN_UNKNOWN", p, "%r is not a token in tokens/llm/token-catalog.json" % v)
+            elif s["kind"] == "color":
+                ok = v.startswith("tone.%s." % s["roleGroup"]) or (v.startswith("color.") and v in ctx.catalog["categories"]["color"])
+                if not ok:
+                    ctx.report("TOKEN_UNKNOWN", p, "%r is a token, but not one the %s slot accepts (tone.%s.* or a color.* id)" % (v, k, s["roleGroup"]))
+            elif not any(v in ctx.catalog["categories"].get(cat, []) for cat in s["categories"]):
+                ctx.report("TOKEN_UNKNOWN", p, "%r is a token, but the %s slot only accepts %s tokens" % (v, k, "/".join(s["categories"])))
+
+
+@rule("TOKEN_THEME_MISMATCH")
+def r_tok_theme(ctx, spec):
+    slots = ctx.token_policy["pageSpecSlots"]
+    for i, n in enumerate(spec.get("nodes", [])):
+        theme = ctx.catalog["themes"].get(n.get("tone"))
+        for k, v in (n.get("styleTokens") or {}).items():
+            s = slots.get(k)
+            if not s or s["kind"] != "color" or not isinstance(v, str) or not v.startswith("color.") or theme is None:
+                continue
+            allowed = sorted({ref for role, ref in theme.items() if role.startswith("tone.%s." % s["roleGroup"])})
+            if v in ctx.catalog["categories"]["color"] and v not in allowed:
+                ctx.report("TOKEN_THEME_MISMATCH", "nodes[%d].styleTokens.%s" % (i, k),
+                           "%r is not a %s color of the %s theme (allowed: %s, or a tone.%s.* role)" % (v, s["roleGroup"], n.get("tone"), ", ".join(allowed), s["roleGroup"]))
+
+
+# ------------------- generation mode: source identity + content -------------
+def _content_strings(spec):
+    """(path, string) for every string under brand / config / meta / nodes[].content."""
+    out = []
+
+    def walk(o, p):
+        if isinstance(o, str):
+            out.append((p, o))
+        elif isinstance(o, dict):
+            for k, v in o.items():
+                walk(v, "%s.%s" % (p, k) if p else k)
+        elif isinstance(o, list):
+            for k, v in enumerate(o):
+                walk(v, "%s[%d]" % (p, k))
+    for key in ("brand", "config", "meta"):
+        if key in spec:
+            walk(spec[key], key)
+    for i, n in enumerate(spec.get("nodes", [])):
+        if isinstance(n, dict) and "content" in n:
+            walk(n["content"], "nodes[%d].content" % i)
+    return out
+
+
+def _media(ctx, spec):
+    return [(p, fs, v) for p, fs, v, _ in _leaves(ctx, spec) if fs["type"] == "media" and isinstance(v, dict)]
+
+
+def _gen(spec):
+    return _mode(spec) == "generation"
+
+
+def _asset_category_hits(ctx, spec, category):
+    """media leaves whose role or source file belongs to a leak category."""
+    files = ctx.leak["assetFiles"]
+    for p, fs, v in _media(ctx, spec):
+        role = v.get("assetRole")
+        if role in PINNED_AVAILABILITY and PINNED_AVAILABILITY[role] != "generation-safe" and PINNED_LEAK_CATEGORY.get(role, "ASSET") == category:
+            yield p + ".assetRole", "assetRole %r is %s (real source asset); use %s" % (role, PINNED_AVAILABILITY[role], ctx.roles["roles"].get(role, {}).get("generationSafeSubstitutes"))
+        ref = v.get("assetRef")
+        if isinstance(ref, str):
+            b = os.path.basename(normalize_match(ref))
+            if b in files and files[b]["category"] == category:
+                yield p + ".assetRef", "%r is a source-site file (%s)" % (ref, files[b]["foundAt"][0])
+
+
+@rule("GENERATION_MODE_BRAND")
+def r_gen_brand(ctx, spec):
+    if not _gen(spec):
+        return
+    pats = [re.compile(r"(?<![a-z0-9])%s(?![a-z0-9])" % re.escape(e["pattern"])) for e in ctx.leak["categories"]["BRAND"]["patterns"]]
+    squash = [re.sub(r"[^a-z0-9]", "", e["pattern"]) for e in ctx.leak["categories"]["BRAND"]["patterns"] if len(re.sub(r"[^a-z0-9]", "", e["pattern"])) >= 10]
+    for p, s in _content_strings(spec):
+        ns = normalize_match(s)
+        flat = re.sub(r"[^a-z0-9]", "", ns)
+        if any(rx.search(ns) for rx in pats) or any(q in flat for q in squash):
+            ctx.report("GENERATION_MODE_BRAND", p, "names the source brand (or a variant); a generation page uses its own fictional/operator brand")
+    for p, msg in _asset_category_hits(ctx, spec, "BRAND"):
+        ctx.report("GENERATION_MODE_BRAND", p, msg)
+
+
+@rule("GENERATION_MODE_CUSTOMER")
+def r_gen_customer(ctx, spec):
+    if not _gen(spec):
+        return
+    pats = ctx.leak["categories"]["CUSTOMER"]["patterns"]
+    for p, s in _content_strings(spec):
+        cs, ns = normalize_case_kept(s), normalize_match(s)
+        for e in pats:
+            if e["match"].startswith("case-sensitive"):
+                hit = re.search(r"(?<![A-Za-z0-9])%s(?![A-Za-z0-9])" % re.escape(e["name"]), cs)
+            else:
+                hit = re.search(r"(?<![a-z0-9])%s(?![a-z0-9])" % re.escape(normalize_match(e["name"])), ns)
+            if hit:
+                ctx.report("GENERATION_MODE_CUSTOMER", p, "names a real partner/customer of the source (%s); use placeholder.company-logo with an invented name" % e["foundAt"][0])
+                break
+    names = [normalize_match(e["name"]) for e in pats]
+    for p, fs, v in _media(ctx, spec):
+        if {"partner.logo", "placeholder.company-logo"} & set(fs["roles"]):
             for k in ("alt", "assetRef"):
-                for rx in partner:
-                    if isinstance(v.get(k), str) and rx.search(v[k]):
-                        ctx.report("NO_SOURCE_BRAND_NAME", "%s.%s" % (p, k),
-                                   "names a real partner company; partner logos must be fictional placeholders")
+                if isinstance(v.get(k), str) and any(re.search(r"(?<![a-z0-9])%s(?![a-z0-9])" % re.escape(nm), normalize_match(v[k])) for nm in names):
+                    ctx.report("GENERATION_MODE_CUSTOMER", "%s.%s" % (p, k), "partner logo names a real company (any case)")
+    for p, msg in _asset_category_hits(ctx, spec, "CUSTOMER"):
+        ctx.report("GENERATION_MODE_CUSTOMER", p, msg)
 
 
-@rule("EXTERNAL_LINK_NOT_PROTECTED")
+@rule("GENERATION_MODE_PERSON")
+def r_gen_person(ctx, spec):
+    if _gen(spec):
+        for p, msg in _asset_category_hits(ctx, spec, "PERSON"):
+            ctx.report("GENERATION_MODE_PERSON", p, msg + " - a real person; use fictional.person")
+
+
+@rule("GENERATION_MODE_SCREENSHOT")
+def r_gen_screenshot(ctx, spec):
+    if _gen(spec):
+        for p, msg in _asset_category_hits(ctx, spec, "SCREENSHOT"):
+            ctx.report("GENERATION_MODE_SCREENSHOT", p, msg + " - the source app's real UI; use placeholder.screenshot")
+
+
+@rule("GENERATION_MODE_ASSET")
+def r_gen_asset(ctx, spec):
+    if not _gen(spec):
+        return
+    for p, msg in _asset_category_hits(ctx, spec, "ASSET"):
+        ctx.report("GENERATION_MODE_ASSET", p, msg)
+    for p, fs, v in _media(ctx, spec):
+        role = v.get("assetRole")
+        if role in ctx.roles["roles"] and role not in PINNED_AVAILABILITY:
+            ctx.report("GENERATION_MODE_ASSET", p + ".assetRole", "assetRole %r has no pinned availability; treated as not generation-safe" % role)
+
+
+def _copy_hits(ctx, spec, cat):
+    c = ctx.leak["categories"][cat]
+    sh, ph = set(c["shingleSha256"]), set(c["phraseSha256"])
+    legacy = set(ctx.protected["copyFingerprints"]["sha256"]) if cat == "COPY" else set()
+    for p, s in _content_strings(spec):
+        if re.match(r"^[a-z][a-z0-9+.-]*://", s.strip(), re.I) or "/" in s and " " not in s.strip():
+            continue  # URLs / paths are GENERATION_MODE_URL / _ASSET
+        toks = match_tokens(s)
+        if shingles(toks) & sh or (3 <= len(toks) < SHINGLE and phrase_hash(toks) in ph) or (len(toks) >= 3 and fingerprint(s) in legacy):
+            yield p
+
+
+@rule("GENERATION_MODE_COPY")
+def r_gen_copy(ctx, spec):
+    if _gen(spec):
+        claims = set(_copy_hits(ctx, spec, "CLAIM"))
+        for p in _copy_hits(ctx, spec, "COPY"):
+            if p not in claims:
+                ctx.report("GENERATION_MODE_COPY", p, "reproduces source copy (a 5-word run or whole phrase matches a source string); write original copy")
+
+
+@rule("GENERATION_MODE_CLAIM")
+def r_gen_claim(ctx, spec):
+    if _gen(spec):
+        for p in _copy_hits(ctx, spec, "CLAIM"):
+            ctx.report("GENERATION_MODE_CLAIM", p, "reproduces a source claim (speed/fee/number statement); write and substantiate your own")
+
+
+_URL_IN_TEXT = re.compile(r"(?:[a-z][a-z0-9+.-]*://|www\.)[^\s'\"<>]+", re.I)
+
+
+@rule("GENERATION_MODE_URL")
+def r_gen_url(ctx, spec):
+    if not _gen(spec):
+        return
+    c = ctx.leak["categories"]["URL"]
+    ufp, hfp = set(c["urlSha256"]), set(c["hostSha256"])
+    for p, s in _content_strings(spec):
+        for u in _URL_IN_TEXT.findall(s):
+            u = u.rstrip(".,;:)")
+            host = url_host(u)
+            if url_fingerprint(u) in ufp or url_fingerprint(re.sub(r"^www\.", "", host)) in hfp:
+                ctx.report("GENERATION_MODE_URL", p, "a source URL/domain (fingerprint match); use a reserved placeholder host (*.example / *.invalid)")
+            elif not PLACEHOLDER_HOST_RX.search(host):
+                ctx.report("GENERATION_MODE_URL", p, "host %r is not a reserved placeholder (*.example / *.invalid); generation pages use placeholder URLs only" % host)
+
+
+# --------------------------- both modes ----------------------------------
+@rule("EXTERNAL_LINK_HTTPS")
 def r_external(ctx, spec):
-    fps = set(ctx.protected["urlFingerprints"]["social"])
     for p, fs, v, _ in _leaves(ctx, spec):
-        if fs["type"] == "link" and isinstance(v, dict) and isinstance(v.get("href"), str):
-            h = v["href"]
-            if h.startswith("http") and url_fingerprint(h) in fps:
-                ctx.report("EXTERNAL_LINK_NOT_PROTECTED", p + ".href",
-                           "this is the source company's real social profile; external links are instance data and must be the project's own")
-            if h.startswith("http://"):
-                ctx.report("EXTERNAL_LINK_NOT_PROTECTED", p + ".href", "external links must be https")
+        if fs["type"] == "link" and isinstance(v, dict) and isinstance(v.get("href"), str) and v["href"].startswith("http://"):
+            ctx.report("EXTERNAL_LINK_HTTPS", p + ".href", "external links must be https")
 
 
 @rule("WAITLIST_ENDPOINT_PROJECT_SUPPLIED")
@@ -539,7 +847,7 @@ def r_endpoint(ctx, spec):
         ctx.report("WAITLIST_ENDPOINT_PROJECT_SUPPLIED", "config.waitlistEndpoint", "must be an https URL")
     if url_fingerprint(ep) in set(ctx.protected["urlFingerprints"]["waitlistEndpoint"]):
         ctx.report("WAITLIST_ENDPOINT_PROJECT_SUPPLIED", "config.waitlistEndpoint",
-                   "this is the source company's live form endpoint; supply the project's own")
+                   "this is the source company's live form endpoint (rejected in both modes: the clone itself replaced it with a no-op); supply the project's own")
 
 
 @rule("INTERNAL_ANCHOR_RESOLVES")
@@ -576,14 +884,18 @@ def validate(spec, repo=REPO, with_schema=True):
     return errors + ctx.errors, ctx.warnings
 
 
+def example_paths(repo=REPO):
+    return sorted(glob.glob(os.path.join(repo, "schema", "examples", "*.pagespec.json")))
+
+
 def main(argv):
-    paths = argv[1:] or [os.path.join(REPO, "schema", "example.pagespec.json")]
+    paths = argv[1:] or example_paths()
     bad = 0
     for p in paths:
         with open(p, encoding="utf-8") as f:
             spec = json.load(f)
         errs, warns = validate(spec)
-        print("%s: %d error(s), %d warning(s)" % (os.path.basename(p), len(errs), len(warns)))
+        print("%s [mode=%s]: %d error(s), %d warning(s)" % (os.path.basename(p), spec.get("mode"), len(errs), len(warns)))
         for e in errs:
             print("  ERROR [%s] %s: %s" % (e["rule"], e["path"], e["message"]))
         for w in warns:

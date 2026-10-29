@@ -13,5 +13,6 @@
     "src.send.slideshow-autoplay",
     "src.send.slideshow-visibility"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

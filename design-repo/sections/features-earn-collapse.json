@@ -2,6 +2,16 @@
   "id": "features.earn-collapse",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Earn/section",
+    "tag": "section",
+    "file": "src/components/Earn.jsx",
+    "lines": "116-170"
+  },
+  "semantic": {
+    "id": "features.earn-collapse",
+    "category": "FEATURES"
+  },
   "purpose": "Explain a yield feature: a photo between two phones collapses into an explanatory paragraph once scrolled 96px.",
   "implementedBy": "src/components/Earn.jsx",
   "region": "main",
@@ -53,7 +63,9 @@
     "backdrop": {
       "type": "media",
       "roles": [
-        "texture.backdrop"
+        "texture.backdrop",
+        "generated.illustration",
+        "user.supplied-asset"
       ],
       "alt": "decorative",
       "aspect": "fill/cover 360x568 panels",
@@ -67,7 +79,9 @@
         "device": {
           "type": "media",
           "roles": [
-            "device.screen"
+            "device.screen",
+            "placeholder.screenshot",
+            "user.supplied-asset"
           ],
           "alt": {
             "maxChars": 65,
@@ -90,7 +104,9 @@
     "photo": {
       "type": "media",
       "roles": [
-        "photo.lifestyle"
+        "photo.lifestyle",
+        "generated.illustration",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 55,
@@ -105,6 +121,11 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "generated.illustration",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -174,5 +195,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

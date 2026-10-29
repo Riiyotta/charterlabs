@@ -14,5 +14,6 @@
     "qa.10-reveal-one-frame",
     "qa.03-hero-reveal-in-view"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

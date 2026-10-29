@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "$description": "Rules here and RULES in schema/semantic_validate.py are two sources for one fact; verify_all.py fails if their ids diverge.",
   "toneModel": {
     "tones": [
@@ -134,39 +134,105 @@
       "enforcedBy": "schema/semantic_validate.py"
     },
     {
-      "id": "ASSET_REF_NOT_SOURCE_FILE",
-      "severity": "error",
-      "description": "assetRef must not be a file from the source site.",
-      "enforcedBy": "schema/semantic_validate.py"
-    },
-    {
-      "id": "NO_VERBATIM_SOURCE_COPY",
-      "severity": "error",
-      "description": "No string may equal (normalised) any source copy string; fingerprints only, text not stored.",
-      "enforcedBy": "schema/semantic_validate.py"
-    },
-    {
-      "id": "NO_SOURCE_BRAND_NAME",
-      "severity": "error",
-      "description": "No copy, link, alt, assetRef or brand.name may contain the source brand token; partner-logo slots may not name the real partners.",
-      "enforcedBy": "schema/semantic_validate.py"
-    },
-    {
-      "id": "EXTERNAL_LINK_NOT_PROTECTED",
-      "severity": "error",
-      "description": "External links are instance data: never the source company's real social profiles; https only.",
-      "enforcedBy": "schema/semantic_validate.py"
-    },
-    {
       "id": "WAITLIST_ENDPOINT_PROJECT_SUPPLIED",
       "severity": "error",
-      "description": "config.waitlistEndpoint is required when the hero is present, must be https and must not be the source company's live form endpoint.",
+      "description": "config.waitlistEndpoint is required, https, and never the source company's live endpoint, in BOTH modes (the clone itself replaced the live POST with a no-op).",
       "enforcedBy": "schema/semantic_validate.py"
     },
     {
       "id": "INTERNAL_ANCHOR_RESOLVES",
       "severity": "error",
       "description": "Every '/#id' link must point at an anchorId of a node present on the page.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "RETRIEVAL_ELIGIBILITY_MATCH",
+      "severity": "error",
+      "description": "A node's retrievalEligible (when given) must equal the section contract's, and the contract must agree with the RETRIEVAL_INELIGIBLE code pin.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TOKEN_RAW_VALUE",
+      "severity": "error",
+      "description": "nodes[].styleTokens values are token ids; raw hex/rgb/hsl/named colours and raw dimensions are rejected.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TOKEN_ARBITRARY_SPACING",
+      "severity": "error",
+      "description": "styleTokens.sectionPaddingY must be a spacing.scale.* id from the measured scale.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TOKEN_UNSUPPORTED_FONT",
+      "severity": "error",
+      "description": "styleTokens.fontFamily must be a supported font token (fontFamily.sans = Inter Variable).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TOKEN_UNKNOWN",
+      "severity": "error",
+      "description": "Every styleTokens value must exist in tokens/llm/token-catalog.json and be of the category the slot accepts.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TOKEN_THEME_MISMATCH",
+      "severity": "error",
+      "description": "A color.* id in a color slot must be what the node's tone theme resolves that role group to (e.g. no light-theme text colour on an inverse node).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_BRAND",
+      "severity": "error",
+      "description": "mode=generation: no source brand name/variant/domain (schema/source-leakage-patterns.json BRAND), no brand.* role, no source brand file.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_CUSTOMER",
+      "severity": "error",
+      "description": "mode=generation: no real partner/customer name (CUSTOMER patterns) anywhere, no partner.logo role or partner logo file.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_PERSON",
+      "severity": "error",
+      "description": "mode=generation: no real person's photo (photo.portrait / -ascii / reflection roles, portrait files); use fictional.person.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_SCREENSHOT",
+      "severity": "error",
+      "description": "mode=generation: no real source app screen / card / share image (roles or files); use placeholder.screenshot.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_ASSET",
+      "severity": "error",
+      "description": "mode=generation: no other clone-only asset role or source asset file; every media role must be generation-safe (PINNED_AVAILABILITY).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_COPY",
+      "severity": "error",
+      "description": "mode=generation: no source copy (sha256 of any 5-word shingle, whole 3-4 word phrase or legacy full-string fingerprint).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_CLAIM",
+      "severity": "error",
+      "description": "mode=generation: no source claim (speed/fee/number statements, hashed as COPY).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "GENERATION_MODE_URL",
+      "severity": "error",
+      "description": "mode=generation: no source URL/host (fingerprints) and every absolute URL on a reserved *.example / *.invalid host (store, social and embed URLs included).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "EXTERNAL_LINK_HTTPS",
+      "severity": "error",
+      "description": "Both modes: external link hrefs are https.",
       "enforcedBy": "schema/semantic_validate.py"
     }
   ],
@@ -267,5 +333,14 @@
         "src.app.composition"
       ]
     }
-  ]
+  ],
+  "modeModel": {
+    "modes": [
+      "clone",
+      "generation"
+    ],
+    "clone": "private faithful reconstruction; source brand/copy/assets/partner names/social URLs allowed for fidelity",
+    "generation": "page for another brand; every GENERATION_MODE_* rule applies",
+    "failClosed": "a spec whose mode is not exactly 'clone' is checked as generation"
+  }
 }

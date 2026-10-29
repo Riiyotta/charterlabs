@@ -2,6 +2,16 @@
   "id": "transition.light-to-dark",
   "kind": "section",
   "category": "TRANSITION",
+  "source": {
+    "id": "src:DarkTransition/section",
+    "tag": "section",
+    "file": "src/components/DarkTransition.jsx",
+    "lines": "12-27"
+  },
+  "semantic": {
+    "id": "transition.light-to-dark",
+    "category": "TRANSITION"
+  },
   "purpose": "Flip the page from light to inverse: a sticky display statement disappears into a full-viewport black fade. The only tone handoff.",
   "implementedBy": "src/components/DarkTransition.jsx",
   "region": "main",
@@ -33,6 +43,7 @@
       ]
     }
   },
+  "generatedAssetRoles": [],
   "motion": {
     "reveal": [
       {
@@ -82,5 +93,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

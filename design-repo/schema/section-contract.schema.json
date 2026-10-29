@@ -1,0 +1,265 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "section-contract.schema.json",
+  "title": "Section contract (closed)",
+  "description": "Every sections/*.json validates against this (verify_all check section-contracts). Provenance (source) is separate from the AI-facing taxonomy (semantic).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "category",
+    "source",
+    "semantic",
+    "purpose",
+    "implementedBy",
+    "region",
+    "anchorId",
+    "tone",
+    "variants",
+    "handoff",
+    "constraints",
+    "content",
+    "generatedAssetRoles",
+    "motion",
+    "motionEvidence",
+    "responsive",
+    "composes",
+    "evidence",
+    "copyPolicy",
+    "retrievalEligible"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]+\\.[a-z0-9-]+$"
+    },
+    "kind": {
+      "const": "section"
+    },
+    "category": {
+      "enum": [
+        "CHROME",
+        "HERO",
+        "FEATURES",
+        "PROOF",
+        "SUPPORT",
+        "TRANSITION",
+        "CTA",
+        "CONTENT"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tag",
+        "file",
+        "lines"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^src:[A-Za-z0-9]+/[a-z]+$"
+        },
+        "tag": {
+          "enum": [
+            "section",
+            "header",
+            "footer",
+            "div",
+            "main",
+            "nav"
+          ]
+        },
+        "file": {
+          "type": "string",
+          "pattern": "^src/[A-Za-z0-9_/.-]+$"
+        },
+        "lines": {
+          "type": "string",
+          "pattern": "^[0-9]+-[0-9]+$"
+        }
+      }
+    },
+    "semantic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "category"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "CHROME",
+            "HERO",
+            "FEATURES",
+            "PROOF",
+            "SUPPORT",
+            "TRANSITION",
+            "CTA",
+            "CONTENT"
+          ]
+        }
+      }
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 10
+    },
+    "implementedBy": {
+      "type": "string"
+    },
+    "region": {
+      "enum": [
+        "header",
+        "main",
+        "footer"
+      ]
+    },
+    "anchorId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tone": {
+      "enum": [
+        "light",
+        "inverse"
+      ]
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed",
+        "allowed"
+      ],
+      "properties": {
+        "observed": {
+          "enum": [
+            "light",
+            "inverse",
+            null
+          ]
+        },
+        "allowed": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "light",
+              "inverse",
+              null
+            ]
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object"
+    },
+    "content": {
+      "type": "object"
+    },
+    "generatedAssetRoles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "motion": {
+      "type": "object",
+      "required": [
+        "reducedMotionFallback"
+      ]
+    },
+    "motionEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "responsive": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "phone": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tablet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "desktop": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "wide": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "composes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "copyPolicy": {
+      "type": "string"
+    },
+    "retrievalEligible": {
+      "type": "boolean"
+    },
+    "retrievalIneligibleReason": {
+      "type": "string",
+      "minLength": 30
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "retrievalEligible": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "retrievalIneligibleReason"
+        ]
+      }
+    }
+  ]
+}

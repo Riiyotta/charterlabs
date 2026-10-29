@@ -2,6 +2,16 @@
   "id": "support.faq-accordion",
   "kind": "section",
   "category": "SUPPORT",
+  "source": {
+    "id": "src:Faq/section",
+    "tag": "section",
+    "file": "src/components/Faq.jsx",
+    "lines": "105-123"
+  },
+  "semantic": {
+    "id": "support.faq-accordion",
+    "category": "SUPPORT"
+  },
   "purpose": "Answer objections in a five-item single-open accordion.",
   "implementedBy": "src/components/Faq.jsx",
   "region": "main",
@@ -61,6 +71,7 @@
       ]
     }
   },
+  "generatedAssetRoles": [],
   "motion": {
     "toggles": [
       {
@@ -99,5 +110,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

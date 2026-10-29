@@ -9,5 +9,6 @@
     "spec.2.10-faq",
     "src.faq.spring"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

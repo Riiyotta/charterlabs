@@ -16,5 +16,6 @@
     "spec.3.3-appear",
     "src.motion.appear"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

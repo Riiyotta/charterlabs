@@ -9,5 +9,6 @@
   "evidence": [
     "assets.4-inline-svgs"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

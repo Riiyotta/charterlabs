@@ -2,6 +2,16 @@
   "id": "features.wallet-intro",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Intro/section",
+    "tag": "section",
+    "file": "src/components/Intro.jsx",
+    "lines": "61-112"
+  },
+  "semantic": {
+    "id": "features.wallet-intro",
+    "category": "FEATURES"
+  },
   "purpose": "Introduce the product with an eyebrow, a short claim and a lead paragraph beside a tilting phone.",
   "implementedBy": "src/components/Intro.jsx",
   "region": "main",
@@ -53,7 +63,9 @@
     "device": {
       "type": "media",
       "roles": [
-        "device.screen"
+        "device.screen",
+        "placeholder.screenshot",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 19,
@@ -71,7 +83,8 @@
     "deviceReflection": {
       "type": "media",
       "roles": [
-        "device.screen-reflection"
+        "device.screen-reflection",
+        "generated.derived-render"
       ],
       "alt": "decorative",
       "aspect": "496x1025, 120px flipped soft-masked",
@@ -81,6 +94,11 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "generated.derived-render",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -174,5 +192,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

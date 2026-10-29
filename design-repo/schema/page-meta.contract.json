@@ -25,7 +25,9 @@
     "favicon": {
       "type": "media",
       "roles": [
-        "brand.mark"
+        "brand.mark",
+        "placeholder.brand-mark",
+        "user.supplied-asset"
       ],
       "alt": "decorative",
       "aspect": "svg/png icon",
@@ -36,7 +38,9 @@
     "socialImage": {
       "type": "media",
       "roles": [
-        "social.og-image"
+        "social.og-image",
+        "placeholder.screenshot",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 116,

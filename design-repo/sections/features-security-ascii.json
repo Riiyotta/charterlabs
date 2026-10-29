@@ -2,6 +2,16 @@
   "id": "features.security-ascii",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Security/section",
+    "tag": "section",
+    "file": "src/components/Security.jsx",
+    "lines": "52-115"
+  },
+  "semantic": {
+    "id": "features.security-ascii",
+    "category": "FEATURES"
+  },
   "purpose": "Reassure on security: portrait card switching to an ASCII render with a statement, then three term/description rows.",
   "implementedBy": "src/components/Security.jsx",
   "region": "main",
@@ -83,7 +93,8 @@
     "portrait": {
       "type": "media",
       "roles": [
-        "photo.portrait"
+        "photo.portrait",
+        "fictional.person"
       ],
       "alt": {
         "maxChars": 40,
@@ -100,7 +111,8 @@
     "portraitAscii": {
       "type": "media",
       "roles": [
-        "photo.portrait-ascii"
+        "photo.portrait-ascii",
+        "generated.derived-render"
       ],
       "alt": "decorative",
       "aspect": "1128x788",
@@ -109,6 +121,10 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "fictional.person",
+    "generated.derived-render"
+  ],
   "motion": {
     "reveal": [
       {
@@ -171,5 +187,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

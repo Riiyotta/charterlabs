@@ -6,5 +6,6 @@
   "evidence": [
     "spec.2.9-security"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

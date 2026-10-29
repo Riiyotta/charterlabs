@@ -2,6 +2,16 @@
   "id": "proof.logo-ticker",
   "kind": "section",
   "category": "PROOF",
+  "source": {
+    "id": "src:Logo/section",
+    "tag": "section",
+    "file": "src/components/Logo.jsx",
+    "lines": "44-62"
+  },
+  "semantic": {
+    "id": "proof.logo-ticker",
+    "category": "PROOF"
+  },
   "purpose": "State the positioning in one h3 and show partner proof in an endless ticker; hosts #send-scroll-trigger.",
   "implementedBy": "src/components/Logo.jsx",
   "region": "main",
@@ -48,7 +58,8 @@
         "logo": {
           "type": "media",
           "roles": [
-            "partner.logo"
+            "partner.logo",
+            "placeholder.company-logo"
           ],
           "alt": {
             "maxChars": 10,
@@ -70,6 +81,9 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "placeholder.company-logo"
+  ],
   "motion": {
     "reveal": [
       {
@@ -123,5 +137,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

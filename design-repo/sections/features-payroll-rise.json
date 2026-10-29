@@ -2,6 +2,16 @@
   "id": "features.payroll-rise",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Payroll/section",
+    "tag": "section",
+    "file": "src/components/Payroll.jsx",
+    "lines": "62-123"
+  },
+  "semantic": {
+    "id": "features.payroll-rise",
+    "category": "FEATURES"
+  },
   "purpose": "Explain a payout feature: sticky heading, two photos rising with a blended statement, three stats and a paragraph.",
   "implementedBy": "src/components/Payroll.jsx",
   "region": "main",
@@ -102,7 +112,8 @@
     "portrait": {
       "type": "media",
       "roles": [
-        "photo.portrait"
+        "photo.portrait",
+        "fictional.person"
       ],
       "alt": {
         "maxChars": 37,
@@ -119,7 +130,8 @@
     "portraitPhone": {
       "type": "media",
       "roles": [
-        "photo.portrait"
+        "photo.portrait",
+        "fictional.person"
       ],
       "alt": {
         "maxChars": 37,
@@ -136,7 +148,10 @@
     "productPhoto": {
       "type": "media",
       "roles": [
-        "photo.product-in-hand"
+        "photo.product-in-hand",
+        "placeholder.screenshot",
+        "generated.illustration",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 76,
@@ -153,7 +168,8 @@
     "portraitReflection": {
       "type": "media",
       "roles": [
-        "photo.reflection"
+        "photo.reflection",
+        "generated.derived-render"
       ],
       "alt": "decorative",
       "aspect": "596x395",
@@ -164,7 +180,8 @@
     "productReflection": {
       "type": "media",
       "roles": [
-        "photo.reflection"
+        "photo.reflection",
+        "generated.derived-render"
       ],
       "alt": "decorative",
       "aspect": "598x481",
@@ -173,6 +190,13 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "fictional.person",
+    "generated.derived-render",
+    "generated.illustration",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -235,5 +259,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

@@ -1,0 +1,1147 @@
+{
+  "pageSpecVersion": "2.0.0",
+  "mode": "generation",
+  "template": "template.home",
+  "route": "/",
+  "brand": {
+    "name": "Fernway",
+    "isFictional": true
+  },
+  "config": {
+    "waitlistEndpoint": "https://forms.fernway.example/waitlist"
+  },
+  "meta": {
+    "title": "Fernway - Global Wallet",
+    "description": "A calm wallet for paying people abroad, getting paid on time and saving in more than one currency.",
+    "favicon": {
+      "assetRole": "placeholder.brand-mark",
+      "assetRef": "assets/fernway/favicon.svg",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "placeholder.screenshot",
+      "assetRef": "assets/fernway/share.png",
+      "alt": "A phone showing the Fernway app next to the Fernway logo"
+    }
+  },
+  "nodes": [
+    {
+      "id": "n-header",
+      "section": "chrome.header",
+      "variant": "centered-pill-nav",
+      "tone": "light",
+      "handoff": null,
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "placeholder.brand-mark",
+          "assetRef": "assets/fernway/mark.svg",
+          "alt": "Fernway home"
+        },
+        "menuPrimary": {
+          "label": "Product",
+          "links": [
+            {
+              "label": "Account",
+              "href": "/#intro-section"
+            },
+            {
+              "label": "Transfers",
+              "href": "/#send-section"
+            },
+            {
+              "label": "Insights",
+              "href": "/#overview-section"
+            },
+            {
+              "label": "Safety",
+              "href": "/#security-section"
+            }
+          ],
+          "media": [
+            {
+              "image": {
+                "assetRole": "placeholder.screenshot",
+                "assetRef": "assets/fernway/menu-widget.webp",
+                "alt": "Fernway balance widget on a lock screen"
+              }
+            },
+            {
+              "image": {
+                "assetRole": "placeholder.screenshot",
+                "assetRef": "assets/fernway/menu-payday.webp",
+                "alt": "Fernway payday summary card"
+              }
+            }
+          ]
+        },
+        "menuSecondary": {
+          "label": "Tools",
+          "links": [
+            {
+              "label": "Savings",
+              "href": "/#earn-section"
+            },
+            {
+              "label": "Paydays",
+              "href": "/#payroll-section"
+            },
+            {
+              "label": "Spending",
+              "href": "/#overview-section"
+            }
+          ],
+          "media": [
+            {
+              "image": {
+                "assetRole": "placeholder.screenshot",
+                "assetRef": "assets/fernway/menu-vault.webp",
+                "alt": "Fernway vault growth card"
+              }
+            },
+            {
+              "image": {
+                "assetRole": "placeholder.screenshot",
+                "assetRef": "assets/fernway/menu-spend.webp",
+                "alt": "Fernway spending breakdown card"
+              }
+            }
+          ]
+        },
+        "menuCompany": {
+          "label": "About",
+          "socialLinks": [
+            {
+              "platform": "x",
+              "link": {
+                "label": "X",
+                "href": "https://x.fernway.example/fernway"
+              }
+            },
+            {
+              "platform": "linkedin",
+              "link": {
+                "label": "LinkedIn",
+                "href": "https://linkedin.fernway.example/company"
+              }
+            }
+          ],
+          "links": [
+            {
+              "label": "Questions",
+              "href": "/#faq-section"
+            }
+          ],
+          "ring": {
+            "assetRole": "generated.illustration",
+            "assetRef": "assets/fernway/menu-orb.webp",
+            "alt": ""
+          }
+        },
+        "contactLink": {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      },
+      "motion": {
+        "navDrop": {
+          "delayFromNavStartS": 1.77,
+          "durationS": 1,
+          "curve": "cubic-bezier(.16,1,.3,1)",
+          "fromYPx": -100
+        },
+        "navMenu": {
+          "panelDurationS": 0.45,
+          "panelEase": "cubic-bezier(.32,.72,0,1)",
+          "overlayDurationS": 0.3,
+          "linkStaggerS": 0.04,
+          "linkDelayChildrenS": 0.05,
+          "linkDurationS": 0.4,
+          "linkFromYPx": 16,
+          "openDelayS": 0.06,
+          "closeDelayS": 0.14,
+          "closeOnScrollPx": 48,
+          "highlightOpacityS": 0.2
+        },
+        "toggles": [
+          {
+            "effect": "navGlide",
+            "spring": {
+              "stiffness": 400,
+              "damping": 36,
+              "mass": 1
+            },
+            "settle": "snap-after-first-frame",
+            "switchAtPx": null
+          },
+          {
+            "effect": "tabGlide",
+            "spring": {
+              "stiffness": 400,
+              "damping": 36,
+              "mass": 1
+            },
+            "settle": "snap-after-first-frame",
+            "switchAtPx": null
+          },
+          {
+            "effect": "burgerMorph",
+            "spring": {
+              "stiffness": 400,
+              "damping": 36,
+              "mass": 1
+            },
+            "settle": "spring",
+            "switchAtPx": null
+          }
+        ],
+        "reducedMotionFallback": "no-nav-drop"
+      }
+    },
+    {
+      "id": "n-waitlist-hero",
+      "section": "hero.waitlist-hero",
+      "variant": "centered-device-waitlist",
+      "tone": "light",
+      "handoff": "light",
+      "anchorId": "hero-section",
+      "content": {
+        "heading": "Money that moves at your pace.",
+        "body": "A calm wallet for cross-border payments, paydays and savings.",
+        "device": {
+          "assetRole": "placeholder.screenshot",
+          "assetRef": "assets/fernway/hero-device.webp",
+          "alt": "Phone showing the Fernway home screen"
+        },
+        "waitlist": {
+          "ctaLabel": "Get access",
+          "inputPlaceholder": "Email",
+          "successMessage": "Thanks!",
+          "errorMessage": "Please try again"
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "heading",
+            "delay": 1,
+            "amount": 0.5,
+            "trigger": "inView",
+            "clock": "navigationStart",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "body",
+            "delay": 1.2,
+            "amount": 0.5,
+            "trigger": "inView",
+            "clock": "navigationStart",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "appear": [
+          {
+            "target": "device",
+            "trigger": "mount",
+            "observe": "self",
+            "from": {
+              "opacity": 0,
+              "x": -150,
+              "y": 300,
+              "rotateX": 0
+            },
+            "spring": {
+              "duration": 2,
+              "bounce": 0
+            },
+            "delay": 0.5,
+            "amount": null,
+            "clock": "navigationStart",
+            "mirrorX": false,
+            "breakpoints": "all"
+          },
+          {
+            "target": "waitlist",
+            "trigger": "mount",
+            "observe": "self",
+            "from": {
+              "opacity": 0,
+              "x": 0,
+              "y": 100,
+              "rotateX": 50
+            },
+            "spring": {
+              "duration": 1,
+              "bounce": 0
+            },
+            "delay": 1.3,
+            "amount": null,
+            "clock": "navigationStart",
+            "mirrorX": false,
+            "breakpoints": "all"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "heroTextFade",
+            "source": "hero image wrapper",
+            "offset": "start start,end start",
+            "breakpoints": "tablet-up"
+          }
+        ],
+        "toggles": [
+          {
+            "effect": "waitlistOpen",
+            "spring": {
+              "stiffness": 80,
+              "damping": 20,
+              "mass": 1
+            },
+            "settle": "spring",
+            "switchAtPx": null
+          }
+        ],
+        "reducedMotionFallback": "text-shown-appear-at-rest-handoff-static"
+      },
+      "styleTokens": {
+        "surface": "tone.surface.base",
+        "text": "color.gray.1000",
+        "sectionPaddingY": "spacing.scale.128",
+        "headingStyle": "typeStyle.h1",
+        "fontFamily": "fontFamily.sans"
+      }
+    },
+    {
+      "id": "n-wallet-intro",
+      "section": "features.wallet-intro",
+      "variant": "text-left-device-right",
+      "tone": "light",
+      "handoff": null,
+      "anchorId": "intro-section",
+      "content": {
+        "eyebrow": "Meet Fernway Wallet",
+        "heading": "Money, made calmer.",
+        "body": "Hold several currencies, pay anyone in moments and keep every balance in one protected app.",
+        "device": {
+          "assetRole": "placeholder.screenshot",
+          "assetRef": "assets/fernway/intro-device.webp",
+          "alt": "Fernway app home"
+        },
+        "deviceReflection": {
+          "assetRole": "generated.derived-render",
+          "assetRef": "assets/fernway/intro-device-reflect.webp",
+          "alt": ""
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "eyebrow",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "heading",
+            "delay": 0.2,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "body",
+            "delay": 0.1,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "appear": [
+          {
+            "target": "device",
+            "trigger": "inView",
+            "observe": "section",
+            "from": {
+              "opacity": 0,
+              "x": -150,
+              "y": -300,
+              "rotate": -20,
+              "rotateX": 40,
+              "rotateY": 30
+            },
+            "spring": {
+              "duration": 1.5,
+              "bounce": 0
+            },
+            "delay": 0,
+            "amount": 0.5,
+            "clock": "trigger",
+            "mirrorX": false,
+            "breakpoints": "phone"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "introPhoneTilt",
+            "source": "#hero-section",
+            "offset": "line:start",
+            "breakpoints": "tablet-up"
+          }
+        ],
+        "reducedMotionFallback": "text-shown-phone-appear-at-rest"
+      }
+    },
+    {
+      "id": "n-logo-ticker",
+      "section": "proof.logo-ticker",
+      "variant": "statement-over-ticker",
+      "tone": "light",
+      "handoff": "light",
+      "anchorId": "logo-section",
+      "content": {
+        "statement": "One account for daily spending and distant transfers, built to feel simple wherever you are.",
+        "supportLine": "Backed by trusted infrastructure partners",
+        "partners": [
+          {
+            "logo": {
+              "assetRole": "placeholder.company-logo",
+              "assetRef": "assets/fernway/partner-a.svg",
+              "alt": "Partner-A"
+            }
+          },
+          {
+            "logo": {
+              "assetRole": "placeholder.company-logo",
+              "assetRef": "assets/fernway/partner-b.svg",
+              "alt": "Partner-B"
+            }
+          },
+          {
+            "logo": {
+              "assetRole": "placeholder.company-logo",
+              "assetRef": "assets/fernway/partner-c.svg",
+              "alt": "Partner-C"
+            }
+          },
+          {
+            "logo": {
+              "assetRole": "placeholder.company-logo",
+              "assetRef": "assets/fernway/partner-d.svg",
+              "alt": "Partner-D"
+            }
+          }
+        ]
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "statement",
+            "delay": 0.1,
+            "amount": 0.5,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "ticker": {
+          "velocityPxPerS": 50,
+          "copies": 6,
+          "gapPx": 48,
+          "logoHeightPx": 30,
+          "hoverPlaybackRate": 1
+        },
+        "reducedMotionFallback": "text-shown-ticker-static-handoff-static"
+      }
+    },
+    {
+      "id": "n-send-slideshow",
+      "section": "features.send-slideshow",
+      "variant": "mirrored-phones-carousel",
+      "tone": "light",
+      "handoff": null,
+      "anchorId": "send-section",
+      "content": {
+        "eyebrow": "Transfers",
+        "heading": "Sending abroad, finally simple.",
+        "phones": [
+          {
+            "device": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/send-picker.webp",
+              "alt": "Fernway currency picker"
+            },
+            "reflection": {
+              "assetRole": "generated.derived-render",
+              "assetRef": "assets/fernway/send-picker-reflect.webp",
+              "alt": ""
+            }
+          },
+          {
+            "device": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/send-amount.webp",
+              "alt": "Fernway amount screen"
+            },
+            "reflection": {
+              "assetRole": "generated.derived-render",
+              "assetRef": "assets/fernway/send-amount-reflect.webp",
+              "alt": ""
+            }
+          }
+        ],
+        "slides": [
+          {
+            "layout": "top",
+            "image": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/slide-contacts.webp",
+              "alt": "Fernway contacts list"
+            },
+            "title": "Choose who to pay.",
+            "body": "Pick a saved person or enter new bank details. Payments then reach supported banks in several regions."
+          },
+          {
+            "layout": "center",
+            "image": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/slide-local.webp",
+              "alt": "Fernway local account details"
+            },
+            "title": "Local details, in two currencies.",
+            "body": "Receive money like a local with your own account details in two currencies, then move it on whenever you are ready."
+          },
+          {
+            "layout": "tilt-right",
+            "image": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/slide-currency.webp",
+              "alt": "Fernway currency picker"
+            },
+            "title": "Pick the currency they receive.",
+            "body": "Choose a currency and preview exactly what arrives on the other side, with the conversion shown before you confirm."
+          },
+          {
+            "layout": "tilt-left",
+            "image": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/slide-amount.webp",
+              "alt": "Fernway amount screen"
+            },
+            "title": "Check the total, then send.",
+            "body": "Enter an amount and see the fees and arrival time up front. Withdrawals to local banks are quick, with totals shown first."
+          },
+          {
+            "layout": "center",
+            "image": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/slide-receipt.webp",
+              "alt": "Fernway transfer receipt"
+            },
+            "title": "Proof of every transfer.",
+            "body": "Follow each step with times, fees and status, so you always know where a transfer is and when it will land."
+          }
+        ]
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "eyebrow",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "heading",
+            "delay": 0.2,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "appear": [
+          {
+            "target": "phones",
+            "trigger": "midline",
+            "observe": "section",
+            "from": {
+              "x": -260,
+              "y": -200
+            },
+            "spring": {
+              "duration": 1.5,
+              "bounce": 0
+            },
+            "delay": 0,
+            "amount": null,
+            "clock": "trigger",
+            "mirrorX": true,
+            "breakpoints": "phone"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "sendPhonesSettle",
+            "source": "#send-scroll-trigger",
+            "offset": "line:start",
+            "breakpoints": "tablet-up"
+          },
+          {
+            "effect": "sendPhonesParallax",
+            "source": "scrollY",
+            "offset": "raw",
+            "breakpoints": "phone"
+          }
+        ],
+        "autoplay": {
+          "autoplayIntervalMs": 8000,
+          "visibilityThreshold": 0.25,
+          "playOnInit": false,
+          "stopOnInteraction": false,
+          "stopOnMouseEnter": true,
+          "loop": true,
+          "emblaDuration": 35,
+          "dimOpacity": 0.1
+        },
+        "reducedMotionFallback": "text-shown-autoplay-off-phone-appear-at-rest"
+      }
+    },
+    {
+      "id": "n-light-to-dark",
+      "section": "transition.light-to-dark",
+      "variant": "sticky-display-statement",
+      "tone": "light",
+      "handoff": null,
+      "anchorId": null,
+      "content": {
+        "statement": "One account. Built for every border."
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "statement",
+            "delay": 0.1,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "darkOverlayFade",
+            "source": "#overview-dark-trigger",
+            "offset": "line:middle",
+            "breakpoints": "all"
+          }
+        ],
+        "sticky": {
+          "topPx": 124
+        },
+        "reducedMotionFallback": "text-shown"
+      }
+    },
+    {
+      "id": "n-finances-overview",
+      "section": "features.finances-overview",
+      "variant": "dropping-device-reflection",
+      "tone": "inverse",
+      "handoff": null,
+      "anchorId": "overview-section",
+      "content": {
+        "kicker": "Say hello.",
+        "heading": "Everything in one clear view.",
+        "body": "Track savings, paydays and spending together on a single tidy screen.",
+        "device": {
+          "assetRole": "placeholder.screenshot",
+          "assetRef": "assets/fernway/overview-device.webp",
+          "alt": "Fernway overview of savings and spending"
+        },
+        "deviceReflection": {
+          "assetRole": "generated.derived-render",
+          "assetRef": "assets/fernway/overview-reflect.webp",
+          "alt": ""
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "heading",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "body",
+            "delay": 0.1,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "appear": [
+          {
+            "target": "device",
+            "trigger": "midline",
+            "observe": "section",
+            "from": {
+              "opacity": 0,
+              "y": -450
+            },
+            "spring": {
+              "duration": 1,
+              "bounce": 0
+            },
+            "delay": 0,
+            "amount": null,
+            "clock": "trigger",
+            "mirrorX": false,
+            "breakpoints": "phone"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "meetCaptionFade",
+            "source": "#overview-dark-trigger",
+            "offset": "line:start",
+            "breakpoints": "all"
+          },
+          {
+            "effect": "overviewDeviceDrop",
+            "source": "#overview-screen-trigger",
+            "offset": "line:start",
+            "breakpoints": "tablet-up"
+          }
+        ],
+        "reducedMotionFallback": "text-shown-phone-appear-at-rest"
+      }
+    },
+    {
+      "id": "n-earn-collapse",
+      "section": "features.earn-collapse",
+      "variant": "collapsing-stage",
+      "tone": "inverse",
+      "handoff": null,
+      "anchorId": "earn-section",
+      "content": {
+        "eyebrow": "Let idle money grow.",
+        "heading": "Grow savings in flexible vaults.",
+        "body": "Move spare money into a Fernway vault and watch it grow at a variable rate. Add or withdraw at any time, with no lock-in period.",
+        "backdrop": {
+          "assetRole": "generated.illustration",
+          "assetRef": "assets/fernway/earn-backdrop.webp",
+          "alt": ""
+        },
+        "devices": [
+          {
+            "device": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/earn-forecast.webp",
+              "alt": "Fernway vault balance with a growth forecast"
+            }
+          },
+          {
+            "device": {
+              "assetRole": "placeholder.screenshot",
+              "assetRef": "assets/fernway/earn-summary.webp",
+              "alt": "Fernway savings summary screen"
+            }
+          }
+        ],
+        "photo": {
+          "assetRole": "generated.illustration",
+          "assetRef": "assets/fernway/earn-photo.webp",
+          "alt": "A cyclist resting beside a quiet coastal road at dusk"
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "eyebrow",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "heading",
+            "delay": 0.2,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "earnPhoneDrift",
+            "source": "scrollY",
+            "offset": "raw",
+            "breakpoints": "all"
+          }
+        ],
+        "toggles": [
+          {
+            "effect": "earnStage",
+            "spring": {
+              "duration": 1,
+              "bounce": 0
+            },
+            "settle": "spring",
+            "switchAtPx": 96
+          }
+        ],
+        "reducedMotionFallback": "text-shown-toggle-instant"
+      }
+    },
+    {
+      "id": "n-payroll-rise",
+      "section": "features.payroll-rise",
+      "variant": "rising-photo-stage",
+      "tone": "inverse",
+      "handoff": null,
+      "anchorId": "payroll-section",
+      "content": {
+        "eyebrow": "Paid as you go.",
+        "heading": "Paydays on your own timetable.",
+        "statementLines": [
+          "Work today.",
+          "Spend now."
+        ],
+        "statementSub": "No more waiting for payday.",
+        "stats": [
+          {
+            "title": "Same day",
+            "label": "Fast"
+          },
+          {
+            "title": "Your rhythm",
+            "label": "Adaptive"
+          },
+          {
+            "title": "Ready now",
+            "label": "Spendable"
+          }
+        ],
+        "body": "Earnings should not sit out of reach for weeks. Fernway pays wages out as the hours add up, ready to use or put aside.",
+        "portrait": {
+          "assetRole": "fictional.person",
+          "assetRef": "assets/fernway/payroll-person.webp",
+          "alt": "A person reading by a window"
+        },
+        "portraitPhone": {
+          "assetRole": "fictional.person",
+          "assetRef": "assets/fernway/payroll-person-soft.webp",
+          "alt": "A person reading by a window"
+        },
+        "productPhoto": {
+          "assetRole": "placeholder.screenshot",
+          "assetRef": "assets/fernway/payroll-hand.webp",
+          "alt": "Phone in a hand with Fernway payday alerts"
+        },
+        "portraitReflection": {
+          "assetRole": "generated.derived-render",
+          "assetRef": "assets/fernway/payroll-person-reflect.webp",
+          "alt": ""
+        },
+        "productReflection": {
+          "assetRole": "generated.derived-render",
+          "assetRef": "assets/fernway/payroll-hand-reflect.webp",
+          "alt": ""
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "eyebrow",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "heading",
+            "delay": 0.2,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "scrollLinked": [
+          {
+            "effect": "payrollPhotoRise",
+            "source": "#payroll-section",
+            "offset": "line:end",
+            "breakpoints": "tablet-up"
+          }
+        ],
+        "sticky": {
+          "topPx": 188
+        },
+        "reducedMotionFallback": "text-shown"
+      }
+    },
+    {
+      "id": "n-security-ascii",
+      "section": "features.security-ascii",
+      "variant": "ascii-card-definition-list",
+      "tone": "inverse",
+      "handoff": "inverse",
+      "anchorId": "security-section",
+      "content": {
+        "eyebrow": "Always-on protection.",
+        "heading": "Security, built in",
+        "statementLines": [
+          "Your keys.",
+          "Your call."
+        ],
+        "rows": [
+          {
+            "term": "Self-custody",
+            "description": "Fernway never holds your keys. Strong encryption, device biometrics and careful recovery design keep your balance under your control alone."
+          },
+          {
+            "term": "Device passkeys",
+            "description": "Approve payments with your face or fingerprint. Passkeys stored in your phone's secure hardware replace passwords, so there is nothing to phish."
+          },
+          {
+            "term": "Easy recovery",
+            "description": "Lost your phone? Restore access through guided recovery steps, so your wallet is never tied to one device. Your keys remain yours."
+          }
+        ],
+        "portrait": {
+          "assetRole": "fictional.person",
+          "assetRef": "assets/fernway/security-person.webp",
+          "alt": "A person outside an office building"
+        },
+        "portraitAscii": {
+          "assetRole": "generated.derived-render",
+          "assetRef": "assets/fernway/security-person-ascii.webp",
+          "alt": ""
+        }
+      },
+      "motion": {
+        "reveal": [
+          {
+            "slot": "eyebrow",
+            "delay": 0,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          },
+          {
+            "slot": "heading",
+            "delay": 0.2,
+            "amount": 0,
+            "trigger": "inView",
+            "clock": "trigger",
+            "stagger": 0.06,
+            "curve": "cubic-bezier(.16,1,.3,1)"
+          }
+        ],
+        "toggles": [
+          {
+            "effect": "securityCard",
+            "spring": {
+              "duration": 1,
+              "bounce": 0
+            },
+            "settle": "spring",
+            "switchAtPx": 0
+          }
+        ],
+        "reducedMotionFallback": "text-shown-toggle-instant-handoff-static"
+      }
+    },
+    {
+      "id": "n-faq-accordion",
+      "section": "support.faq-accordion",
+      "variant": "heading-left-accordion",
+      "tone": "inverse",
+      "handoff": null,
+      "anchorId": "faq-section",
+      "content": {
+        "heading": "FAQ",
+        "items": [
+          {
+            "question": "What is Fernway?",
+            "answer": [
+              "Fernway is a fictional example wallet used to demonstrate this page template.",
+              "It shows how a product page can explain balances, transfers and savings in plain language."
+            ]
+          },
+          {
+            "question": "How fast are transfers?",
+            "answer": [
+              "Transfers between Fernway users usually arrive within seconds.",
+              "Bank withdrawals depend on the receiving bank and can take up to two business days."
+            ]
+          },
+          {
+            "question": "Who holds my money?",
+            "answer": [
+              "You do. Keys made and kept on your own device protect the wallet.",
+              "No one else, including the Fernway team, can move your funds.",
+              "If you lose your phone, guided recovery restores access."
+            ]
+          },
+          {
+            "question": "Which currencies can I hold?",
+            "answer": [
+              "You can hold balances in several major currencies.",
+              "Each balance is shown alongside its value in your home currency."
+            ]
+          },
+          {
+            "question": "How do I add money?",
+            "answer": [
+              "Add money by bank transfer to your local account details.",
+              "Incoming deposits are converted to your main currency automatically.",
+              "Availability varies by region."
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "toggles": [
+          {
+            "effect": "faqAccordion",
+            "spring": {
+              "duration": 0.5,
+              "bounce": 0
+            },
+            "settle": "spring",
+            "switchAtPx": null
+          }
+        ],
+        "reducedMotionFallback": "accordion-instant"
+      }
+    },
+    {
+      "id": "n-footer",
+      "section": "chrome.footer",
+      "variant": "sticky-reveal-columns",
+      "tone": "inverse",
+      "handoff": null,
+      "anchorId": null,
+      "content": {
+        "wordmark": {
+          "assetRole": "placeholder.brand-mark",
+          "assetRef": "assets/fernway/wordmark.svg",
+          "alt": "Fernway home"
+        },
+        "columns": [
+          {
+            "title": "Product",
+            "links": [
+              {
+                "label": "Account",
+                "href": "/#intro-section"
+              },
+              {
+                "label": "Transfers",
+                "href": "/#send-section"
+              },
+              {
+                "label": "Insights",
+                "href": "/#overview-section"
+              },
+              {
+                "label": "Safety",
+                "href": "/#security-section"
+              }
+            ]
+          },
+          {
+            "title": "Features",
+            "links": [
+              {
+                "label": "Savings",
+                "href": "/#earn-section"
+              },
+              {
+                "label": "Paydays",
+                "href": "/#payroll-section"
+              },
+              {
+                "label": "Spending",
+                "href": "/#overview-section"
+              }
+            ]
+          },
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Contact",
+                "href": "/contact"
+              },
+              {
+                "label": "X",
+                "href": "https://x.fernway.example/fernway"
+              },
+              {
+                "label": "LinkedIn",
+                "href": "https://linkedin.fernway.example/company"
+              }
+            ]
+          },
+          {
+            "title": "About",
+            "links": [
+              {
+                "label": "Questions",
+                "href": "/#faq-section"
+              },
+              {
+                "label": "Privacy",
+                "href": "/privacy"
+              }
+            ]
+          }
+        ],
+        "legalLine": "© 2026 Fernway Ltd. All rights reserved."
+      },
+      "motion": {
+        "scrollLinked": [
+          {
+            "effect": "footerReveal",
+            "source": "document end",
+            "offset": "startAt:1.35,endAt:0.1",
+            "breakpoints": "tablet-up"
+          }
+        ],
+        "reducedMotionFallback": "footer-reveal-static"
+      }
+    }
+  ]
+}

@@ -1,26 +1,27 @@
 {
-  "pageSpecVersion": "1.0.0",
+  "pageSpecVersion": "2.0.0",
+  "mode": "clone",
   "template": "template.home",
   "route": "/",
   "brand": {
-    "name": "Fernway",
-    "isFictional": true
+    "name": "Charter",
+    "isFictional": false
   },
   "config": {
-    "waitlistEndpoint": "https://forms.example.com/fernway/waitlist"
+    "waitlistEndpoint": "https://forms.charter-clone.invalid/waitlist"
   },
   "meta": {
-    "title": "Fernway - Global Wallet",
+    "title": "Charter - Global Wallet",
     "description": "A calm wallet for paying people abroad, getting paid on time and saving in more than one currency.",
     "favicon": {
       "assetRole": "brand.mark",
-      "assetRef": "assets/fernway/favicon.svg",
+      "assetRef": "public/icons/icon-light.svg",
       "alt": ""
     },
     "socialImage": {
       "assetRole": "social.og-image",
-      "assetRef": "assets/fernway/share.png",
-      "alt": "A phone showing the Fernway app next to the Fernway logo"
+      "assetRef": "public/social/charter-wallet.png",
+      "alt": "A phone showing the Charter app next to the Charter logo"
     }
   },
   "nodes": [
@@ -34,8 +35,8 @@
       "content": {
         "brandMark": {
           "assetRole": "brand.mark",
-          "assetRef": "assets/fernway/mark.svg",
-          "alt": "Fernway home"
+          "assetRef": "public/icons/icon-dark.png",
+          "alt": "Charter home"
         },
         "menuPrimary": {
           "label": "Product",
@@ -61,15 +62,15 @@
             {
               "image": {
                 "assetRole": "nav.card-image",
-                "assetRef": "assets/fernway/menu-widget.webp",
-                "alt": "Fernway balance widget on a lock screen"
+                "assetRef": "public/images/nav/home-live-activity.webp",
+                "alt": "Charter balance widget on a lock screen"
               }
             },
             {
               "image": {
                 "assetRole": "nav.card-image",
-                "assetRef": "assets/fernway/menu-payday.webp",
-                "alt": "Fernway payday summary card"
+                "assetRef": "public/images/nav/home-payroll.webp",
+                "alt": "Charter payday summary card"
               }
             }
           ]
@@ -94,15 +95,15 @@
             {
               "image": {
                 "assetRole": "nav.card-image",
-                "assetRef": "assets/fernway/menu-vault.webp",
-                "alt": "Fernway vault growth card"
+                "assetRef": "public/images/nav/overview-earn.webp",
+                "alt": "Charter vault growth card"
               }
             },
             {
               "image": {
                 "assetRole": "nav.card-image",
-                "assetRef": "assets/fernway/menu-spend.webp",
-                "alt": "Fernway spending breakdown card"
+                "assetRef": "public/images/nav/overview-expenses.webp",
+                "alt": "Charter spending breakdown card"
               }
             }
           ]
@@ -114,14 +115,14 @@
               "platform": "x",
               "link": {
                 "label": "X",
-                "href": "https://example.com/fernway/x"
+                "href": "https://x.example/charter-clone"
               }
             },
             {
               "platform": "linkedin",
               "link": {
                 "label": "LinkedIn",
-                "href": "https://example.com/fernway/linkedin"
+                "href": "https://linkedin.example/charter-clone"
               }
             }
           ],
@@ -133,7 +134,7 @@
           ],
           "ring": {
             "assetRole": "nav.ring",
-            "assetRef": "assets/fernway/menu-orb.webp",
+            "assetRef": "public/images/nav/ring.webp",
             "alt": ""
           }
         },
@@ -209,8 +210,8 @@
         "body": "A calm wallet for cross-border payments, paydays and savings.",
         "device": {
           "assetRole": "device.screen",
-          "assetRef": "assets/fernway/hero-device.webp",
-          "alt": "Phone showing the Fernway home screen"
+          "assetRef": "public/images/hero-phone.2560.webp",
+          "alt": "Phone showing the Charter home screen"
         },
         "waitlist": {
           "ctaLabel": "Get access",
@@ -303,6 +304,10 @@
           }
         ],
         "reducedMotionFallback": "text-shown-appear-at-rest-handoff-static"
+      },
+      "styleTokens": {
+        "surface": "tone.surface.base",
+        "text": "tone.text.primary"
       }
     },
     {
@@ -313,17 +318,17 @@
       "handoff": null,
       "anchorId": "intro-section",
       "content": {
-        "eyebrow": "Meet Fernway Wallet",
+        "eyebrow": "Meet Charter Wallet",
         "heading": "Money, made calmer.",
         "body": "Hold several currencies, pay anyone in moments and keep every balance in one protected app.",
         "device": {
           "assetRole": "device.screen",
-          "assetRef": "assets/fernway/intro-device.webp",
-          "alt": "Fernway app home"
+          "assetRef": "public/images/intro-phone.2560.webp",
+          "alt": "Charter app home"
         },
         "deviceReflection": {
           "assetRole": "device.screen-reflection",
-          "assetRef": "assets/fernway/intro-device-reflect.webp",
+          "assetRef": "public/images/intro-phone-reflection.2560.webp",
           "alt": ""
         }
       },
@@ -406,29 +411,29 @@
           {
             "logo": {
               "assetRole": "partner.logo",
-              "assetRef": "assets/fernway/partner-a.svg",
-              "alt": "Partner-A"
+              "assetRef": "public/images/circle.2560.webp",
+              "alt": "Circle"
             }
           },
           {
             "logo": {
               "assetRole": "partner.logo",
-              "assetRef": "assets/fernway/partner-b.svg",
-              "alt": "Partner-B"
+              "assetRef": "public/images/hifi.2560.webp",
+              "alt": "HiFi"
             }
           },
           {
             "logo": {
               "assetRole": "partner.logo",
-              "assetRef": "assets/fernway/partner-c.svg",
-              "alt": "Partner-C"
+              "assetRef": "public/images/turnkey.2560.webp",
+              "alt": "Turnkey"
             }
           },
           {
             "logo": {
               "assetRole": "partner.logo",
-              "assetRef": "assets/fernway/partner-d.svg",
-              "alt": "Partner-D"
+              "assetRef": "public/images/rhinestone.2560.webp",
+              "alt": "Rhinestone"
             }
           }
         ]
@@ -469,24 +474,24 @@
           {
             "device": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/send-picker.webp",
-              "alt": "Fernway currency picker"
+              "assetRef": "public/images/currency.2560.webp",
+              "alt": "Charter currency picker"
             },
             "reflection": {
               "assetRole": "device.screen-reflection",
-              "assetRef": "assets/fernway/send-picker-reflect.webp",
+              "assetRef": "public/images/currency-reflection.2560.webp",
               "alt": ""
             }
           },
           {
             "device": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/send-amount.webp",
-              "alt": "Fernway amount screen"
+              "assetRef": "public/images/amount.2560.webp",
+              "alt": "Charter amount screen"
             },
             "reflection": {
               "assetRole": "device.screen-reflection",
-              "assetRef": "assets/fernway/send-amount-reflect.webp",
+              "assetRef": "public/images/amount-reflection.2560.webp",
               "alt": ""
             }
           }
@@ -496,18 +501,18 @@
             "layout": "top",
             "image": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/slide-contacts.webp",
-              "alt": "Fernway contacts list"
+              "assetRef": "public/images/recipient.2560.webp",
+              "alt": "Charter contacts list"
             },
             "title": "Choose who to pay.",
-            "body": "Pick a saved person or add new bank details in a few taps. Fernway routes the money to supported banks in several regions."
+            "body": "Pick a saved person or enter new bank details. Payments then reach supported banks in several regions."
           },
           {
             "layout": "center",
             "image": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/slide-local.webp",
-              "alt": "Fernway local account details"
+              "assetRef": "public/images/virtual-account.2560.webp",
+              "alt": "Charter local account details"
             },
             "title": "Local details, in two currencies.",
             "body": "Receive money like a local with your own account details in two currencies, then move it on whenever you are ready."
@@ -516,8 +521,8 @@
             "layout": "tilt-right",
             "image": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/slide-currency.webp",
-              "alt": "Fernway currency picker"
+              "assetRef": "public/images/receipt.2560.webp",
+              "alt": "Charter currency picker"
             },
             "title": "Pick the currency they receive.",
             "body": "Choose a currency and preview exactly what arrives on the other side, with the conversion shown before you confirm."
@@ -526,8 +531,8 @@
             "layout": "tilt-left",
             "image": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/slide-amount.webp",
-              "alt": "Fernway amount screen"
+              "assetRef": "public/images/overview.2560.webp",
+              "alt": "Charter amount screen"
             },
             "title": "Check the total, then send.",
             "body": "Enter an amount and see the fees and arrival time up front. Withdrawals to local banks are quick, with totals shown first."
@@ -536,8 +541,8 @@
             "layout": "center",
             "image": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/slide-receipt.webp",
-              "alt": "Fernway transfer receipt"
+              "assetRef": "public/images/forecast.2560.webp",
+              "alt": "Charter transfer receipt"
             },
             "title": "Proof of every transfer.",
             "body": "Follow each step with times, fees and status, so you always know where a transfer is and when it will land."
@@ -661,12 +666,12 @@
         "body": "Track savings, paydays and spending together on a single tidy screen.",
         "device": {
           "assetRole": "device.screen",
-          "assetRef": "assets/fernway/overview-device.webp",
-          "alt": "Fernway overview of savings and spending"
+          "assetRef": "public/images/earnings.2560.webp",
+          "alt": "Charter overview of savings and spending"
         },
         "deviceReflection": {
           "assetRole": "device.screen-reflection",
-          "assetRef": "assets/fernway/overview-reflect.webp",
+          "assetRef": "public/images/overview-reflection.2560.webp",
           "alt": ""
         }
       },
@@ -738,31 +743,31 @@
       "content": {
         "eyebrow": "Let idle money grow.",
         "heading": "Grow savings in flexible vaults.",
-        "body": "Move spare money into a Fernway vault and watch it grow at a variable rate. Add or withdraw at any time, with no lock-in period.",
+        "body": "Move spare money into a Charter vault and watch it grow at a variable rate. Add or withdraw at any time, with no lock-in period.",
         "backdrop": {
           "assetRole": "texture.backdrop",
-          "assetRef": "assets/fernway/earn-backdrop.webp",
+          "assetRef": "public/images/backdrop.2560.webp",
           "alt": ""
         },
         "devices": [
           {
             "device": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/earn-forecast.webp",
-              "alt": "Fernway vault balance with a growth forecast"
+              "assetRef": "public/images/hero-phone.2560.webp",
+              "alt": "Charter vault balance with a growth forecast"
             }
           },
           {
             "device": {
               "assetRole": "device.screen",
-              "assetRef": "assets/fernway/earn-summary.webp",
-              "alt": "Fernway savings summary screen"
+              "assetRef": "public/images/intro-phone.2560.webp",
+              "alt": "Charter savings summary screen"
             }
           }
         ],
         "photo": {
           "assetRole": "photo.lifestyle",
-          "assetRef": "assets/fernway/earn-photo.webp",
+          "assetRef": "public/images/photo.2560.webp",
           "alt": "A cyclist resting beside a quiet coastal road at dusk"
         }
       },
@@ -838,30 +843,30 @@
             "label": "Spendable"
           }
         ],
-        "body": "Earnings should not sit out of reach for weeks. Fernway lets wages arrive as you work, so you can spend or save whenever it suits you.",
+        "body": "Earnings should not sit out of reach for weeks. Charter pays wages out as the hours add up, ready to use or put aside.",
         "portrait": {
           "assetRole": "photo.portrait",
-          "assetRef": "assets/fernway/payroll-person.webp",
+          "assetRef": "public/images/payroll-portrait.webp",
           "alt": "A person reading by a window"
         },
         "portraitPhone": {
           "assetRole": "photo.portrait",
-          "assetRef": "assets/fernway/payroll-person-soft.webp",
+          "assetRef": "public/images/portrait-soft.2560.webp",
           "alt": "A person reading by a window"
         },
         "productPhoto": {
           "assetRole": "photo.product-in-hand",
-          "assetRef": "assets/fernway/payroll-hand.webp",
-          "alt": "A hand holding a phone showing Fernway payday alerts"
+          "assetRef": "public/images/payday.2560.webp",
+          "alt": "Phone in a hand with Charter payday alerts"
         },
         "portraitReflection": {
           "assetRole": "photo.reflection",
-          "assetRef": "assets/fernway/payroll-person-reflect.webp",
+          "assetRef": "public/images/portrait-reflection.2560.webp",
           "alt": ""
         },
         "productReflection": {
           "assetRole": "photo.reflection",
-          "assetRef": "assets/fernway/payroll-hand-reflect.webp",
+          "assetRef": "public/images/payday-reflection.2560.webp",
           "alt": ""
         }
       },
@@ -917,7 +922,7 @@
         "rows": [
           {
             "term": "Self-custody",
-            "description": "Fernway never holds your keys. Strong encryption, device biometrics and careful recovery design keep your balance under your control alone."
+            "description": "Charter never holds your keys. Strong encryption, device biometrics and careful recovery design keep your balance under your control alone."
           },
           {
             "term": "Device passkeys",
@@ -930,12 +935,12 @@
         ],
         "portrait": {
           "assetRole": "photo.portrait",
-          "assetRef": "assets/fernway/security-person.webp",
+          "assetRef": "public/images/security-portrait.webp",
           "alt": "A person outside an office building"
         },
         "portraitAscii": {
           "assetRole": "photo.portrait-ascii",
-          "assetRef": "assets/fernway/security-person-ascii.webp",
+          "assetRef": "public/images/portrait-ascii.2560.webp",
           "alt": ""
         }
       },
@@ -985,7 +990,7 @@
         "heading": "FAQ",
         "items": [
           {
-            "question": "What is Fernway?",
+            "question": "What is Charter?",
             "answer": [
               "Fernway is a fictional example wallet used to demonstrate this page template.",
               "It shows how a product page can explain balances, transfers and savings in plain language."
@@ -1001,7 +1006,7 @@
           {
             "question": "Who holds my money?",
             "answer": [
-              "You do. Your wallet is protected by keys generated and stored on your own device.",
+              "You do. Keys made and kept on your own device protect the wallet.",
               "No one else, including the Fernway team, can move your funds.",
               "If you lose your phone, guided recovery restores access."
             ]
@@ -1048,8 +1053,8 @@
       "content": {
         "wordmark": {
           "assetRole": "brand.wordmark",
-          "assetRef": "assets/fernway/wordmark.svg",
-          "alt": "Fernway home"
+          "assetRef": "inline/charter-wordmark.svg",
+          "alt": "Charter home"
         },
         "columns": [
           {
@@ -1099,11 +1104,11 @@
               },
               {
                 "label": "X",
-                "href": "https://example.com/fernway/x"
+                "href": "https://x.example/charter-clone"
               },
               {
                 "label": "LinkedIn",
-                "href": "https://example.com/fernway/linkedin"
+                "href": "https://linkedin.example/charter-clone"
               }
             ]
           },
@@ -1121,7 +1126,7 @@
             ]
           }
         ],
-        "legalLine": "© 2026 Fernway Ltd. All rights reserved."
+        "legalLine": "© 2026 Charter Ltd. All rights reserved."
       },
       "motion": {
         "scrollLinked": [

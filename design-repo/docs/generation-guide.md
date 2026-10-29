@@ -1,5 +1,8 @@
 # Generating a PageSpec
 
+0. **Set `mode`.** `generation` for any page for another brand (the default use).
+   `clone` only for a private fidelity rebuild of the source. Every rule below about
+   original content is enforced in generation mode (`docs/sensitivity-and-licensing.md`).
 1. **Pick the template.** `templates/templates.json` has one template,
    `template.home`, for route `/`. Copy its `nodes` in order. You may drop optional
    nodes, which raises a warning; never add, repeat or reorder them.
@@ -17,21 +20,30 @@
    links. `maxLines` is the line count measured at 1440. It is a render-check:
    the validator enforces characters and words.
 5. **Media:** every image is `{assetRole, assetRef, alt}`.
-   - The role must be one the slot allows, and `assetRef` must be your project's
-     own file.
+   - The role must be one the slot allows. In generation mode it must also be a
+     `generation-safe` role (see the section's `generatedAssetRoles`), and `assetRef`
+     must be your project's own file, never a source file.
    - Decorative slots use `alt: ""`.
    - Follow `docs/sensitivity-and-licensing.md` for what each role may contain.
 6. **Links:**
    - `/#anchor` links must target a node on the page.
    - Project routes such as `/contact` must exist in *your* project. They are
      unbuilt in the clone.
-   - External links must be your own https profiles.
+   - External links are https. In generation mode they use reserved placeholder hosts
+     (`*.example`, `*.invalid`) until the operator supplies real ones outside this repo.
 7. **Config:** set `config.waitlistEndpoint` to your own https form endpoint. It
    receives `POST {email}` as JSON.
 8. **Validate:** `python3 schema/semantic_validate.py your.pagespec.json`. If it
    fails, feed the errors back to the model and retry.
 
-Styling is not a PageSpec concern. There is no token-override field
-(`tokens/llm/token-policy.json`), and every colour, size and timing comes from the
-section and component contracts. `schema/example.pagespec.json` is a complete,
-passing instance for a fictional brand.
+Styling: every colour, size and timing comes from the section and component
+contracts. The optional `nodes[].styleTokens` (surface, text, border,
+sectionPaddingY, headingStyle, fontFamily, radius) takes token ids from
+`tokens/llm/token-catalog.json` only; `tokens/llm/token-policy.json` lists the
+TOKEN_* rules (unknown token, raw colour, arbitrary spacing, unsupported font,
+theme/token mismatch).
+
+Examples: `schema/examples/generated-home.pagespec.json` (mode=generation, fictional
+brand, placeholder assets and URLs) and `schema/examples/clone-home.pagespec.json`
+(mode=clone, real brand, partner names and source files; its copy is stand-in text
+because this repo never stores the source copy).

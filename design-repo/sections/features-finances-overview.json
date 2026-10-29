@@ -2,6 +2,16 @@
   "id": "features.finances-overview",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Overview/section",
+    "tag": "section",
+    "file": "src/components/Overview.jsx",
+    "lines": "40-101"
+  },
+  "semantic": {
+    "id": "features.finances-overview",
+    "category": "FEATURES"
+  },
   "purpose": "First inverse block: a caption fades as an overview screen drops in, then one heading and one lead line.",
   "implementedBy": "src/components/Overview.jsx",
   "region": "main",
@@ -54,7 +64,9 @@
     "device": {
       "type": "media",
       "roles": [
-        "device.screen"
+        "device.screen",
+        "placeholder.screenshot",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 45,
@@ -71,7 +83,8 @@
     "deviceReflection": {
       "type": "media",
       "roles": [
-        "device.screen-reflection"
+        "device.screen-reflection",
+        "generated.derived-render"
       ],
       "alt": "decorative",
       "aspect": "901x1214 at opacity .7",
@@ -80,6 +93,11 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "generated.derived-render",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -165,5 +183,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

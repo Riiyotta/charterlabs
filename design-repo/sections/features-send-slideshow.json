@@ -2,6 +2,16 @@
   "id": "features.send-slideshow",
   "kind": "section",
   "category": "FEATURES",
+  "source": {
+    "id": "src:Send/section",
+    "tag": "section",
+    "file": "src/components/Send.jsx",
+    "lines": "61-122"
+  },
+  "semantic": {
+    "id": "features.send-slideshow",
+    "category": "FEATURES"
+  },
   "purpose": "Show the payments flow: two settling phones then a five-step carousel of screens with short captions.",
   "implementedBy": "src/components/Send.jsx",
   "region": "main",
@@ -47,7 +57,9 @@
         "device": {
           "type": "media",
           "roles": [
-            "device.screen"
+            "device.screen",
+            "placeholder.screenshot",
+            "user.supplied-asset"
           ],
           "alt": {
             "maxChars": 30,
@@ -64,7 +76,8 @@
         "reflection": {
           "type": "media",
           "roles": [
-            "device.screen-reflection"
+            "device.screen-reflection",
+            "generated.derived-render"
           ],
           "alt": "decorative",
           "aspect": "167x430",
@@ -97,7 +110,9 @@
         "image": {
           "type": "media",
           "roles": [
-            "device.screen"
+            "device.screen",
+            "placeholder.screenshot",
+            "user.supplied-asset"
           ],
           "alt": {
             "maxChars": 43,
@@ -139,6 +154,11 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "generated.derived-render",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -240,5 +260,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

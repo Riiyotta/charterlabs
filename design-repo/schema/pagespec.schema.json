@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "pageSpecVersion",
+    "mode",
     "template",
     "route",
     "brand",
@@ -15,7 +16,14 @@
   ],
   "properties": {
     "pageSpecVersion": {
-      "const": "1.0.0"
+      "const": "2.0.0"
+    },
+    "mode": {
+      "enum": [
+        "clone",
+        "generation"
+      ],
+      "description": "REQUIRED generation context. clone = private faithful reconstruction of the source (real brand/copy/assets allowed for fidelity). generation = a new page for another brand: the semantic validator rejects every source identity/content category (GENERATION_MODE_* rules)."
     },
     "template": {
       "enum": [
@@ -85,15 +93,22 @@
         "photo.product-in-hand",
         "photo.portrait",
         "photo.portrait-ascii",
-        "photo.reflection"
+        "photo.reflection",
+        "placeholder.brand-mark",
+        "user.supplied-asset",
+        "generated.illustration",
+        "placeholder.screenshot",
+        "fictional.person",
+        "placeholder.company-logo",
+        "generated.derived-render"
       ],
-      "description": "Closed enum mirrored from assets/asset-roles.json"
+      "description": "Closed enum mirrored from assets/asset-roles.json (media roles). Availability per mode is enforced by the semantic validator."
     },
     "assetRef": {
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$",
       "maxLength": 200,
-      "description": "Project-supplied asset path or id. Never a source-site file."
+      "description": "Asset path or id. mode=generation: never a source-site file (GENERATION_MODE_ASSET/_SCREENSHOT/_PERSON). mode=clone: source files allowed."
     },
     "href": {
       "type": "string",
@@ -600,7 +615,9 @@
                 },
                 {
                   "enum": [
-                    "brand.mark"
+                    "brand.mark",
+                    "placeholder.brand-mark",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -677,7 +694,9 @@
                           },
                           {
                             "enum": [
-                              "nav.card-image"
+                              "nav.card-image",
+                              "placeholder.screenshot",
+                              "user.supplied-asset"
                             ]
                           }
                         ]
@@ -761,7 +780,9 @@
                           },
                           {
                             "enum": [
-                              "nav.card-image"
+                              "nav.card-image",
+                              "placeholder.screenshot",
+                              "user.supplied-asset"
                             ]
                           }
                         ]
@@ -876,7 +897,9 @@
                     },
                     {
                       "enum": [
-                        "nav.ring"
+                        "nav.ring",
+                        "generated.illustration",
+                        "user.supplied-asset"
                       ]
                     }
                   ]
@@ -1009,7 +1032,9 @@
                 },
                 {
                   "enum": [
-                    "device.screen"
+                    "device.screen",
+                    "placeholder.screenshot",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -1154,7 +1179,9 @@
                 },
                 {
                   "enum": [
-                    "device.screen"
+                    "device.screen",
+                    "placeholder.screenshot",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -1185,7 +1212,8 @@
                 },
                 {
                   "enum": [
-                    "device.screen-reflection"
+                    "device.screen-reflection",
+                    "generated.derived-render"
                   ]
                 }
               ]
@@ -1282,7 +1310,8 @@
                       },
                       {
                         "enum": [
-                          "partner.logo"
+                          "partner.logo",
+                          "placeholder.company-logo"
                         ]
                       }
                     ]
@@ -1407,7 +1436,9 @@
                       },
                       {
                         "enum": [
-                          "device.screen"
+                          "device.screen",
+                          "placeholder.screenshot",
+                          "user.supplied-asset"
                         ]
                       }
                     ]
@@ -1438,7 +1469,8 @@
                       },
                       {
                         "enum": [
-                          "device.screen-reflection"
+                          "device.screen-reflection",
+                          "generated.derived-render"
                         ]
                       }
                     ]
@@ -1492,7 +1524,9 @@
                       },
                       {
                         "enum": [
-                          "device.screen"
+                          "device.screen",
+                          "placeholder.screenshot",
+                          "user.supplied-asset"
                         ]
                       }
                     ]
@@ -1680,7 +1714,9 @@
                 },
                 {
                   "enum": [
-                    "device.screen"
+                    "device.screen",
+                    "placeholder.screenshot",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -1711,7 +1747,8 @@
                 },
                 {
                   "enum": [
-                    "device.screen-reflection"
+                    "device.screen-reflection",
+                    "generated.derived-render"
                   ]
                 }
               ]
@@ -1822,7 +1859,9 @@
                 },
                 {
                   "enum": [
-                    "texture.backdrop"
+                    "texture.backdrop",
+                    "generated.illustration",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -1860,7 +1899,9 @@
                       },
                       {
                         "enum": [
-                          "device.screen"
+                          "device.screen",
+                          "placeholder.screenshot",
+                          "user.supplied-asset"
                         ]
                       }
                     ]
@@ -1896,7 +1937,9 @@
                 },
                 {
                   "enum": [
-                    "photo.lifestyle"
+                    "photo.lifestyle",
+                    "generated.illustration",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -2049,7 +2092,8 @@
                 },
                 {
                   "enum": [
-                    "photo.portrait"
+                    "photo.portrait",
+                    "fictional.person"
                   ]
                 }
               ]
@@ -2080,7 +2124,8 @@
                 },
                 {
                   "enum": [
-                    "photo.portrait"
+                    "photo.portrait",
+                    "fictional.person"
                   ]
                 }
               ]
@@ -2111,7 +2156,10 @@
                 },
                 {
                   "enum": [
-                    "photo.product-in-hand"
+                    "photo.product-in-hand",
+                    "placeholder.screenshot",
+                    "generated.illustration",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -2142,7 +2190,8 @@
                 },
                 {
                   "enum": [
-                    "photo.reflection"
+                    "photo.reflection",
+                    "generated.derived-render"
                   ]
                 }
               ]
@@ -2171,7 +2220,8 @@
                 },
                 {
                   "enum": [
-                    "photo.reflection"
+                    "photo.reflection",
+                    "generated.derived-render"
                   ]
                 }
               ]
@@ -2303,7 +2353,8 @@
                 },
                 {
                   "enum": [
-                    "photo.portrait"
+                    "photo.portrait",
+                    "fictional.person"
                   ]
                 }
               ]
@@ -2334,7 +2385,8 @@
                 },
                 {
                   "enum": [
-                    "photo.portrait-ascii"
+                    "photo.portrait-ascii",
+                    "generated.derived-render"
                   ]
                 }
               ]
@@ -2461,7 +2513,9 @@
                 },
                 {
                   "enum": [
-                    "brand.wordmark"
+                    "brand.wordmark",
+                    "placeholder.brand-mark",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -2587,6 +2641,13 @@
         },
         "motion": {
           "type": "object"
+        },
+        "styleTokens": {
+          "$ref": "#/definitions/styleTokens"
+        },
+        "retrievalEligible": {
+          "type": "boolean",
+          "description": "Optional; when present must equal the section contract's retrievalEligible (RETRIEVAL_ELIGIBILITY_MATCH)."
         }
       },
       "allOf": [
@@ -2892,7 +2953,9 @@
                 },
                 {
                   "enum": [
-                    "brand.mark"
+                    "brand.mark",
+                    "placeholder.brand-mark",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -2921,7 +2984,9 @@
                 },
                 {
                   "enum": [
-                    "social.og-image"
+                    "social.og-image",
+                    "placeholder.screenshot",
+                    "user.supplied-asset"
                   ]
                 }
               ]
@@ -2935,6 +3000,48 @@
               "maxLength": 116
             }
           }
+        }
+      }
+    },
+    "styleTokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional per-node token choices. Values are token ids from tokens/llm/token-catalog.json; the semantic validator enforces tokens/llm/token-policy.json (TOKEN_* rules). Absent = the section contract's own tokens (what the source renders).",
+      "properties": {
+        "surface": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "border": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sectionPaddingY": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "headingStyle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "fontFamily": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "radius": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
         }
       }
     }

@@ -1,0 +1,52 @@
+{
+  "policyId": "consumer-fintech-wallet-web",
+  "policyVersion": "1.0.0",
+  "commonIrVersion": "0.5",
+  "title": "Consumer fintech wallet (single marketing homepage) web-product generation policy",
+  "classification": {
+    "productCategory": "consumer-app",
+    "productDomain": "consumer-fintech-wallet",
+    "marketModel": "direct-to-consumer mobile wallet (individuals sending, receiving and saving money); waitlist pre-launch",
+    "isSaaS": false,
+    "surfaces": [
+      "marketing-site"
+    ],
+    "audiences": [
+      "individual-consumers",
+      "globally-paid-workers",
+      "press-and-trust"
+    ],
+    "sourceEvidence": [
+      "index.html:6 page title names the product a 'Global Neobank'",
+      "src/components/Hero.jsx:58 the hero body speaks to one person (second person) about a personal wallet",
+      "src/components/Faq.jsx:19 and :26 describe a phone app (the wallet app; keys on the user's iPhone/Android, biometrics)",
+      "src/components/Payroll.jsx:66-69 payroll is framed from the earner's side (getting paid), not as an employer/team tool",
+      "src/components/Waitlist.jsx: the only conversion is an individual email waitlist",
+      "absent from src/ and CLONE_SPEC.md: pricing tiers or plans, seats/teams, dashboards for an organisation, integrations, a B2B sign-up or demo request"
+    ]
+  },
+  "notBoundTo": {
+    "n0-saas-design-constraints-common": "Explicitly NOT applied. That policy assumes a B2B SaaS product (pricing tiers, dashboards, feature matrices, integrations, team/seat language). The clone is a consumer mobile-wallet marketing homepage; none of those constructs exist in the source and a generator must not introduce them. Binding to it would need a recorded architecture decision, which has not been made."
+  },
+  "generationRules": [
+    "Pages are drawn only from template.home and its 12 section contracts; no pricing-table, plan-comparison, feature-matrix, integrations, dashboard or team/seat sections.",
+    "Copy addresses an individual consumer in the second person; financial claims (speed, fees, yields) are the operator's own and must be substantiated by them; source claims are rejected (GENERATION_MODE_CLAIM).",
+    "Trust content (partners, security) uses generation-safe roles only: placeholder.company-logo, fictional.person; real partner trademarks and real people are blocked-for-generation.",
+    "mode=generation rejects every source identity/content category (GENERATION_MODE_* rules); mode=clone is a private fidelity build only.",
+    "The waitlist endpoint is project-supplied in both modes; the source company's live endpoint is never allowed."
+  ],
+  "enforcedBy": [
+    "schema/pagespec.schema.json",
+    "schema/semantic_validate.py",
+    "schema/source-leakage-patterns.json",
+    "assets/asset-roles.json",
+    "compatibility/graph.json",
+    "templates/templates.json",
+    "tokens/llm/token-policy.json"
+  ],
+  "approval": {
+    "policyDecision": "defined-pending-architecture-review",
+    "architectureDecisionRecorded": false,
+    "note": "Classification defined by an agent from evidence in the clone (agent attestation, not a human sign-off). A human architecture owner must ratify it before it is treated as a shared common policy. Asset licensing and publishing approvals remain open (registry.manifest.json productionApproved: false)."
+  }
+}

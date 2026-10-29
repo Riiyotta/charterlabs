@@ -9,5 +9,6 @@
   "evidence": [
     "spec.2.1.1-waitlist"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

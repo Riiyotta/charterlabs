@@ -952,7 +952,7 @@
     "copy.features.finances-overview.deviceAlt": {
       "path": "src/components/Overview.jsx",
       "lines": "90-90",
-      "anchor": "alt=\"Charter app overview of earnings and expenses\"",
+      "anchor": "alt=\"Charter app",
       "claim": "copy budget measured from the source string(s) at this location",
       "measured": {
         "samples": 1,
@@ -1192,7 +1192,7 @@
     "copy.features.security-ascii.portraitAlt": {
       "path": "src/components/Security.jsx",
       "lines": "67-67",
-      "anchor": "alt=\"A woman in sunglasses outside a building\"",
+      "anchor": "alt=\"A woman",
       "claim": "copy budget measured from the source string(s) at this location",
       "measured": {
         "samples": 1,
@@ -1338,6 +1338,82 @@
       "lines": "51-51",
       "anchor": "linkedin.com/company/",
       "claim": "fingerprint source for a real social profile URL (text not stored)"
+    }
+  },
+  "sectionHeights": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "measuredOn": "2026-10-29",
+    "method": "Playwright chromium, built clone (vite build + vite preview), networkidle + 2.5s settle, getBoundingClientRect().height of the in-flow wrapper of each node (the Handoff wrapper where one exists)",
+    "pages": {
+      "template.home": {
+        "route": "/",
+        "pageHeightPx": 11137,
+        "sections": {
+          "chrome.header": {
+            "heightPx": 54,
+            "position": "absolute",
+            "tag": "header"
+          },
+          "hero.waitlist-hero": {
+            "heightPx": 1059.03,
+            "position": "relative",
+            "tag": "div"
+          },
+          "features.wallet-intro": {
+            "heightPx": 720,
+            "position": "relative",
+            "tag": "section"
+          },
+          "proof.logo-ticker": {
+            "heightPx": 712.52,
+            "position": "relative",
+            "tag": "div"
+          },
+          "features.send-slideshow": {
+            "heightPx": 1869.66,
+            "position": "relative",
+            "tag": "section"
+          },
+          "transition.light-to-dark": {
+            "heightPx": 640,
+            "position": "relative",
+            "tag": "section"
+          },
+          "features.finances-overview": {
+            "heightPx": 1028,
+            "position": "relative",
+            "tag": "section"
+          },
+          "features.earn-collapse": {
+            "heightPx": 1261.66,
+            "position": "relative",
+            "tag": "section"
+          },
+          "features.payroll-rise": {
+            "heightPx": 1151.66,
+            "position": "relative",
+            "tag": "section"
+          },
+          "features.security-ascii": {
+            "heightPx": 1537.89,
+            "position": "relative",
+            "tag": "div"
+          },
+          "support.faq-accordion": {
+            "heightPx": 623.98,
+            "position": "relative",
+            "tag": "section"
+          },
+          "chrome.footer": {
+            "heightPx": 532.25,
+            "position": "sticky",
+            "tag": "footer"
+          }
+        }
+      }
     }
   }
 }

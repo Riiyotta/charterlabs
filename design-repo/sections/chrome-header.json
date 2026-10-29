@@ -2,6 +2,16 @@
   "id": "chrome.header",
   "kind": "section",
   "category": "CHROME",
+  "source": {
+    "id": "src:Header/header",
+    "tag": "header",
+    "file": "src/components/Header.jsx",
+    "lines": "348-552"
+  },
+  "semantic": {
+    "id": "chrome.header",
+    "category": "CHROME"
+  },
   "purpose": "Frame the page: centred pill nav with three hover mega-menus and a contact link; phone gets a burger and a tabbed sheet. Absolute, not sticky.",
   "implementedBy": "src/components/Header.jsx",
   "region": "header",
@@ -25,7 +35,9 @@
     "brandMark": {
       "type": "media",
       "roles": [
-        "brand.mark"
+        "brand.mark",
+        "placeholder.brand-mark",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 12,
@@ -79,7 +91,9 @@
             "image": {
               "type": "media",
               "roles": [
-                "nav.card-image"
+                "nav.card-image",
+                "placeholder.screenshot",
+                "user.supplied-asset"
               ],
               "alt": {
                 "maxChars": 52,
@@ -144,7 +158,9 @@
             "image": {
               "type": "media",
               "roles": [
-                "nav.card-image"
+                "nav.card-image",
+                "placeholder.screenshot",
+                "user.supplied-asset"
               ],
               "alt": {
                 "maxChars": 52,
@@ -238,7 +254,9 @@
         "ring": {
           "type": "media",
           "roles": [
-            "nav.ring"
+            "nav.ring",
+            "generated.illustration",
+            "user.supplied-asset"
           ],
           "alt": "decorative",
           "aspect": "164x164 with 44px reflection",
@@ -265,6 +283,12 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "generated.illustration",
+    "placeholder.brand-mark",
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "navDrop": {
       "delayFromNavStartS": 1.77,
@@ -352,5 +376,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

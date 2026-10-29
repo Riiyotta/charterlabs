@@ -2,6 +2,16 @@
   "id": "hero.waitlist-hero",
   "kind": "section",
   "category": "HERO",
+  "source": {
+    "id": "src:Hero/section",
+    "tag": "section",
+    "file": "src/components/Hero.jsx",
+    "lines": "28-64"
+  },
+  "semantic": {
+    "id": "hero.waitlist-hero",
+    "category": "HERO"
+  },
   "purpose": "Open the page with one product promise and capture waitlist emails.",
   "implementedBy": "src/components/Hero.jsx",
   "region": "main",
@@ -45,7 +55,9 @@
     "device": {
       "type": "media",
       "roles": [
-        "device.screen"
+        "device.screen",
+        "placeholder.screenshot",
+        "user.supplied-asset"
       ],
       "alt": {
         "maxChars": 39,
@@ -109,6 +121,10 @@
       ]
     }
   },
+  "generatedAssetRoles": [
+    "placeholder.screenshot",
+    "user.supplied-asset"
+  ],
   "motion": {
     "reveal": [
       {
@@ -229,5 +245,6 @@
     "src.app.composition",
     "ia.template-home"
   ],
-  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget."
+  "copyPolicy": "Budgets are measured from the source layout; original strings are NOT stored. Write original copy within budget.",
+  "retrievalEligible": true
 }

@@ -13,5 +13,6 @@
     "src.waitlist.fake-submit",
     "spec.2.1.1-waitlist-live-post"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

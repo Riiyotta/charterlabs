@@ -12,5 +12,6 @@
     "spec.1.1-nav-desktop",
     "spec.2.11-footer"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

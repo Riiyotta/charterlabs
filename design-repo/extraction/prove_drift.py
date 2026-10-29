@@ -90,6 +90,46 @@ def cases(src_root):
         ("verbatim source copy pasted into docs", "protected-content", append_text("docs/generation-guide.md", "\nExample heading: \"%s\"\n" % sentence)),
         ("live form endpoint pasted into docs", "protected-content", append_text("README.md", "\nendpoint: %s\n" % endpoint)),
         ("token policy category not in catalog", "token-refs", edit_json("tokens/llm/token-policy.json", lambda o: o["rawValueRestrictions"].update(typography="reference-only"))),
+        # R3 availability pins
+        ("registry availability loosened (partner.logo -> generation-safe)", "asset-roles", edit_json("assets/asset-roles.json", lambda o: (
+            o["roles"]["partner.logo"].update(availability="generation-safe"), o["pinnedAvailability"].update({"partner.logo": "generation-safe"})))),
+        ("pin removed from semantic_validate.PINNED_AVAILABILITY", "asset-roles", replace_text("schema/semantic_validate.py", '    "photo.portrait": "blocked-for-generation",\n', "")),
+        ("pin removed from verify_all.PINNED_AVAILABILITY", "asset-roles", replace_text("extraction/verify_all.py", '    "brand.wordmark": "clone-only",\n', "")),
+        ("registry + validator pin loosened together (verify_all copy still holds)", "asset-roles", lambda r: (
+            edit_json("assets/asset-roles.json", lambda o: (o["roles"]["brand.mark"].update(availability="generation-safe"), o["pinnedAvailability"].update({"brand.mark": "generation-safe"})))(r),
+            replace_text("schema/semantic_validate.py", '    "brand.mark": "clone-only",', '    "brand.mark": "generation-safe",')(r))),
+        ("section generatedAssetRoles drifts from its slots", "asset-roles", edit_json("sections/features-security-ascii.json", lambda o: o["generatedAssetRoles"].append("placeholder.company-logo"))),
+        # R8 retrieval
+        ("runtime UI flipped eligible in contract + allowlist together", "retrieval-eligible", lambda r: (
+            edit_json("components/nav-menu-panel.json", lambda o: o.update(retrievalEligible=True))(r),
+            edit_json("tokens/llm/component-allowlist.json", lambda o: [e.update(retrievalEligible=True) for e in o["entries"] if e["id"] == "component.nav-menu-panel"])(r))),
+        ("content section marked ineligible in contract + allowlist", "retrieval-eligible", lambda r: (
+            edit_json("sections/features-wallet-intro.json", lambda o: o.update(retrievalEligible=False, retrievalIneligibleReason="x" * 40))(r),
+            edit_json("tokens/llm/component-allowlist.json", lambda o: [e.update(retrievalEligible=False) for e in o["entries"] if e["id"] == "features.wallet-intro"])(r))),
+        ("retrieval pin removed from semantic_validate", "retrieval-eligible", replace_text("schema/semantic_validate.py", '    "component.smooth-scroll": "Runtime scroll', '    "component.smooth-scrollX": "Runtime scroll')),
+        # R7 source / semantic
+        ("source range shifted by 3 lines", "source-semantic", edit_json("sections/features-earn-collapse.json", lambda o: o["source"].update(lines="%d-%d" % tuple(int(x) + 3 for x in o["source"]["lines"].split("-"))))),
+        ("semantic.id no longer the contract id", "source-semantic", edit_json("sections/proof-logo-ticker.json", lambda o: o["semantic"].update(id="proof.logos"))),
+        ("unknown field in a section contract (closed schema)", "section-contracts", edit_json("sections/proof-logo-ticker.json", lambda o: o.update(heroClass="x"))),
+        # R9 wrapper gate
+        ("measured HERO raised to 3100px", "wrapper-gate", edit_json("extraction/measured-values.json", lambda o: o["sectionHeights"]["pages"]["template.home"]["sections"]["hero.waitlist-hero"].update(heightPx=3100))),
+        ("measurement removed for one section", "wrapper-gate", edit_json("extraction/measured-values.json", lambda o: o["sectionHeights"]["pages"]["template.home"]["sections"].pop("features.payroll-rise"))),
+        ("gate threshold loosened in wrapper_gate.py", "wrapper-gate", replace_text("extraction/wrapper_gate.py", "HERO_ERROR_PX = 3000", "HERO_ERROR_PX = 9000")),
+        # R10 tokens
+        ("catalog edited by hand (token removed)", "token-catalog", edit_json("tokens/llm/token-catalog.json", lambda o: o["categories"]["spacing"].pop())),
+        ("token file changed without regenerating the catalog", "token-catalog", edit_json("tokens/00-foundation/radius.json", lambda o: o["radius"].update(huge={"$type": "dimension", "$value": 999, "evidence": ["spec.0.7-radii-shadows"]}))),
+        ("token-policy rule list drifts from the validator", "token-catalog", edit_json("tokens/llm/token-policy.json", lambda o: o["rules"].pop("TOKEN_UNSUPPORTED_FONT"))),
+        # R2 leakage patterns
+        ("brand pattern deleted from the leakage registry", "leakage-patterns", edit_json("schema/source-leakage-patterns.json", lambda o: o["categories"]["BRAND"]["patterns"].pop(0))),
+        ("copy shingles truncated", "leakage-patterns", edit_json("schema/source-leakage-patterns.json", lambda o: o["categories"]["COPY"]["shingleSha256"].__delitem__(slice(0, 50)))),
+        # R1 / R4 modes + examples
+        ("generation example deleted", "modes", lambda r: os.remove(os.path.join(r, "schema/examples/generated-home.pagespec.json"))),
+        ("mode removed from an example", "schema-draft7", edit_json("schema/examples/clone-home.pagespec.json", lambda o: o.pop("mode"))),
+        ("source copy pasted into the generation example", "semantic-example", edit_json("schema/examples/generated-home.pagespec.json", lambda o: o["nodes"][1]["content"].update(heading=sentence))),
+        # requirement 10: policy binding
+        ("enforcing validator edited without re-hashing the policy", "design-policy", append_text("schema/semantic_validate.py", "\n# drift\n")),
+        ("non-SaaS repo bound to the SaaS common policy", "design-policy", edit_json("registry.manifest.json", lambda o: o["designPolicy"].update(policyId="n0-saas-design-constraints-common", policyVersion="0.1.0"))),
+        ("policy file removed", "design-policy", lambda r: os.remove(os.path.join(r, "policy/design-policy.json"))),
     ]
 
 

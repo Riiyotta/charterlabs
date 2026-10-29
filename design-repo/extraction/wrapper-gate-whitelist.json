@@ -1,0 +1,5 @@
+{
+  "version": "1.0.0",
+  "$description": "Reviewed exceptions to extraction/wrapper_gate.py. Each entry: {template, section, maxHeightPx (> measured), justification (>= 30 chars), reviewedBy}. An agent reviewer must write 'agent attestation, not a human sign-off'. Empty: at 1440px no HERO exceeds 1800px and no in-flow section exceeds 50% of the home page (largest: features.send-slideshow, 1870px of 10604px in-flow).",
+  "entries": []
+}

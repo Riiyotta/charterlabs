@@ -1,9 +1,24 @@
 {
   "repositoryId": "charterlabs-homepage-design-repo",
-  "repositoryVersion": "1.0.0",
-  "pageSpecVersion": "1.0.0",
-  "allowlistVersion": "1.0.0",
-  "versionFieldNote": "allowlistVersion is MACHINE-CHECKED (verify_all allowlist-version: must equal tokens/llm/component-allowlist.json version). pageSpecVersion is MACHINE-CHECKED (verify_all pagespec-version: must equal the schema's pageSpecVersion const and the example). repositoryVersion is DOCUMENTATION-ONLY: hand-maintained, nothing checks it.",
+  "category": "consumer-app",
+  "productDomain": "consumer-fintech-wallet",
+  "designPolicy": {
+    "ref": "policy/design-policy.json",
+    "policyId": "consumer-fintech-wallet-web",
+    "policyVersion": "1.0.0",
+    "commonIrVersion": "0.5",
+    "enforcementMode": "hard-and-soft",
+    "notBoundTo": [
+      "n0-saas-design-constraints-common"
+    ],
+    "contentHash": "sha256:879442321102079849392ba680bf0b9c1d0839cf90f473638770244a3568bf0e",
+    "contentHashCovers": "policy/design-policy.json + its enforcedBy files (extraction/policy_hash.py)"
+  },
+  "categoryEvidence": "Consumer mobile wallet, not B2B SaaS: see policy/design-policy.json classification.evidence (no pricing tiers, dashboards, teams or integrations in the clone).",
+  "repositoryVersion": "2.0.0",
+  "pageSpecVersion": "2.0.0",
+  "allowlistVersion": "2.0.0",
+  "versionFieldNote": "allowlistVersion is MACHINE-CHECKED (verify_all allowlist-version). pageSpecVersion is MACHINE-CHECKED (verify_all pagespec-version: manifest == schema const == every example). repositoryVersion is DOCUMENTATION-ONLY. designPolicy.contentHash is MACHINE-CHECKED (verify_all design-policy).",
   "status": "design-review-pending",
   "productionApproved": false,
   "source": {
@@ -31,10 +46,12 @@
     "templates": 1,
     "routes": 1,
     "linkedUnbuiltRoutes": 2,
-    "assetRoles": 14,
-    "graphRules": 24,
+    "assetRoles": 23,
+    "graphRules": 35,
     "citations": 155,
-    "copyFingerprints": 77
+    "copyFingerprints": 77,
+    "examples": 2,
+    "generationSafeRoles": 9
   },
   "entryPoints": {
     "readme": "README.md",
@@ -42,7 +59,6 @@
     "sensitivity": "docs/sensitivity-and-licensing.md",
     "generationGuide": "docs/generation-guide.md",
     "schema": "schema/pagespec.schema.json",
-    "example": "schema/example.pagespec.json",
     "validator": "schema/semantic_validate.py",
     "adversarialTests": "schema/tests/adversarial_test.py",
     "pageMetaContract": "schema/page-meta.contract.json",
@@ -59,7 +75,29 @@
     "themeInverse": "tokens/themes/inverse.json",
     "measuredValues": "extraction/measured-values.json",
     "verifyAll": "extraction/verify_all.py",
-    "proveDrift": "extraction/prove_drift.py"
+    "proveDrift": "extraction/prove_drift.py",
+    "exampleClone": "schema/examples/clone-home.pagespec.json",
+    "exampleGeneration": "schema/examples/generated-home.pagespec.json",
+    "sectionContractSchema": "schema/section-contract.schema.json",
+    "leakagePatterns": "schema/source-leakage-patterns.json",
+    "buildLeakagePatterns": "extraction/build_leakage_patterns.py",
+    "buildTokenCatalog": "extraction/build_token_catalog.py",
+    "buildSourceSemantic": "extraction/build_source_semantic.py",
+    "wrapperGate": "extraction/wrapper_gate.py",
+    "wrapperGateWhitelist": "extraction/wrapper-gate-whitelist.json",
+    "measureSections": "extraction/measure_sections.mjs",
+    "designPolicy": "policy/design-policy.json",
+    "policyHash": "extraction/policy_hash.py"
   },
-  "externalEvidenceNote": "External evidence (CLONE_SPEC.md, ASSETS.md, src/, tailwind.config.js, index.html, ia.json) is cited ONLY in extraction/measured-values.json, relative to the project root, and is never an entry point. verify_all warns, not fails, when it is absent."
+  "externalEvidenceNote": "External evidence (CLONE_SPEC.md, ASSETS.md, src/, tailwind.config.js, index.html, ia.json) is cited ONLY in extraction/measured-values.json, relative to the project root, and is never an entry point. verify_all warns, not fails, when it is absent.",
+  "modes": {
+    "enum": [
+      "clone",
+      "generation"
+    ],
+    "required": true,
+    "clone": "private faithful reconstruction (real content allowed for fidelity)",
+    "generation": "page for another brand; GENERATION_MODE_* rules reject source identity/content"
+  },
+  "sourceStack": "documentation only: React 18 + Vite 5 + Tailwind 3 + framer-motion + lenis (package.json); not used in any contract"
 }

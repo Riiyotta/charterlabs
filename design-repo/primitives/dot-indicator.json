@@ -11,5 +11,6 @@
     "spec.2.4-send",
     "spec.3.8-slideshow"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

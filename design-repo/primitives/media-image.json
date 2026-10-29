@@ -11,5 +11,6 @@
   "evidence": [
     "assets.1-public-images"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": true
 }

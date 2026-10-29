@@ -7,5 +7,7 @@
     "spec.3.9-lenis",
     "src.motion.smooth-scroll"
   ],
-  "instantiableInPageSpec": false
+  "instantiableInPageSpec": false,
+  "retrievalEligible": false,
+  "retrievalIneligibleReason": "Runtime scroll utility (Lenis smooth scrolling) with no visual output of its own; nothing to retrieve or compose as content."
 }
